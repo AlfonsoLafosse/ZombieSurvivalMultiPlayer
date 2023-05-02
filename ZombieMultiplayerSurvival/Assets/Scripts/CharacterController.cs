@@ -9,11 +9,16 @@ public class CharacterController : MonoBehaviour
     public float moveSpeed = 5f;
     public float stopSpeed = 10f;
     public float slipperyFactor = 0.5f;
-    public float collisionForce = 5f;
-    public float iFrameDuration = 1f;
+    private float storeMoveSpeed;
 
     public enum Direction { Up, Down, Left, Right }
-    public Direction currentDirection = Direction.Up;
+    public Direction currentDirection = Direction.Down;
+
+    public Collider2D upObject;
+    public Collider2D downObject;
+    public Collider2D leftObject;
+    public Collider2D rightObject;
+    public Collider2D activeCollider;
 
     private string horizontalAxis = "Horizontal";
     private string verticalAxis = "Vertical";
@@ -21,8 +26,11 @@ public class CharacterController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveDirection = Vector2.zero;
 
+    private bool i;
+
     private void Start()
     {
+        storeMoveSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
         rb.drag = slipperyFactor;
     }
@@ -46,17 +54,50 @@ public class CharacterController : MonoBehaviour
         if (horizontalInput != 0f)
         {
             StopMovement();
+            moveSpeed = storeMoveSpeed;
             moveDirection = new Vector2(Mathf.Sign(horizontalInput), 0f);
-            currentDirection = moveDirection.x > 0 ? Direction.Right : Direction.Left;
+            if (moveDirection.x > 0f)
+            {
+                currentDirection = Direction.Right;
+            }
+            else
+            {
+                currentDirection = Direction.Left;
+            }
         }
         else if (verticalInput != 0f)
         {
             StopMovement();
+            moveSpeed = storeMoveSpeed;
             moveDirection = new Vector2(0f, Mathf.Sign(verticalInput));
-            currentDirection = moveDirection.y > 0 ? Direction.Up : Direction.Down;
+            if (moveDirection.y > 0f)
+            {
+                currentDirection = Direction.Up;
+            }
+            else
+            {
+                currentDirection = Direction.Down;
+            }
         }
 
         rb.velocity = moveDirection * moveSpeed;
+
+        // Activate the corresponding child object based on the current direction
+        switch (currentDirection)
+        {
+            case Direction.Up:
+                activeCollider = upObject;
+                break;
+            case Direction.Down:
+                activeCollider = downObject;
+                break;
+            case Direction.Left:
+                activeCollider = leftObject;
+                break;
+            case Direction.Right:
+                activeCollider = rightObject;
+                break;
+        }
     }
 
     private void StopMovement()
@@ -65,62 +106,74 @@ public class CharacterController : MonoBehaviour
         rb.angularVelocity = 0f;
         rb.drag = stopSpeed;
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private IEnumerator ClashDelay()
     {
-        if (collision.gameObject.CompareTag("Player"))
+        i = true;
+        yield return new WaitForSeconds(1);
+        i = false;
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Collided");
+        if (other.gameObject.GetComponentInParent<CharacterController>() != null && other.gameObject.GetComponentInParent<CharacterController>().activeCollider == other)
         {
-            CharacterController otherPlayer = collision.gameObject.GetComponent<CharacterController>();
-            if (otherPlayer.currentDirection == OppositeDirection())
+            if (other.gameObject.GetComponentInParent<CharacterController>().currentDirection == Direction.Up)
             {
-                StartCoroutine(TakeIFrames());
-                StartCoroutine(otherPlayer.TakeIFrames());
-                PushAwayFromCollision(collision);
-            }
-            else
-            {
-                if (currentDirection != OppositeDirection())
+                if (currentDirection == Direction.Down)
                 {
-                    Destroy(collision.gameObject);
+                    Debug.Log("Clash");
+                    moveDirection = -moveDirection;
+                    StartCoroutine(ClashDelay());
+                }
+                else
+                {
+                    if (i == false)
+                    Destroy(this.gameObject);
+                }
+            }
+            if (other.gameObject.GetComponentInParent<CharacterController>().currentDirection == Direction.Down)
+            {
+                if (currentDirection == Direction.Up)
+                {
+                    Debug.Log("Clash");
+                    moveDirection = -moveDirection;
+                    StartCoroutine(ClashDelay());
+                }
+                else
+                {
+                    if (i == false)
+                        Destroy(this.gameObject);
+                }
+            }
+            if (other.gameObject.GetComponentInParent<CharacterController>().currentDirection == Direction.Left)
+            {
+                if (currentDirection == Direction.Right)
+                {
+                    Debug.Log("Clash");
+                    moveDirection = -moveDirection;
+                    StartCoroutine(ClashDelay());
+                }
+                else
+                {
+                    if (i == false)
+                        Destroy(this.gameObject);
+                }
+            }
+            if (other.gameObject.GetComponentInParent<CharacterController>().currentDirection == Direction.Right)
+            {
+                if (currentDirection == Direction.Left)
+                {
+                    Debug.Log("Clash");
+                    moveDirection = -moveDirection;
+                    StartCoroutine(ClashDelay());
+                }
+                else
+                {
+                    if (i == false)
+                        Destroy(this.gameObject);
                 }
             }
         }
-        else
-        {
-            StopMovement();
-            PushAwayFromCollision(collision);
-        }
     }
 
-    private void PushAwayFromCollision(Collision2D collision)
-    {
-        // Calculate the direction of the collision and apply a force in the opposite direction
-        Vector2 collisionDirection = -(collision.contacts[0].point - (Vector2)transform.position).normalized;
-        rb.AddForce(collisionDirection * collisionForce, ForceMode2D.Impulse);
-    }
-
-    private Direction OppositeDirection()
-    {
-        // Returns the opposite direction of the current direction
-        switch (currentDirection)
-        {
-            case Direction.Up:
-                return Direction.Down;
-            case Direction.Down:
-                return Direction.Up;
-            case Direction.Left:
-                return Direction.Right;
-            case Direction.Right:
-                return Direction.Left;
-            default:
-                return Direction.Up;
-        }
-    }
-
-    private IEnumerator TakeIFrames()
-    {
-        gameObject.layer = LayerMask.NameToLayer("IgnoreCollisions");
-        yield return new WaitForSeconds(iFrameDuration);
-        gameObject.layer = LayerMask.NameToLayer("Player");
-    }
 }
