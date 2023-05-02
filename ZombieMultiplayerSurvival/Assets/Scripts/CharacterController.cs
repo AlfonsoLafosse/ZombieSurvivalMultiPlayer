@@ -28,12 +28,14 @@ public class CharacterController : MonoBehaviour
     public Transform startPosition;
 
     private bool i;
+    private bool inputActive;
 
     private void Start()
     {
         storeMoveSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
         rb.drag = slipperyFactor;
+        inputActive = true;
     }
 
     private void FixedUpdate()
@@ -52,32 +54,35 @@ public class CharacterController : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw(horizontalAxis);
         float verticalInput = Input.GetAxisRaw(verticalAxis);
 
-        if (horizontalInput != 0f)
+        if (inputActive)
         {
-            StopMovement();
-            moveSpeed = storeMoveSpeed;
-            moveDirection = new Vector2(Mathf.Sign(horizontalInput), 0f);
-            if (moveDirection.x > 0f)
+            if (horizontalInput != 0f)
             {
-                currentDirection = Direction.Right;
+                StopMovement();
+                moveSpeed = storeMoveSpeed;
+                moveDirection = new Vector2(Mathf.Sign(horizontalInput), 0f);
+                if (moveDirection.x > 0f)
+                {
+                    currentDirection = Direction.Right;
+                }
+                else
+                {
+                    currentDirection = Direction.Left;
+                }
             }
-            else
+            else if (verticalInput != 0f)
             {
-                currentDirection = Direction.Left;
-            }
-        }
-        else if (verticalInput != 0f)
-        {
-            StopMovement();
-            moveSpeed = storeMoveSpeed;
-            moveDirection = new Vector2(0f, Mathf.Sign(verticalInput));
-            if (moveDirection.y > 0f)
-            {
-                currentDirection = Direction.Up;
-            }
-            else
-            {
-                currentDirection = Direction.Down;
+                StopMovement();
+                moveSpeed = storeMoveSpeed;
+                moveDirection = new Vector2(0f, Mathf.Sign(verticalInput));
+                if (moveDirection.y > 0f)
+                {
+                    currentDirection = Direction.Up;
+                }
+                else
+                {
+                    currentDirection = Direction.Down;
+                }
             }
         }
 
@@ -110,7 +115,9 @@ public class CharacterController : MonoBehaviour
     private IEnumerator ClashDelay()
     {
         i = true;
-        yield return new WaitForSeconds(1);
+        inputActive = false;
+        yield return new WaitForSeconds(0.1f);
+        inputActive = true;
         i = false;
     }
     private void OnTriggerEnter2D(Collider2D other)
