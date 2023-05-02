@@ -25,6 +25,7 @@ public class CharacterController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 moveDirection = Vector2.zero;
+    public Transform startPosition;
 
     private bool i;
 
