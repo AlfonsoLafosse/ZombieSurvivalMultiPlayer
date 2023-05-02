@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEditor.Rendering;
+using Unity.VisualScripting;
 
 public class CharacterController : MonoBehaviour
 {
@@ -25,14 +27,13 @@ public class CharacterController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 moveDirection = Vector2.zero;
-    public Transform startPosition;
 
     private bool i;
     private bool inputActive;
 
     private void Start()
     {
-        storeMoveSpeed = moveSpeed;
+        storeMoveSpeed = 1000;
         rb = GetComponent<Rigidbody2D>();
         rb.drag = slipperyFactor;
         inputActive = true;
@@ -58,8 +59,9 @@ public class CharacterController : MonoBehaviour
         {
             if (horizontalInput != 0f)
             {
+                StopCoroutine(movement());
+                StartCoroutine(movement());
                 StopMovement();
-                moveSpeed = storeMoveSpeed;
                 moveDirection = new Vector2(Mathf.Sign(horizontalInput), 0f);
                 if (moveDirection.x > 0f)
                 {
@@ -72,8 +74,9 @@ public class CharacterController : MonoBehaviour
             }
             else if (verticalInput != 0f)
             {
+                StopCoroutine(movement());
+                StartCoroutine(movement());
                 StopMovement();
-                moveSpeed = storeMoveSpeed;
                 moveDirection = new Vector2(0f, Mathf.Sign(verticalInput));
                 if (moveDirection.y > 0f)
                 {
@@ -85,8 +88,8 @@ public class CharacterController : MonoBehaviour
                 }
             }
         }
-
         rb.velocity = moveDirection * moveSpeed;
+
 
         // Activate the corresponding child object based on the current direction
         switch (currentDirection)
@@ -105,7 +108,16 @@ public class CharacterController : MonoBehaviour
                 break;
         }
     }
-
+    private IEnumerator movement()
+        {
+        moveSpeed = storeMoveSpeed;
+        yield return  new WaitForSeconds(0.1f);
+        moveSpeed -= 500;
+        if (moveSpeed < 0f)
+        {
+            moveSpeed = 0f;
+        }
+        }
     private void StopMovement()
     {
         rb.velocity = Vector2.zero;
@@ -131,6 +143,8 @@ public class CharacterController : MonoBehaviour
                 {
                     Debug.Log("Clash");
                     moveDirection = -moveDirection;
+                    StopCoroutine(movement());
+                    StartCoroutine(movement());
                     StartCoroutine(ClashDelay());
                 }
                 else
@@ -145,6 +159,8 @@ public class CharacterController : MonoBehaviour
                 {
                     Debug.Log("Clash");
                     moveDirection = -moveDirection;
+                    StopCoroutine(movement());
+                    StartCoroutine(movement());
                     StartCoroutine(ClashDelay());
                 }
                 else
@@ -159,6 +175,8 @@ public class CharacterController : MonoBehaviour
                 {
                     Debug.Log("Clash");
                     moveDirection = -moveDirection;
+                    StopCoroutine(movement());
+                    StartCoroutine(movement());
                     StartCoroutine(ClashDelay());
                 }
                 else
@@ -173,6 +191,8 @@ public class CharacterController : MonoBehaviour
                 {
                     Debug.Log("Clash");
                     moveDirection = -moveDirection;
+                    StopCoroutine(movement());
+                    StartCoroutine(movement());
                     StartCoroutine(ClashDelay());
                 }
                 else
