@@ -90,7 +90,7 @@ public class PlayerCamera : MonoBehaviour
         return greatestDistance;
     }
 
-    void FindTargets()
+    public void FindTargets()
     {
         GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
         targets = new Transform[playerObjects.Length];

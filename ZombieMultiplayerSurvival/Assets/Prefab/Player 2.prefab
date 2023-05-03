@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 1820257831567374529}
   m_Layer: 5
   m_Name: Left
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1820257831567374530
 RectTransform:
   m_ObjectHideFlags: 0
@@ -85,11 +85,11 @@ GameObject:
   - component: {fileID: 1820257831685204302}
   m_Layer: 5
   m_Name: Down
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1820257831685204303
 RectTransform:
   m_ObjectHideFlags: 0
@@ -157,11 +157,11 @@ GameObject:
   - component: {fileID: 1820257832351823285}
   m_Layer: 5
   m_Name: Up
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1820257832351823286
 RectTransform:
   m_ObjectHideFlags: 0
@@ -317,11 +317,11 @@ GameObject:
   - component: {fileID: 1820257832500969223}
   m_Layer: 5
   m_Name: Right
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1820257832500969224
 RectTransform:
   m_ObjectHideFlags: 0
@@ -388,9 +388,9 @@ GameObject:
   - component: {fileID: 1820257833194574603}
   - component: {fileID: 1820257833194574604}
   - component: {fileID: 1820257833194574605}
-  - component: {fileID: 1820257833194574606}
   - component: {fileID: 1820257833194574607}
   - component: {fileID: 1820257833194574704}
+  - component: {fileID: 1759913285}
   m_Layer: 5
   m_Name: Player 2
   m_TagString: Player
@@ -482,28 +482,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1820257833194574606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820257833194574706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9068cbb90a119242845ff1499d7e9ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlType: 0
-  moveSpeed: 1000
-  stopSpeed: 10
-  slipperyFactor: 0.5
-  currentDirection: 3
-  upObject: {fileID: 1820257832351823285}
-  downObject: {fileID: 1820257831685204302}
-  leftObject: {fileID: 1820257831567374529}
-  rightObject: {fileID: 1820257832500969223}
-  activeCollider: {fileID: 0}
 --- !u!61 &1820257833194574607
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -560,3 +538,20 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1759913285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820257833194574706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6db8aae31eeed49840015a6fe0b2c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlType: 1
+  moveSpeed: 1000
+  stopSpeed: 10
+  slipperyFactor: 0.5
+  currentDirection: 1

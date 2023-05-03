@@ -16,6 +16,7 @@ public class PlayerandSoawnManager : MonoBehaviour
     private int player2Score;
     public TextMeshProUGUI score1;
     public TextMeshProUGUI score2;
+    public PlayerCamera playerCamera;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +30,13 @@ public class PlayerandSoawnManager : MonoBehaviour
         if (player1 == null)
         {
             player1 = Instantiate(player1prefab, player1Position, Quaternion.identity);
+            playerCamera.FindTargets();
             player2Score += 1;
         }
         if (player2 == null)
         {
             player2 =Instantiate(player2prefab, player2Position, Quaternion.identity);
+            playerCamera.FindTargets();
             player1Score += 1;
         }
         score1.text = player1Score.ToString();

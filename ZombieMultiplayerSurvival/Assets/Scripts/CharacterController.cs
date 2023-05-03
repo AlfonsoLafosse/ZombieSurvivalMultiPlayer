@@ -11,37 +11,27 @@ public class CharacterController : MonoBehaviour
     public float moveSpeed = 5f;
     public float stopSpeed = 10f;
     public float slipperyFactor = 0.5f;
-    private float storeMoveSpeed;
 
     public enum Direction { Up, Down, Left, Right }
     public Direction currentDirection = Direction.Down;
-
-    public Collider2D upObject;
-    public Collider2D downObject;
-    public Collider2D leftObject;
-    public Collider2D rightObject;
-    public Collider2D activeCollider;
 
     private string horizontalAxis = "Horizontal";
     private string verticalAxis = "Vertical";
 
     private Rigidbody2D rb;
-    private Vector2 moveDirection = Vector2.zero;
+    public Vector2 moveDirection = Vector2.zero;
 
     private bool i;
-    private bool inputActive;
+    public bool inputActive;
+    public bool dom;
+    public bool check;
 
     private void Start()
     {
-        storeMoveSpeed = 1000;
         rb = GetComponent<Rigidbody2D>();
         rb.drag = slipperyFactor;
         inputActive = true;
         StartCoroutine(SpawnI());
-    }
-
-    private void FixedUpdate()
-    {
         if (controlType == ControlType.WASD)
         {
             horizontalAxis = "Horizontal1";
@@ -52,6 +42,10 @@ public class CharacterController : MonoBehaviour
             horizontalAxis = "Horizontal";
             verticalAxis = "Vertical";
         }
+    }
+
+    private void FixedUpdate()
+    {
 
         float horizontalInput = Input.GetAxisRaw(horizontalAxis);
         float verticalInput = Input.GetAxisRaw(verticalAxis);
@@ -60,10 +54,8 @@ public class CharacterController : MonoBehaviour
         {
             if (horizontalInput != 0f)
             {
-                StopCoroutine(movement());
-                moveSpeed = storeMoveSpeed;
-                StartCoroutine(movement());
                 StopMovement();
+                rb.velocity = moveDirection * moveSpeed;
                 moveDirection = new Vector2(Mathf.Sign(horizontalInput), 0f);
                 if (moveDirection.x > 0f)
                 {
@@ -76,10 +68,8 @@ public class CharacterController : MonoBehaviour
             }
             else if (verticalInput != 0f)
             {
-                StopCoroutine(movement());
-                moveSpeed = storeMoveSpeed;
-                StartCoroutine(movement());
                 StopMovement();
+                rb.velocity = moveDirection * moveSpeed;
                 moveDirection = new Vector2(0f, Mathf.Sign(verticalInput));
                 if (moveDirection.y > 0f)
                 {
@@ -91,50 +81,26 @@ public class CharacterController : MonoBehaviour
                 }
             }
         }
-        rb.velocity = moveDirection * moveSpeed;
-
-
-        // Activate the corresponding child object based on the current direction
-        switch (currentDirection)
-        {
-            case Direction.Up:
-                activeCollider = upObject;
-                break;
-            case Direction.Down:
-                activeCollider = downObject;
-                break;
-            case Direction.Left:
-                activeCollider = leftObject;
-                break;
-            case Direction.Right:
-                activeCollider = rightObject;
-                break;
-        }
-    }
-    private IEnumerator movement()
-        {
-        yield return  new WaitForSeconds(0.1f);
-        moveSpeed -= 500;
-        if (moveSpeed > 0f)
-        {
-            StartCoroutine(movement());
-        }
         else
         {
-            moveSpeed = 0f;
+            StopMovement();
+            rb.velocity = moveDirection * moveSpeed;
         }
-        }
+    }
     private void StopMovement()
     {
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0f;
         rb.drag = stopSpeed;
     }
-    private IEnumerator ClashDelay()
+    public IEnumerator ClashDelay()
     {
-        i = true;
+        moveDirection = -moveDirection;
         inputActive = false;
-        yield return new WaitForSeconds(0.25f);
+        i = true;
+        Debug.Log("Stopped" + gameObject);
+        yield return new WaitForSeconds(.15f);
+        dom = false;
         inputActive = true;
         i = false;
     }
@@ -144,77 +110,113 @@ public class CharacterController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         i = false;
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    public void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Collided");
-        if (other.gameObject.GetComponentInParent<CharacterController>() != null && other.gameObject.GetComponentInParent<CharacterController>().activeCollider == other)
+        if (other.gameObject.GetComponent<CharacterController>() != null && inputActive == true)
         {
-            if (other.gameObject.GetComponentInParent<CharacterController>().currentDirection == Direction.Up)
+            if (other.gameObject.GetComponent<CharacterController>().dom == false)
             {
-                if (currentDirection == Direction.Down)
-                {
-                    Debug.Log("Clash");
-                    moveDirection = -moveDirection;
-                    moveSpeed = storeMoveSpeed;
-                    StopCoroutine(movement());
-                    StartCoroutine(movement());
-                    StartCoroutine(ClashDelay());
-                }
-                else
-                {
-                    if (i == false)
-                    Destroy(this.gameObject);
-                }
+                dom = true;
             }
-            if (other.gameObject.GetComponentInParent<CharacterController>().currentDirection == Direction.Down)
+            if (dom == true)
             {
-                if (currentDirection == Direction.Up)
+                check = true;
+                if (other.gameObject.GetComponent<CharacterController>().currentDirection == Direction.Down && check == true)
                 {
-                    Debug.Log("Clash");
-                    moveDirection = -moveDirection;
-                    moveSpeed = storeMoveSpeed;
-                    StopCoroutine(movement());
-                    StartCoroutine(movement());
-                    StartCoroutine(ClashDelay());
+                    if (currentDirection == Direction.Up)
+                    {
+                        check = false;
+                        StartCoroutine(ClashDelay());
+                        StartCoroutine(other.gameObject.GetComponent<CharacterController>().ClashDelay());
+                        currentDirection = Direction.Down;
+                        other.gameObject.GetComponent<CharacterController>().currentDirection = Direction.Up;
+                    }
+                    else
+                    {
+                        if (i == false && other.transform.position.y < this.transform.position.y)
+                        {
+                            check = false;
+                            Destroy(other.gameObject);
+                        }
+                        if (i == false && other.transform.position.y > this.transform.position.y)
+                        {
+                            check = false;
+                            Destroy(this.gameObject);
+                        }
+                    }
                 }
-                else
+                if (other.gameObject.GetComponent<CharacterController>().currentDirection == Direction.Right && check == true)
                 {
-                    if (i == false)
-                        Destroy(this.gameObject);
+                    if (currentDirection == Direction.Left)
+                    {
+                        check = false;
+                        StartCoroutine(ClashDelay());
+                        StartCoroutine(other.gameObject.GetComponent<CharacterController>().ClashDelay());
+                        currentDirection = Direction.Right;
+                        other.gameObject.GetComponent<CharacterController>().currentDirection = Direction.Left;
+                    }
+                    else
+                    {
+                        if (i == false && other.transform.position.x > this.transform.position.x)
+                        {
+                            check = false;
+                            Destroy(other.gameObject);
+                        }
+                        if (i == false && other.transform.position.x < this.transform.position.x)
+                        {
+                            check = false;
+                            Destroy(this.gameObject);
+                        }
+                    }
                 }
-            }
-            if (other.gameObject.GetComponentInParent<CharacterController>().currentDirection == Direction.Left)
-            {
-                if (currentDirection == Direction.Right)
+                if (other.gameObject.GetComponent<CharacterController>().currentDirection == Direction.Up && check == true)
                 {
-                    Debug.Log("Clash");
-                    moveDirection = -moveDirection;
-                    moveSpeed = storeMoveSpeed;
-                    StopCoroutine(movement());
-                    StartCoroutine(movement());
-                    StartCoroutine(ClashDelay());
+                    if (currentDirection == Direction.Down)
+                    {
+                        check = false;
+                        StartCoroutine(ClashDelay());
+                        StartCoroutine(other.gameObject.GetComponent<CharacterController>().ClashDelay());
+                        currentDirection = Direction.Up;
+                        other.gameObject.GetComponent<CharacterController>().currentDirection = Direction.Down;
+                    }
+                    else
+                    {
+                        if (i == false && other.transform.position.y > this.transform.position.y)
+                        {
+                            check = false;
+                            Destroy(other.gameObject);
+                        }
+                        if (i == false && other.transform.position.y < this.transform.position.y)
+                        {
+                            check = false;
+                            Destroy(this.gameObject);
+                        }
+                    }
                 }
-                else
+                if (other.gameObject.GetComponent<CharacterController>().currentDirection == Direction.Left && check == true)
                 {
-                    if (i == false)
-                        Destroy(this.gameObject);
-                }
-            }
-            if (other.gameObject.GetComponentInParent<CharacterController>().currentDirection == Direction.Right)
-            {
-                if (currentDirection == Direction.Left)
-                {
-                    Debug.Log("Clash");
-                    moveDirection = -moveDirection;
-                    moveSpeed = storeMoveSpeed;
-                    StopCoroutine(movement());
-                    StartCoroutine(movement());
-                    StartCoroutine(ClashDelay());
-                }
-                else
-                {
-                    if (i == false)
-                        Destroy(this.gameObject);
+                    if (currentDirection == Direction.Right)
+                    {
+                        check = false;
+                        StartCoroutine(ClashDelay());
+                        StartCoroutine(other.gameObject.GetComponent<CharacterController>().ClashDelay());
+                        currentDirection = Direction.Left;
+                        other.gameObject.GetComponent<CharacterController>().currentDirection = Direction.Right;
+                    }
+                    else
+                    {
+                        if (i == false && other.transform.position.x < this.transform.position.x)
+                        {
+                            check = false;
+                            Destroy(other.gameObject);
+                        }
+                        if (i == false && other.transform.position.x > this.transform.position.x)
+                        {
+                            check = false;
+                            Destroy(this.gameObject);
+                        }
+
+                    }
                 }
             }
         }
