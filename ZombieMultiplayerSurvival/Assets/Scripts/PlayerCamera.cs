@@ -4,50 +4,99 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public Transform player1;
-    public Transform player2;
-    public float minZoom = 5f;
-    public float maxZoom = 10f;
-    public float maxDistance = 15f;
-    public float zoomSpeed = 1f;
-    public float medianDistance = 7.5f;
-    public float smoothZoom = 5f;
-    public float smoothMovement = 10f;
 
+    public Transform[] targets; // the players to follow
+    public float smoothTime = 0.5f; // smoothing time for camera movement
+    public float[] zoomLevels; // an array of zoom levels based on the distance between players
+    public float maxZoom = 15f; // maximum zoom level
+    public float zoomSpeed = 5f; // how fast the camera should zoom in/out
+    public float minDistance = 5f; // minimum distance between players before camera starts zooming out
+
+    private Vector3 velocity;
     private Camera cam;
-    private float targetZoom;
-    private Vector3 targetPosition;
 
     void Start()
     {
         cam = GetComponent<Camera>();
+        cam.orthographicSize = zoomLevels[0];
+        FindTargets();
     }
 
     void LateUpdate()
     {
-        if (player1 == null || player2 == null) return;
-
-        float currentDistance = Vector3.Distance(player1.position, player2.position);
-
-        float newSize;
-
-        if (currentDistance > maxDistance)
+        if (targets.Length == 0)
         {
-            newSize = Mathf.Lerp(maxZoom, minZoom, Mathf.InverseLerp(maxDistance, medianDistance, currentDistance));
-        }
-        else
-        {
-            newSize = Mathf.Lerp(minZoom, maxZoom, Mathf.InverseLerp(medianDistance, 0f, currentDistance));
+            return;
         }
 
-        targetZoom = Mathf.Lerp(targetZoom, newSize, smoothZoom * Time.deltaTime);
+        Move();
+        Zoom();
+    }
 
-        Vector3 midpoint = (player1.position + player2.position) / 2f;
-        midpoint.z = transform.position.z;
+    void Move()
+    {
+        Vector3 centerPoint = GetCenterPoint();
+        Vector3 newPosition = centerPoint + Vector3.back * 10f; // 10 units behind the center point
+        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
+    }
 
-        targetPosition = Vector3.Lerp(targetPosition, midpoint, smoothMovement * Time.deltaTime);
+    void Zoom()
+    {
+        float greatestDistance = GetGreatestDistance();
+        int zoomLevel = 0;
+        for (int i = 0; i < zoomLevels.Length; i++)
+        {
+            if (greatestDistance > minDistance * (i + 1))
+            {
+                zoomLevel = i + 1;
+            }
+        }
+        float newZoom = Mathf.Lerp(cam.orthographicSize, zoomLevels[zoomLevel], Time.deltaTime * zoomSpeed);
+        cam.orthographicSize = Mathf.Clamp(newZoom, zoomLevels[0], maxZoom);
+    }
 
-        transform.position = targetPosition;
-        cam.orthographicSize = targetZoom;
+    Vector3 GetCenterPoint()
+    {
+        if (targets.Length == 1)
+        {
+            return targets[0].position;
+        }
+
+        Bounds bounds = new Bounds(targets[0].position, Vector3.zero);
+        for (int i = 0; i < targets.Length; i++)
+        {
+            bounds.Encapsulate(targets[i].position);
+        }
+
+        return bounds.center;
+    }
+
+    float GetGreatestDistance()
+    {
+        float greatestDistance = 0f;
+
+        for (int i = 0; i < targets.Length; i++)
+        {
+            for (int j = i + 1; j < targets.Length; j++)
+            {
+                float distance = Vector3.Distance(targets[i].position, targets[j].position);
+                if (distance > greatestDistance)
+                {
+                    greatestDistance = distance;
+                }
+            }
+        }
+
+        return greatestDistance;
+    }
+
+    void FindTargets()
+    {
+        GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
+        targets = new Transform[playerObjects.Length];
+        for (int i = 0; i < playerObjects.Length; i++)
+        {
+            targets[i] = playerObjects[i].transform;
+        }
     }
 }
