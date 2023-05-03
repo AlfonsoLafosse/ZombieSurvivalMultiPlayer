@@ -550,8 +550,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a6db8aae31eeed49840015a6fe0b2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlType: 0
+  controlType: 1
   moveSpeed: 1000
   stopSpeed: 10
   slipperyFactor: 0.5
   currentDirection: 1
+  moveDirection: {x: 0, y: 0}
+  inputActive: 0
+  dom: 0
+  check: 0

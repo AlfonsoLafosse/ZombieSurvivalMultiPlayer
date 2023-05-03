@@ -133,7 +133,7 @@ public class CharacterController : MonoBehaviour
                     }
                     else
                     {
-                        if (i == false && other.transform.position.y < this.transform.position.y)
+                        if (i == false && other.transform.position.y < this.transform.position.y && (other.transform.position.x < this.transform.position.x - 69 || other.transform.position.x > this.transform.position.x + 69))
                         {
                             check = false;
                             Destroy(other.gameObject);
@@ -157,7 +157,7 @@ public class CharacterController : MonoBehaviour
                     }
                     else
                     {
-                        if (i == false && other.transform.position.x > this.transform.position.x)
+                        if (i == false && other.transform.position.x > this.transform.position.x && (other.transform.position.y < this.transform.position.x - 69 || other.transform.position.x > this.transform.position.y + 69))
                         {
                             check = false;
                             Destroy(other.gameObject);
@@ -181,7 +181,7 @@ public class CharacterController : MonoBehaviour
                     }
                     else
                     {
-                        if (i == false && other.transform.position.y > this.transform.position.y)
+                        if (i == false && other.transform.position.y > this.transform.position.y && (other.transform.position.x < this.transform.position.x - 69 || other.transform.position.x > this.transform.position.x + 69))
                         {
                             check = false;
                             Destroy(other.gameObject);
@@ -205,7 +205,7 @@ public class CharacterController : MonoBehaviour
                     }
                     else
                     {
-                        if (i == false && other.transform.position.x < this.transform.position.x)
+                        if (i == false && other.transform.position.x < this.transform.position.x && (other.transform.position.y < this.transform.position.y - 69 || other.transform.position.y > this.transform.position.y + 69))
                         {
                             check = false;
                             Destroy(other.gameObject);
