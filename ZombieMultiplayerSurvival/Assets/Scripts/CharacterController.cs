@@ -37,6 +37,7 @@ public class CharacterController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.drag = slipperyFactor;
         inputActive = true;
+        StartCoroutine(SpawnI());
     }
 
     private void FixedUpdate()
@@ -60,6 +61,7 @@ public class CharacterController : MonoBehaviour
             if (horizontalInput != 0f)
             {
                 StopCoroutine(movement());
+                moveSpeed = storeMoveSpeed;
                 StartCoroutine(movement());
                 StopMovement();
                 moveDirection = new Vector2(Mathf.Sign(horizontalInput), 0f);
@@ -75,6 +77,7 @@ public class CharacterController : MonoBehaviour
             else if (verticalInput != 0f)
             {
                 StopCoroutine(movement());
+                moveSpeed = storeMoveSpeed;
                 StartCoroutine(movement());
                 StopMovement();
                 moveDirection = new Vector2(0f, Mathf.Sign(verticalInput));
@@ -110,10 +113,13 @@ public class CharacterController : MonoBehaviour
     }
     private IEnumerator movement()
         {
-        moveSpeed = storeMoveSpeed;
         yield return  new WaitForSeconds(0.1f);
         moveSpeed -= 500;
-        if (moveSpeed < 0f)
+        if (moveSpeed > 0f)
+        {
+            StartCoroutine(movement());
+        }
+        else
         {
             moveSpeed = 0f;
         }
@@ -128,8 +134,14 @@ public class CharacterController : MonoBehaviour
     {
         i = true;
         inputActive = false;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.25f);
         inputActive = true;
+        i = false;
+    }
+    private IEnumerator SpawnI()
+    {
+        i = true;
+        yield return new WaitForSeconds(0.5f);
         i = false;
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -143,6 +155,7 @@ public class CharacterController : MonoBehaviour
                 {
                     Debug.Log("Clash");
                     moveDirection = -moveDirection;
+                    moveSpeed = storeMoveSpeed;
                     StopCoroutine(movement());
                     StartCoroutine(movement());
                     StartCoroutine(ClashDelay());
@@ -159,6 +172,7 @@ public class CharacterController : MonoBehaviour
                 {
                     Debug.Log("Clash");
                     moveDirection = -moveDirection;
+                    moveSpeed = storeMoveSpeed;
                     StopCoroutine(movement());
                     StartCoroutine(movement());
                     StartCoroutine(ClashDelay());
@@ -175,6 +189,7 @@ public class CharacterController : MonoBehaviour
                 {
                     Debug.Log("Clash");
                     moveDirection = -moveDirection;
+                    moveSpeed = storeMoveSpeed;
                     StopCoroutine(movement());
                     StartCoroutine(movement());
                     StartCoroutine(ClashDelay());
@@ -191,6 +206,7 @@ public class CharacterController : MonoBehaviour
                 {
                     Debug.Log("Clash");
                     moveDirection = -moveDirection;
+                    moveSpeed = storeMoveSpeed;
                     StopCoroutine(movement());
                     StartCoroutine(movement());
                     StartCoroutine(ClashDelay());
