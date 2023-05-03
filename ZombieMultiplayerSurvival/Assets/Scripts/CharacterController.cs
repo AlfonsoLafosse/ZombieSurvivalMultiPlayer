@@ -12,9 +12,6 @@ public class CharacterController : MonoBehaviour
     public float stopSpeed = 10f;
     public float slipperyFactor = 0.5f;
 
-    public enum Direction { Up, Down, Left, Right }
-    public Direction currentDirection = Direction.Down;
-
     private string horizontalAxis = "Horizontal";
     private string verticalAxis = "Vertical";
 
@@ -25,9 +22,11 @@ public class CharacterController : MonoBehaviour
     public bool inputActive;
     public bool dom;
     public bool check;
+    public PlayerandSoawnManager playerandSoawnManager;
 
     private void Start()
     {
+        playerandSoawnManager = FindObjectOfType<PlayerandSoawnManager>();
         rb = GetComponent<Rigidbody2D>();
         rb.drag = slipperyFactor;
         inputActive = true;
@@ -57,28 +56,12 @@ public class CharacterController : MonoBehaviour
                 StopMovement();
                 rb.velocity = moveDirection * moveSpeed;
                 moveDirection = new Vector2(Mathf.Sign(horizontalInput), 0f);
-                if (moveDirection.x > 0f)
-                {
-                    currentDirection = Direction.Right;
-                }
-                else
-                {
-                    currentDirection = Direction.Left;
-                }
             }
             else if (verticalInput != 0f)
             {
                 StopMovement();
                 rb.velocity = moveDirection * moveSpeed;
                 moveDirection = new Vector2(0f, Mathf.Sign(verticalInput));
-                if (moveDirection.y > 0f)
-                {
-                    currentDirection = Direction.Up;
-                }
-                else
-                {
-                    currentDirection = Direction.Down;
-                }
             }
         }
         else
@@ -95,9 +78,9 @@ public class CharacterController : MonoBehaviour
     }
     public IEnumerator ClashDelay()
     {
-        moveDirection = -moveDirection;
         inputActive = false;
         i = true;
+        moveDirection = -moveDirection;
         Debug.Log("Stopped" + gameObject);
         yield return new WaitForSeconds(.15f);
         dom = false;
@@ -112,7 +95,15 @@ public class CharacterController : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<CharacterController>() != null && inputActive == true)
+        if (other.gameObject.tag == "Player" && inputActive == true && other.transform.GetComponent<CharacterController>().i == false)
+        {
+            if (other.gameObject.GetComponent<CharacterController>().dom == false)
+            {
+                dom = true;
+            }
+            playerandSoawnManager.PlayersCollided();
+        }
+       /* if (other.gameObject.GetComponent<CharacterController>() != null && inputActive == true)
         {
             if (other.gameObject.GetComponent<CharacterController>().dom == false)
             {
@@ -219,7 +210,7 @@ public class CharacterController : MonoBehaviour
                     }
                 }
             }
-        }
+        }*/
     }
 
 }
