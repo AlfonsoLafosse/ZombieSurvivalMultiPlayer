@@ -43,7 +43,7 @@ Camera:
   m_GameObject: {fileID: 6262068019027005224}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -97,12 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4da5f674ef593346b18457dffefd4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 0}
-  player2: {fileID: 0}
-  minZoom: 500
+  targets: []
+  smoothTime: 0.5
+  zoomLevels: []
   maxZoom: 1400
-  maxDistance: 1300
   zoomSpeed: 1
-  medianDistance: 600
-  smoothZoom: 5
-  smoothMovement: 10
+  minDistance: 5
