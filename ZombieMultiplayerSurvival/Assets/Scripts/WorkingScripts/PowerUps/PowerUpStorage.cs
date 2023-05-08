@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PowerUpStorage : MonoBehaviour
 {
-    public List<GameObject> equippedPowerUp;
+    public List<Powerup> equippedPowerUp;
+    public List<GameObject> listOfPowerUp;
     public bool PowerUpEquipped;
 
     private void Update()
@@ -14,12 +16,13 @@ public class PowerUpStorage : MonoBehaviour
             PowerUpEquipped = false;
         }
 
-        else
+        else if(equippedPowerUp.Count == 1)
         {
             PowerUpEquipped=true;
+            Debug.Log("Item Equipped" + equippedPowerUp[0].name);
         }
 
-        if(equippedPowerUp.Count >= 1)
+        else if(equippedPowerUp.Count > 1)
         {
             Debug.LogError("More than one power up equipped");
         }
@@ -28,5 +31,14 @@ public class PowerUpStorage : MonoBehaviour
     public void ExecuteCurrentPowerUp()
     {
         equippedPowerUp[0].GetComponent<Powerup>().Execute();
+    }
+
+    public void GetPowerUp()
+    {
+        int i = Random.Range(0, listOfPowerUp.Count);
+        Powerup randomPowerUp = listOfPowerUp[i].GetComponent<Powerup>();
+        Instantiate(randomPowerUp);
+        equippedPowerUp.Add(randomPowerUp);
+        
     }
 }

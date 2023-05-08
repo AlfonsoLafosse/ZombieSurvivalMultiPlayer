@@ -104,6 +104,13 @@ public class CharacterController : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
+        if(other.gameObject.tag == "PowerUp" && powerUpStorage.PowerUpEquipped == false)
+        {
+            powerUpStorage.GetPowerUp();
+            Debug.Log("Collided with a " + other.gameObject.name);
+            Destroy(other.gameObject);
+        }
+        
         if (other.gameObject.tag == "Player" && inputActive == true && other.transform.GetComponent<CharacterController>().i == false)
         {
             if (other.gameObject.GetComponent<CharacterController>().dom == false)
