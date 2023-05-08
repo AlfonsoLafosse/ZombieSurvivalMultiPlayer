@@ -23,6 +23,7 @@ public class CharacterController : MonoBehaviour
     public bool dom;
     public bool check;
     public PlayerandSoawnManager playerandSoawnManager;
+    public PowerUpStorage powerUpStorage;
 
     private void Start()
     {
@@ -69,7 +70,15 @@ public class CharacterController : MonoBehaviour
             StopMovement();
             rb.velocity = moveDirection * moveSpeed;
         }
+
+        //Alfonso Code//
+        if (Input.GetKey(KeyCode.RightControl) && powerUpStorage.PowerUpEquipped == true)
+        {
+            powerUpStorage.ExecuteCurrentPowerUp();
+        }
     }
+
+    
     private void StopMovement()
     {
         rb.velocity = Vector2.zero;

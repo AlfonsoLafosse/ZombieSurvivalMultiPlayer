@@ -390,6 +390,7 @@ GameObject:
   - component: {fileID: 3157212173162969041}
   - component: {fileID: 3157212173162969042}
   - component: {fileID: 3157212173162969004}
+  - component: {fileID: 1864218673769811829}
   - component: {fileID: 1943445569}
   m_Layer: 5
   m_Name: Player 1
@@ -538,6 +539,25 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1864218673769811829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3157212173162969044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93570cfae459a974881281e894808fb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  player1prefab: {fileID: 0}
+  player2prefab: {fileID: 0}
+  score1: {fileID: 0}
+  score2: {fileID: 0}
+  playerCamera: {fileID: 0}
 --- !u!114 &1943445569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,8 +574,9 @@ MonoBehaviour:
   moveSpeed: 1000
   stopSpeed: 10
   slipperyFactor: 0.5
-  currentDirection: 1
   moveDirection: {x: 0, y: 0}
   inputActive: 0
   dom: 0
   check: 0
+  playerandSoawnManager: {fileID: 0}
+  powerUpStorage: {fileID: 0}
