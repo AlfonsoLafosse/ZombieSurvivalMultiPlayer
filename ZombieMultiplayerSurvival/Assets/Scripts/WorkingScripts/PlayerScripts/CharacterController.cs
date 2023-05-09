@@ -74,7 +74,7 @@ public class CharacterController : MonoBehaviour
         }
 
         //Alfonso Code//
-        if (Input.GetKey(KeyCode.Space) && powerUpStorage.PowerUpEquipped == true)
+        if (Input.GetKey(KeyCode.LeftShift) && powerUpStorage.PowerUpEquipped == true)
         {
             powerUpStorage.ExecuteCurrentPowerUp();
         }
