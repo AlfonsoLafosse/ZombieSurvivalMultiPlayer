@@ -8,6 +8,10 @@ public class PowerUpStorage : MonoBehaviour
     public List<Powerup> equippedPowerUp;
     public List<GameObject> listOfPowerUp;
     public bool PowerUpEquipped;
+    public GameObject playerObject;
+    public string collidedPlayerName;
+    public CharacterController player1Controller;
+
 
     private void Update()
     {
@@ -24,13 +28,16 @@ public class PowerUpStorage : MonoBehaviour
 
         else if(equippedPowerUp.Count > 1)
         {
+            
             Debug.LogError("More than one power up equipped");
         }
     }
 
     public void ExecuteCurrentPowerUp()
     {
+        collidedPlayerName = player1Controller.thisPlayerName;
         equippedPowerUp[0].GetComponent<Powerup>().Execute();
+        
     }
 
     public void GetPowerUp()

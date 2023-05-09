@@ -345,6 +345,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ba7301959d9b549923e8cec000286b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterSpeed: 0
+  playerName: 
+  powerUpStorage: {fileID: 0}
 --- !u!4 &204072079
 Transform:
   m_ObjectHideFlags: 0
@@ -762,7 +765,7 @@ GameObject:
   - component: {fileID: 747447997}
   - component: {fileID: 747447996}
   m_Layer: 0
-  m_Name: PowerUpStorage
+  m_Name: PowerUpStorageObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -784,6 +787,8 @@ MonoBehaviour:
   listOfPowerUp:
   - {fileID: 204072077}
   PowerUpEquipped: 0
+  collidedPlayerName: 
+  player1Controller: {fileID: 1644523578}
 --- !u!4 &747447997
 Transform:
   m_ObjectHideFlags: 0
@@ -952,6 +957,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ba7301959d9b549923e8cec000286b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterSpeed: 0
+  playerName: 
+  powerUpStorage: {fileID: 0}
 --- !u!1 &835991928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2047,6 +2055,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3157212173162969044, guid: 6dcbfa4e7c0a904479929efa13c9766d, type: 3}
   m_PrefabInstance: {fileID: 749067161}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1644523578 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1943445569, guid: 6dcbfa4e7c0a904479929efa13c9766d, type: 3}
+  m_PrefabInstance: {fileID: 749067161}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644523577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6db8aae31eeed49840015a6fe0b2c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1663513830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,6 +2110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ba7301959d9b549923e8cec000286b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterSpeed: 0
+  playerName: 
+  powerUpStorage: {fileID: 0}
 --- !u!1 &1714100408
 GameObject:
   m_ObjectHideFlags: 0
@@ -2404,6 +2426,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1423007108, guid: 34f4bbfeef9434049aba4f07c6ff4d16, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1032859116397344901, guid: 34f4bbfeef9434049aba4f07c6ff4d16, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2499,6 +2525,10 @@ PrefabInstance:
     - target: {fileID: 1032859116397345018, guid: 34f4bbfeef9434049aba4f07c6ff4d16, type: 3}
       propertyPath: m_Name
       value: TeleporterBlockA
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263395039237688073, guid: 34f4bbfeef9434049aba4f07c6ff4d16, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34f4bbfeef9434049aba4f07c6ff4d16, type: 3}

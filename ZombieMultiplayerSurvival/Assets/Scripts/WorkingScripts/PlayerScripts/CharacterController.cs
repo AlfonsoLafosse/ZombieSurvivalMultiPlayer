@@ -25,6 +25,8 @@ public class CharacterController : MonoBehaviour
     public PlayerandSoawnManager playerandSoawnManager;
     public PowerUpStorage powerUpStorage;
 
+    public string thisPlayerName;
+
     private void Start()
     {
         playerandSoawnManager = FindObjectOfType<PlayerandSoawnManager>();
@@ -72,7 +74,7 @@ public class CharacterController : MonoBehaviour
         }
 
         //Alfonso Code//
-        if (Input.GetKey(KeyCode.RightControl) && powerUpStorage.PowerUpEquipped == true)
+        if (Input.GetKey(KeyCode.Space) && powerUpStorage.PowerUpEquipped == true)
         {
             powerUpStorage.ExecuteCurrentPowerUp();
         }
@@ -109,6 +111,8 @@ public class CharacterController : MonoBehaviour
             powerUpStorage.GetPowerUp();
             Debug.Log("Collided with a " + other.gameObject.name);
             Destroy(other.gameObject);
+            thisPlayerName = this.name;
+            Debug.Log(thisPlayerName);
         }
         
         if (other.gameObject.tag == "Player" && inputActive == true && other.transform.GetComponent<CharacterController>().i == false)
