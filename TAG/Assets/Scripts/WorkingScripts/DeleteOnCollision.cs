@@ -16,6 +16,8 @@ public class DeleteOnCollision : MonoBehaviour
     // The number of objects to instantiate
     public int objectCount = 10;
 
+    public float destroyDelay = 5f;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if the collision is with the player
@@ -23,9 +25,6 @@ public class DeleteOnCollision : MonoBehaviour
         {
             // Turn off the game object
             objectToDisable.SetActive(false);
-
-            // Print some debug information
-            Debug.Log("Collision detected with object: " + collision.gameObject.name);
             GetComponent<Collider2D>().enabled = false;
 
             for (int i = 0; i < objectCount; i++)
@@ -40,6 +39,9 @@ public class DeleteOnCollision : MonoBehaviour
                 Vector2 force = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f)).normalized;
                 float magnitude = Random.Range(minForce, maxForce);
                 rb.AddForce(force * magnitude, ForceMode2D.Impulse);
+
+
+                Destroy(obj, destroyDelay);
             }
         }
     }
