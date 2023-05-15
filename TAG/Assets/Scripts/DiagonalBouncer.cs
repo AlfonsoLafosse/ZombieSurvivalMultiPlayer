@@ -14,8 +14,8 @@ public class DiagonalBouncer : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        Vector2 normal = other.contacts[0].normal;
-        direction = Vector2.Reflect(direction.normalized, normal);
-        rb.velocity = direction.normalized * speed;
+            Vector2 normal = other.contacts[0].normal;
+            direction = Vector2.Reflect(direction.normalized, normal);
+            rb.velocity = direction.normalized * speed;
     }
 }
