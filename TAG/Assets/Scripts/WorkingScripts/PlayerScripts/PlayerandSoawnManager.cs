@@ -49,59 +49,57 @@ public class PlayerandSoawnManager : MonoBehaviour
     {
         if (player1Controller.moveDirection == -player2Controller.moveDirection)
         {
-            Debug.Log("Check");
             StartCoroutine(player1Controller.ClashDelay());
             StartCoroutine(player2Controller.ClashDelay());
+            if (player1.GetComponent<CharacterController>().hasCrown && canCollectCrown == true)
+            {
+                player1.GetComponent<CharacterController>().hasCrown = false;
+                Instantiate(crownObject, player1.transform.position, Quaternion.identity);
+                StartCoroutine(StartCrownCollectDelay());
+            }
+
+            if (player2.GetComponent<CharacterController>().hasCrown && canCollectCrown == true)
+            {
+                player2.GetComponent<CharacterController>().hasCrown = false;
+                Instantiate(crownObject, player2.transform.position, Quaternion.identity);
+                StartCoroutine(StartCrownCollectDelay());
+            }
         }
         else
         {
             if (player1Controller.moveDirection == new Vector2(0,1) && player1.transform.position.x > player2Controller.transform.position.x - 50 && player1.transform.position.x < player2Controller.transform.position.x + 50 && player1.transform.position.y < player2.transform.position.y)
             {
-                Destroy(player2);
+                DestroyPlayer(player2, player1);
             }
             if (player1Controller.moveDirection == new Vector2(0, -1) && player1.transform.position.x > player2Controller.transform.position.x - 50 && player1.transform.position.x < player2Controller.transform.position.x + 50 && player1.transform.position.y > player2.transform.position.y)
             {
-                Destroy(player2);
+                DestroyPlayer(player2, player1);
             }
             if (player1Controller.moveDirection == new Vector2(1, 0) && player1.transform.position.y > player2Controller.transform.position.y - 50 && player1.transform.position.y < player2Controller.transform.position.y + 50 && player1.transform.position.x < player2.transform.position.x)
             {
-                Destroy(player2);
+                DestroyPlayer(player2, player1);
             }
             if (player1Controller.moveDirection == new Vector2(-1, 0) && player1.transform.position.y > player2Controller.transform.position.y - 50 && player1.transform.position.y < player2Controller.transform.position.y + 50 && player1.transform.position.x > player2.transform.position.x)
             {
-                Destroy(player2);
+                DestroyPlayer(player2, player1);
             }
 
             if (player2Controller.moveDirection == new Vector2(0, 1) && player2.transform.position.x > player1Controller.transform.position.x - 50 && player2.transform.position.x < player1Controller.transform.position.x + 50 && player2.transform.position.y < player1.transform.position.y)
             {
-                Destroy(player1);
+                DestroyPlayer(player1, player2);
             }
             if (player2Controller.moveDirection == new Vector2(0, -1) && player2.transform.position.x > player1Controller.transform.position.x - 50 && player2.transform.position.x < player1Controller.transform.position.x + 50 && player2.transform.position.y > player1.transform.position.y)
             {
-                Destroy(player1);
+                DestroyPlayer(player1, player2);
             }
             if (player2Controller.moveDirection == new Vector2(1, 0) && player2.transform.position.y > player1Controller.transform.position.y - 50 && player2.transform.position.y < player1Controller.transform.position.y + 50 && player2.transform.position.x < player1.transform.position.x)
             {
-                Destroy(player1);
+                DestroyPlayer(player1, player2);
             }
             if (player2Controller.moveDirection == new Vector2(-1, 0) && player2.transform.position.y > player1Controller.transform.position.y - 50 && player2.transform.position.y < player1Controller.transform.position.y + 50 && player2.transform.position.x > player1.transform.position.x)
             {
-                Destroy(player1);
+                DestroyPlayer(player1, player2);
             }
-        }
-
-        if (player1.GetComponent<CharacterController>().hasCrown && canCollectCrown == true)
-        {
-            player1.GetComponent<CharacterController>().hasCrown = false;
-            Instantiate(crownObject, player1.transform.position, Quaternion.identity);
-            StartCoroutine(StartCrownCollectDelay());
-        }
-
-        if (player2.GetComponent<CharacterController>().hasCrown && canCollectCrown == true)
-        {
-            player2.GetComponent<CharacterController>().hasCrown = false;
-            Instantiate(crownObject, player2.transform.position, Quaternion.identity);
-            StartCoroutine(StartCrownCollectDelay());
         }
     }
     private IEnumerator StartCrownCollectDelay()
@@ -109,5 +107,14 @@ public class PlayerandSoawnManager : MonoBehaviour
         canCollectCrown = false;
         yield return new WaitForSeconds(crownCollectDelay);
         canCollectCrown = true;
+    }
+    private void DestroyPlayer(GameObject player, GameObject otherPlayer)
+    {
+        if (player.GetComponent<CharacterController>().hasCrown == true)
+        {
+            player.GetComponent<CharacterController>().hasCrown = false;
+            otherPlayer.GetComponent<CharacterController>().hasCrown = true;
+        }
+        Destroy(player);
     }
 }
