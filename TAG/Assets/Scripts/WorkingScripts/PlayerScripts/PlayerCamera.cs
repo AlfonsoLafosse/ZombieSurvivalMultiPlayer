@@ -89,8 +89,27 @@ public class PlayerCamera : MonoBehaviour
 
         return greatestDistance;
     }
-
     public void FindTargets()
+    {
+        GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] crownObject = GameObject.FindGameObjectsWithTag("Crown");
+        targets = new Transform[playerObjects.Length + crownObject.Length];
+
+        int index = 0;
+        for (int i = 0; i < playerObjects.Length; i++)
+        {
+            targets[index] = playerObjects[i].transform;
+            index++;
+        }
+
+        for (int i = 0; i < crownObject.Length; i++)
+        {
+            targets[index] = crownObject[i].transform;
+            index++;
+        }
+    }
+}
+   /* public void FindTargets()
     {
         GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
         targets = new Transform[playerObjects.Length];
@@ -99,4 +118,4 @@ public class PlayerCamera : MonoBehaviour
             targets[i] = playerObjects[i].transform;
         }
     }
-}
+   */

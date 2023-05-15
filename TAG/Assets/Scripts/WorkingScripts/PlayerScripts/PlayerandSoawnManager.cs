@@ -7,8 +7,8 @@ using Unity.VisualScripting;
 
 public class PlayerandSoawnManager : MonoBehaviour
 {
-    [SerializeField] private GameObject player1;
-    [SerializeField] private GameObject player2;
+    [SerializeField] public GameObject player1;
+    [SerializeField] public GameObject player2;
     [SerializeField] private GameObject player1prefab;
     [SerializeField] private GameObject player2prefab;
     private CharacterController player1Controller;
