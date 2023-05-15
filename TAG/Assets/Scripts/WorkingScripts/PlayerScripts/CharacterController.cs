@@ -112,13 +112,6 @@ public class CharacterController : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
-
-        if (other.gameObject.tag == "Player" && other.gameObject.GetComponent<CharacterController>().hasCrown == true)
-        {
-            other.gameObject.GetComponent<CharacterController>().hasCrown = false;
-            hasCrown = true;
-        }
-
         if (other.gameObject.tag == "PowerUp" && powerUpStorage.PowerUpEquipped == false)
         {
             powerUpStorage.GetPowerUp();
@@ -126,7 +119,7 @@ public class CharacterController : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if(other.gameObject.tag == "Crown")
+        if(other.gameObject.tag == "Crown" && playerandSoawnManager.canCollectCrown == true)
         {
             Destroy(other.gameObject);
             hasCrown = true;

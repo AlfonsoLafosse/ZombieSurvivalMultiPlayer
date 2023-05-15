@@ -15,11 +15,11 @@ public class PlayerandSoawnManager : MonoBehaviour
     private CharacterController player2Controller;
     private Vector3 player1Position;
     private Vector3 player2Position;
-    private int player1Score;
-    private int player2Score;
-    public TextMeshProUGUI score1;
-    public TextMeshProUGUI score2;
     public PlayerCamera playerCamera;
+    public GameObject crownObject;
+   
+    public float crownCollectDelay = 1.0f; 
+    public bool canCollectCrown = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,17 +37,13 @@ public class PlayerandSoawnManager : MonoBehaviour
             player1 = Instantiate(player1prefab, player1Position, Quaternion.identity);
             playerCamera.FindTargets();
             player1Controller = player1.GetComponent<CharacterController>();
-            player2Score += 1;
         }
         if (player2 == null)
         {
             player2 =Instantiate(player2prefab, player2Position, Quaternion.identity);
             playerCamera.FindTargets();
             player2Controller = player2.GetComponent<CharacterController>();
-            player1Score += 1;
         }
-        score1.text = player1Score.ToString();
-        score2.text = player2Score.ToString();
     }
     public void PlayersCollided()
     {
@@ -93,5 +89,25 @@ public class PlayerandSoawnManager : MonoBehaviour
                 Destroy(player1);
             }
         }
+
+        if (player1.GetComponent<CharacterController>().hasCrown && canCollectCrown == true)
+        {
+            player1.GetComponent<CharacterController>().hasCrown = false;
+            Instantiate(crownObject, player1.transform.position, Quaternion.identity);
+            StartCoroutine(StartCrownCollectDelay());
+        }
+
+        if (player2.GetComponent<CharacterController>().hasCrown && canCollectCrown == true)
+        {
+            player2.GetComponent<CharacterController>().hasCrown = false;
+            Instantiate(crownObject, player2.transform.position, Quaternion.identity);
+            StartCoroutine(StartCrownCollectDelay());
+        }
+    }
+    private IEnumerator StartCrownCollectDelay()
+    {
+        canCollectCrown = false;
+        yield return new WaitForSeconds(crownCollectDelay);
+        canCollectCrown = true;
     }
 }
