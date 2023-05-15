@@ -5,32 +5,28 @@ using UnityEngine.UIElements;
 
 public class Dash : Powerup
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void ExecutePowerUp()
-    {
-
-    }
+    public float characterSpeed;
+    public string playerName;
+    private GameObject playerObject;
+    public PowerUpStorage powerUpStorage;
 
     public override void Execute()
     {
-        
-        
-        
-        base.Execute();
+        Debug.Log("Executing Started");
+        powerUpStorage = FindObjectOfType<PowerUpStorage>();
+        playerName = powerUpStorage.collidedPlayerName;
+        Debug.Log(powerUpStorage.collidedPlayerName);
+        playerObject = GameObject.Find(playerName);
+        Debug.Log(playerObject);
+        playerObject.GetComponent<CharacterController>().moveSpeed = 1700f;
+        StartCoroutine(Coroutine());
+    }
 
-
-
+    IEnumerator Coroutine()
+    {
+        yield return new WaitForSeconds(7f);
+        playerObject.GetComponent<CharacterController>().moveSpeed = 1000f;
+        Debug.Log("Executing Finished");
 
     }
 }

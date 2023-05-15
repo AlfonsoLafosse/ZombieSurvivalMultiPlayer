@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Destructible
   - PowerUp
+  - Crown
   layers:
   - Default
   - TransparentFX

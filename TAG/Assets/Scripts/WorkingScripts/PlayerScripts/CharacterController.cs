@@ -23,6 +23,12 @@ public class CharacterController : MonoBehaviour
     public bool check;
     public PlayerandSoawnManager playerandSoawnManager;
     public PowerUpStorage powerUpStorage;
+    public GameObject crownObject;
+
+    public string thisPlayerName;
+
+    
+    public bool hasCrown = false;
 
     private void Start()
     {
@@ -71,10 +77,18 @@ public class CharacterController : MonoBehaviour
         }
 
         //Alfonso Code//
-        if (Input.GetKey(KeyCode.RightControl) && powerUpStorage.PowerUpEquipped == true)
+        if (Input.GetKey(KeyCode.LeftShift) && powerUpStorage.PowerUpEquipped == true)
         {
             powerUpStorage.ExecuteCurrentPowerUp();
         }
+
+        crownObject = transform.Find("Crown").gameObject;
+
+
+
+        crownObject.SetActive(hasCrown);
+
+        
     }
 
     
@@ -103,11 +117,26 @@ public class CharacterController : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == "PowerUp" && powerUpStorage.PowerUpEquipped == false)
+
+        if (other.gameObject.tag == "Player" && other.gameObject.GetComponent<CharacterController>().hasCrown == true)
+        {
+            other.gameObject.GetComponent<CharacterController>().hasCrown = false;
+            hasCrown = true;
+        }
+
+        if (other.gameObject.tag == "PowerUp" && powerUpStorage.PowerUpEquipped == false)
         {
             powerUpStorage.GetPowerUp();
             Debug.Log("Collided with a " + other.gameObject.name);
             Destroy(other.gameObject);
+            thisPlayerName = this.name;
+            Debug.Log(thisPlayerName);
+        }
+
+        if(other.gameObject.tag == "Crown")
+        {
+            Destroy(other.gameObject);
+            hasCrown = true;
         }
         
         if (other.gameObject.tag == "Player" && inputActive == true && other.transform.GetComponent<CharacterController>().i == false)
