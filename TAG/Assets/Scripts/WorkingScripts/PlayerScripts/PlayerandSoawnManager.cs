@@ -93,6 +93,5 @@ public class PlayerandSoawnManager : MonoBehaviour
                 Destroy(player1);
             }
         }
-
     }
 }

@@ -83,12 +83,7 @@ public class CharacterController : MonoBehaviour
         }
 
         crownObject = transform.Find("Crown").gameObject;
-
-
-
         crownObject.SetActive(hasCrown);
-
-        
     }
 
     
@@ -129,8 +124,6 @@ public class CharacterController : MonoBehaviour
             powerUpStorage.GetPowerUp();
             Debug.Log("Collided with a " + other.gameObject.name);
             Destroy(other.gameObject);
-            thisPlayerName = this.name;
-            Debug.Log(thisPlayerName);
         }
 
         if(other.gameObject.tag == "Crown")
@@ -147,114 +140,5 @@ public class CharacterController : MonoBehaviour
             }
             playerandSoawnManager.PlayersCollided();
         }
-       /* if (other.gameObject.GetComponent<CharacterController>() != null && inputActive == true)
-        {
-            if (other.gameObject.GetComponent<CharacterController>().dom == false)
-            {
-                dom = true;
-            }
-            if (dom == true)
-            {
-                check = true;
-                if (other.gameObject.GetComponent<CharacterController>().currentDirection == Direction.Down && check == true)
-                {
-                    if (currentDirection == Direction.Up)
-                    {
-                        check = false;
-                        StartCoroutine(ClashDelay());
-                        StartCoroutine(other.gameObject.GetComponent<CharacterController>().ClashDelay());
-                        currentDirection = Direction.Down;
-                        other.gameObject.GetComponent<CharacterController>().currentDirection = Direction.Up;
-                    }
-                    else
-                    {
-                        if (i == false && other.transform.position.y < this.transform.position.y && (other.transform.position.x < this.transform.position.x - 69 || other.transform.position.x > this.transform.position.x + 69))
-                        {
-                            check = false;
-                            Destroy(other.gameObject);
-                        }
-                        if (i == false && other.transform.position.y > this.transform.position.y)
-                        {
-                            check = false;
-                            Destroy(this.gameObject);
-                        }
-                    }
-                }
-                if (other.gameObject.GetComponent<CharacterController>().currentDirection == Direction.Right && check == true)
-                {
-                    if (currentDirection == Direction.Left)
-                    {
-                        check = false;
-                        StartCoroutine(ClashDelay());
-                        StartCoroutine(other.gameObject.GetComponent<CharacterController>().ClashDelay());
-                        currentDirection = Direction.Right;
-                        other.gameObject.GetComponent<CharacterController>().currentDirection = Direction.Left;
-                    }
-                    else
-                    {
-                        if (i == false && other.transform.position.x > this.transform.position.x && (other.transform.position.y < this.transform.position.x - 69 || other.transform.position.x > this.transform.position.y + 69))
-                        {
-                            check = false;
-                            Destroy(other.gameObject);
-                        }
-                        if (i == false && other.transform.position.x < this.transform.position.x)
-                        {
-                            check = false;
-                            Destroy(this.gameObject);
-                        }
-                    }
-                }
-                if (other.gameObject.GetComponent<CharacterController>().currentDirection == Direction.Up && check == true)
-                {
-                    if (currentDirection == Direction.Down)
-                    {
-                        check = false;
-                        StartCoroutine(ClashDelay());
-                        StartCoroutine(other.gameObject.GetComponent<CharacterController>().ClashDelay());
-                        currentDirection = Direction.Up;
-                        other.gameObject.GetComponent<CharacterController>().currentDirection = Direction.Down;
-                    }
-                    else
-                    {
-                        if (i == false && other.transform.position.y > this.transform.position.y && (other.transform.position.x < this.transform.position.x - 69 || other.transform.position.x > this.transform.position.x + 69))
-                        {
-                            check = false;
-                            Destroy(other.gameObject);
-                        }
-                        if (i == false && other.transform.position.y < this.transform.position.y)
-                        {
-                            check = false;
-                            Destroy(this.gameObject);
-                        }
-                    }
-                }
-                if (other.gameObject.GetComponent<CharacterController>().currentDirection == Direction.Left && check == true)
-                {
-                    if (currentDirection == Direction.Right)
-                    {
-                        check = false;
-                        StartCoroutine(ClashDelay());
-                        StartCoroutine(other.gameObject.GetComponent<CharacterController>().ClashDelay());
-                        currentDirection = Direction.Left;
-                        other.gameObject.GetComponent<CharacterController>().currentDirection = Direction.Right;
-                    }
-                    else
-                    {
-                        if (i == false && other.transform.position.x < this.transform.position.x && (other.transform.position.y < this.transform.position.y - 69 || other.transform.position.y > this.transform.position.y + 69))
-                        {
-                            check = false;
-                            Destroy(other.gameObject);
-                        }
-                        if (i == false && other.transform.position.x > this.transform.position.x)
-                        {
-                            check = false;
-                            Destroy(this.gameObject);
-                        }
-
-                    }
-                }
-            }
-        }*/
     }
-
 }
