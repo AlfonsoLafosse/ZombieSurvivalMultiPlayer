@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 147252581}
   - component: {fileID: 147252584}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: player1goal
   m_TagString: GoalPlayer1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 166374835}
   - component: {fileID: 166374834}
   m_Layer: 0
-  m_Name: Circle (1)
+  m_Name: Player2goal
   m_TagString: GoalPlayer2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -702,6 +702,8 @@ MonoBehaviour:
   crownObject: {fileID: 4462754742698643368, guid: d5d983f025a48c144b0b604d0d06811e, type: 3}
   crownCollectDelay: 1
   canCollectCrown: 1
+  _PlayerObject: []
+  _CrownObject: {fileID: 0}
 --- !u!4 &471593421
 Transform:
   m_ObjectHideFlags: 0
