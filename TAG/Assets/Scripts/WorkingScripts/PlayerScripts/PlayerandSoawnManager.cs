@@ -20,6 +20,11 @@ public class PlayerandSoawnManager : MonoBehaviour
    
     public float crownCollectDelay = 1.0f; 
     public bool canCollectCrown = true;
+
+    public List<GameObject> _PlayerObject = new List<GameObject>();
+    public GameObject _CrownObject = null;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +40,7 @@ public class PlayerandSoawnManager : MonoBehaviour
         if (player1 == null)
         {
             player1 = Instantiate(player1prefab, player1Position, Quaternion.identity);
+            //_PlayerObject.Add(player1);
             playerCamera.FindTargets();
             player1Controller = player1.GetComponent<CharacterController>();
         }
@@ -43,6 +49,7 @@ public class PlayerandSoawnManager : MonoBehaviour
             player2 =Instantiate(player2prefab, player2Position, Quaternion.identity);
             playerCamera.FindTargets();
             player2Controller = player2.GetComponent<CharacterController>();
+            //_PlayerObject.Add(player2);
         }
     }
     public void PlayersCollided()
@@ -115,6 +122,7 @@ public class PlayerandSoawnManager : MonoBehaviour
             player.GetComponent<CharacterController>().hasCrown = false;
             otherPlayer.GetComponent<CharacterController>().hasCrown = true;
         }
+        _PlayerObject.Remove(player);
         Destroy(player);
     }
 }

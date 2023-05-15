@@ -27,13 +27,20 @@ public class CharacterController : MonoBehaviour
 
     public string thisPlayerName;
 
-    
     public bool hasCrown = false;
+
+    public PlayerCamera playerCamera;
+
+    private void Awake()
+    {
+        playerandSoawnManager = FindObjectOfType<PlayerandSoawnManager>();
+        playerCamera = FindObjectOfType<PlayerCamera>();
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     private void Start()
     {
-        playerandSoawnManager = FindObjectOfType<PlayerandSoawnManager>();
-        rb = GetComponent<Rigidbody2D>();
+        
         rb.drag = slipperyFactor;
         inputActive = true;
         StartCoroutine(SpawnI());
@@ -47,6 +54,9 @@ public class CharacterController : MonoBehaviour
             horizontalAxis = "Horizontal";
             verticalAxis = "Vertical";
         }
+
+        playerandSoawnManager._PlayerObject.Add(this.gameObject);
+        playerCamera.FindTargets();
     }
 
     private void FixedUpdate()
@@ -121,7 +131,9 @@ public class CharacterController : MonoBehaviour
 
         if(other.gameObject.tag == "Crown" && playerandSoawnManager.canCollectCrown == true)
         {
+            playerandSoawnManager._CrownObject = null;
             Destroy(other.gameObject);
+            playerCamera.FindTargets();
             hasCrown = true;
         }
         
@@ -134,4 +146,5 @@ public class CharacterController : MonoBehaviour
             playerandSoawnManager.PlayersCollided();
         }
     }
+
 }

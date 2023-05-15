@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
 
-    public Transform[] targets; // the players to follow
+    public List<Transform> targets = new List<Transform>(); // the players to follow
     public float smoothTime = 0.5f; // smoothing time for camera movement
     public float[] zoomLevels; // an array of zoom levels based on the distance between players
     public float maxZoom = 15f; // maximum zoom level
@@ -14,17 +16,24 @@ public class PlayerCamera : MonoBehaviour
 
     private Vector3 velocity;
     private Camera cam;
+    private PlayerandSoawnManager playerandSoawnManager;
+
+    private void Awake()
+    {
+        if (playerandSoawnManager == null) playerandSoawnManager = FindObjectOfType<PlayerandSoawnManager>();
+    }
 
     void Start()
     {
         cam = GetComponent<Camera>();
         cam.orthographicSize = zoomLevels[0];
         FindTargets();
+        
     }
 
     void LateUpdate()
     {
-        if (targets.Length == 0)
+        if (targets.Count == 0)
         {
             return;
         }
@@ -57,13 +66,13 @@ public class PlayerCamera : MonoBehaviour
 
     Vector3 GetCenterPoint()
     {
-        if (targets.Length == 1)
+        if (targets.Count == 1)
         {
             return targets[0].position;
         }
 
         Bounds bounds = new Bounds(targets[0].position, Vector3.zero);
-        for (int i = 0; i < targets.Length; i++)
+        for (int i = 0; i < targets.Count; i++)
         {
             bounds.Encapsulate(targets[i].position);
         }
@@ -75,9 +84,9 @@ public class PlayerCamera : MonoBehaviour
     {
         float greatestDistance = 0f;
 
-        for (int i = 0; i < targets.Length; i++)
+        for (int i = 0; i < targets.Count; i++)
         {
-            for (int j = i + 1; j < targets.Length; j++)
+            for (int j = i + 1; j < targets.Count; j++)
             {
                 float distance = Vector3.Distance(targets[i].position, targets[j].position);
                 if (distance > greatestDistance)
@@ -91,22 +100,33 @@ public class PlayerCamera : MonoBehaviour
     }
     public void FindTargets()
     {
-        GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
-        GameObject[] crownObject = GameObject.FindGameObjectsWithTag("Crown");
-        targets = new Transform[playerObjects.Length + crownObject.Length];
+        targets.Clear();
+        //GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
+        //GameObject crownObject = GameObject.FindGameObjectWithTag("Crown");
 
-        int index = 0;
-        for (int i = 0; i < playerObjects.Length; i++)
-        {
-            targets[index] = playerObjects[i].transform;
-            index++;
-        }
+        print(playerandSoawnManager != null);
 
-        for (int i = 0; i < crownObject.Length; i++)
+        foreach (GameObject obj in playerandSoawnManager._PlayerObject)
         {
-            targets[index] = crownObject[i].transform;
-            index++;
+            targets.Add(obj.transform);
         }
+        if (playerandSoawnManager._CrownObject != null)
+        {
+            targets.Add(playerandSoawnManager._CrownObject.transform);
+        }
+        /*        int index = 0;
+                for (int i = 0; i < playerObjects.Length; i++)
+                {
+                    targets[index] = playerObjects[i].transform;
+                    index++;
+                }
+
+                for (int i = 0; i < crownObject.Length; i++)
+                {
+                    targets[index] = crownObject[i].transform;
+                    index++;
+                }*/
+
     }
 }
    /* public void FindTargets()
