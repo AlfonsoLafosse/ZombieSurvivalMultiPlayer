@@ -15,7 +15,7 @@ public class PlayerandSoawnManager : MonoBehaviour
     public PlayerCamera playerCamera;
     public GameObject crownObject;
     public bool teamCheck;
-   
+    private OddBallScoring oddBallScoring;
     public float crownCollectDelay = 1.0f; 
     public bool canCollectCrown = true;
 
@@ -28,6 +28,7 @@ public class PlayerandSoawnManager : MonoBehaviour
     private void Awake()
     {
         playerInputManager = FindObjectOfType<PlayerInputManager>();
+        oddBallScoring = GetComponent<OddBallScoring>();
     }
 
     // Update is called once per frame
@@ -42,6 +43,7 @@ public class PlayerandSoawnManager : MonoBehaviour
             {
                 playerController.hasCrown = false;
                 Instantiate(crownObject, player.transform.position, Quaternion.identity);
+                oddBallScoring.playerWithCrown = null;
                 StartCoroutine(StartCrownCollectDelay());
             }
 
@@ -49,6 +51,7 @@ public class PlayerandSoawnManager : MonoBehaviour
             {
                 otherPlayerController.hasCrown = false;
                 Instantiate(crownObject, otherPlayer.transform.position, Quaternion.identity);
+                oddBallScoring.playerWithCrown = null;
                 StartCoroutine(StartCrownCollectDelay());
             }
         }
