@@ -5,14 +5,12 @@ using Unity.VisualScripting;
 
 public class CharacterController : MonoBehaviour
 {
-    public enum ControlType { WASD, ArrowKeys }
-    public ControlType controlType = ControlType.WASD;
     public float moveSpeed = 5f;
     public float stopSpeed = 10f;
     public float slipperyFactor = 0.5f;
-
-    private string horizontalAxis = "Horizontal";
-    private string verticalAxis = "Vertical";
+    [SerializeField] GameObject team1Visual;
+    [SerializeField] GameObject team2Visual;
+    [SerializeField] private PlayerInput playerInput;
 
     private Rigidbody2D rb;
     public Vector2 moveDirection = Vector2.zero;
@@ -40,30 +38,23 @@ public class CharacterController : MonoBehaviour
 
     private void Start()
     {
-        
+        playerInput = GetComponent<PlayerInput>();
+        playerInput.actions["Move"].Enable();
         rb.drag = slipperyFactor;
         inputActive = true;
         StartCoroutine(SpawnI());
-        if (controlType == ControlType.WASD)
-        {
-            horizontalAxis = "Horizontal1";
-            verticalAxis = "Vertical1";
-        }
-        else
-        {
-            horizontalAxis = "Horizontal";
-            verticalAxis = "Vertical";
-        }
-
         playerandSoawnManager._PlayerObject.Add(this.gameObject);
+        transform.position = playerandSoawnManager.playerSpawnPositions[playerandSoawnManager._PlayerObject.IndexOf(this.gameObject)].position;
+        TeamJoin();
         playerCamera.FindTargets();
+
     }
 
     private void FixedUpdate()
     {
 
-        float horizontalInput = Input.GetAxisRaw(horizontalAxis);
-        float verticalInput = Input.GetAxisRaw(verticalAxis);
+        float horizontalInput = playerInput.actions["Move"].ReadValue<Vector2>().x;
+        float verticalInput = playerInput.actions["Move"].ReadValue<Vector2>().y;
 
         if (inputActive)
         {
@@ -73,7 +64,7 @@ public class CharacterController : MonoBehaviour
                 rb.velocity = moveDirection * moveSpeed;
                 moveDirection = new Vector2(Mathf.Sign(horizontalInput), 0f);
             }
-            else if (verticalInput != 0f)
+            if (verticalInput != 0f)
             {
                 StopMovement();
                 rb.velocity = moveDirection * moveSpeed;
@@ -114,11 +105,26 @@ public class CharacterController : MonoBehaviour
         inputActive = true;
         i = false;
     }
-    private IEnumerator SpawnI()
+    public IEnumerator SpawnI()
     {
         i = true;
         yield return new WaitForSeconds(0.5f);
         i = false;
+    }
+    private void TeamJoin()
+    {
+        if (playerandSoawnManager.teamCheck == true)
+        {
+            playerandSoawnManager.team1.Add(this.gameObject);
+            playerandSoawnManager.teamCheck = false;
+            team1Visual.SetActive(true);
+        }
+        else
+        {
+            playerandSoawnManager.team2.Add(this.gameObject);
+            playerandSoawnManager.teamCheck = true;
+            team2Visual.SetActive(true);
+        }
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
@@ -143,7 +149,7 @@ public class CharacterController : MonoBehaviour
             {
                 dom = true;
             }
-            playerandSoawnManager.PlayersCollided();
+            playerandSoawnManager.PlayersCollided(this.gameObject, this.GetComponent<CharacterController>(), other.gameObject, other.gameObject.GetComponent<CharacterController>());
         }
     }
 

@@ -20,14 +20,14 @@ public class ScoreManager : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == playerandSoawnManager.player1 && collision.GetComponent<CharacterController>().hasCrown && gameObject.CompareTag("GoalPlayer1"))
+        if (playerandSoawnManager.team1.Contains(collision.gameObject) && collision.GetComponent<CharacterController>().hasCrown && gameObject.CompareTag("GoalPlayer1"))
         {
             collision.GetComponent<CharacterController>().hasCrown = false;
             player1Score++;
             player1ScoreText.text = player1Score.ToString();
             InstantiateCrown();
         }
-        if (collision.gameObject == playerandSoawnManager.player2 && collision.GetComponent<CharacterController>().hasCrown && gameObject.CompareTag("GoalPlayer2"))
+        if (playerandSoawnManager.team2.Contains(collision.gameObject) && collision.GetComponent<CharacterController>().hasCrown && gameObject.CompareTag("GoalPlayer2"))
         {
             collision.GetComponent<CharacterController>().hasCrown = false;
             player2Score++;
