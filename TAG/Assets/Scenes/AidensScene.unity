@@ -509,6 +509,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &471593419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2088350352540725159, guid: e3bcead701085dd44be6a7241ce4acfb, type: 3}
+  m_PrefabInstance: {fileID: 2088350353012268652}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &471593423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471593419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7de5d0fd4b043f4db7d787d8f346343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team1ScoreText: {fileID: 540732498}
+  team2ScoreText: {fileID: 849350621}
+  playerWithCrown: {fileID: 0}
 --- !u!1 &531010832
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,6 +565,17 @@ RectTransform:
   m_AnchoredPosition: {x: -81, y: -82}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &540732498 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1324310661183858327, guid: 5c6f20e556845b44ba86bb57d3ca31d1, type: 3}
+  m_PrefabInstance: {fileID: 1949660460}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &550563447
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,6 +865,17 @@ RectTransform:
   m_AnchoredPosition: {x: 618, y: 1002}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &849350621 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1324310661166451939, guid: 5c6f20e556845b44ba86bb57d3ca31d1, type: 3}
+  m_PrefabInstance: {fileID: 1949660460}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &947590862
 GameObject:
   m_ObjectHideFlags: 0

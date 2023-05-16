@@ -27,6 +27,7 @@ public class CharacterController : MonoBehaviour
 
     public bool hasCrown = false;
     private bool velocityEnable;
+    public bool teleportable;
     public PlayerCamera playerCamera;
 
     private void Awake()
@@ -43,6 +44,7 @@ public class CharacterController : MonoBehaviour
         playerInput.actions["Move"].Enable();
         rb.drag = slipperyFactor;
         inputActive = true;
+        teleportable = true;
         StartCoroutine(SpawnI());
         playerandSoawnManager._PlayerObject.Add(this.gameObject);
         transform.position = playerandSoawnManager.playerSpawnPositions[playerandSoawnManager._PlayerObject.IndexOf(this.gameObject)].position;
@@ -102,6 +104,12 @@ public class CharacterController : MonoBehaviour
         velocityEnable = false;
         yield return new WaitForSeconds(.25f);
         velocityEnable = true;
+    }
+    public IEnumerator TeleportDelay()
+    {
+        teleportable = false;
+        yield return new WaitForSeconds(0.1f);
+        teleportable = true;
     }
     public IEnumerator ClashDelay()
     {
