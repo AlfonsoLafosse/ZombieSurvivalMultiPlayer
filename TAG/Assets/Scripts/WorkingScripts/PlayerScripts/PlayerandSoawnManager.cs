@@ -29,20 +29,9 @@ public class PlayerandSoawnManager : MonoBehaviour
     {
         playerInputManager = FindObjectOfType<PlayerInputManager>();
     }
-    private void OnEnable()
-    {
-            playerInputManager.onPlayerJoined += OnPlayerJoin;
-    }
-    private void OnDisable()
-    {
-        playerInputManager.onPlayerJoined -= OnPlayerJoin;
-    }
 
     // Update is called once per frame
-    public void OnPlayerJoin(PlayerInput player)
-    {
-        playerCamera.FindTargets();
-    }
+
     public void PlayersCollided(GameObject player, CharacterController playerController, GameObject otherPlayer, CharacterController otherPlayerController)
     {
         if (playerController.moveDirection == -otherPlayerController.moveDirection)

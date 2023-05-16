@@ -26,7 +26,7 @@ public class CharacterController : MonoBehaviour
     public string thisPlayerName;
 
     public bool hasCrown = false;
-
+    private bool velocityEnable;
     public PlayerCamera playerCamera;
 
     private void Awake()
@@ -34,6 +34,7 @@ public class CharacterController : MonoBehaviour
         playerandSoawnManager = FindObjectOfType<PlayerandSoawnManager>();
         playerCamera = FindObjectOfType<PlayerCamera>();
         rb = GetComponent<Rigidbody2D>();
+        velocityEnable = true;
     }
 
     private void Start()
@@ -55,26 +56,28 @@ public class CharacterController : MonoBehaviour
 
         float horizontalInput = playerInput.actions["Move"].ReadValue<Vector2>().x;
         float verticalInput = playerInput.actions["Move"].ReadValue<Vector2>().y;
-
-        if (inputActive)
+        if (velocityEnable)
         {
-            if (horizontalInput != 0f)
+            if (inputActive)
+            {
+                if (horizontalInput != 0f)
+                {
+                    StopMovement();
+                    rb.velocity = moveDirection * moveSpeed;
+                    moveDirection = new Vector2(Mathf.Sign(horizontalInput), 0f);
+                }
+                if (verticalInput != 0f)
+                {
+                    StopMovement();
+                    rb.velocity = moveDirection * moveSpeed;
+                    moveDirection = new Vector2(0f, Mathf.Sign(verticalInput));
+                }
+            }
+            else
             {
                 StopMovement();
                 rb.velocity = moveDirection * moveSpeed;
-                moveDirection = new Vector2(Mathf.Sign(horizontalInput), 0f);
             }
-            if (verticalInput != 0f)
-            {
-                StopMovement();
-                rb.velocity = moveDirection * moveSpeed;
-                moveDirection = new Vector2(0f, Mathf.Sign(verticalInput));
-            }
-        }
-        else
-        {
-            StopMovement();
-            rb.velocity = moveDirection * moveSpeed;
         }
 
         //Alfonso Code//
@@ -93,6 +96,12 @@ public class CharacterController : MonoBehaviour
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0f;
         rb.drag = stopSpeed;
+    }
+    public IEnumerator BoostDelay()
+    {
+        velocityEnable = false;
+        yield return new WaitForSeconds(.25f);
+        velocityEnable = true;
     }
     public IEnumerator ClashDelay()
     {
