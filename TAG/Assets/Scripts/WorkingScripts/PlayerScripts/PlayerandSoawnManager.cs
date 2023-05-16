@@ -56,7 +56,7 @@ public class PlayerandSoawnManager : MonoBehaviour
                 StartCoroutine(StartCrownCollectDelay());
             }
 
-            if (playerController.hasCrown && canCollectCrown == true)
+            if (otherPlayerController.hasCrown && canCollectCrown == true)
             {
                 otherPlayerController.hasCrown = false;
                 Instantiate(crownObject, otherPlayer.transform.position, Quaternion.identity);
