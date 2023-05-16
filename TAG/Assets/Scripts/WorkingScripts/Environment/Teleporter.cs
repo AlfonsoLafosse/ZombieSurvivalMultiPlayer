@@ -13,7 +13,22 @@ public class Teleporter : MonoBehaviour
         Transform collidingTransform = collision.gameObject.transform;
         if(collidingTransform != null)
         {
-            collidingTransform.position = GetRandomExit().transform.position;
+            if (collision.gameObject.GetComponent<CharacterController>() != null)
+            {
+                if (collision.gameObject.GetComponent<CharacterController>().teleportable == false)
+                {
+                    return;
+                }
+                else
+                {
+                    collidingTransform.position = GetRandomExit().transform.position;
+                    StartCoroutine(collision.gameObject.GetComponent<CharacterController>().TeleportDelay());
+                }
+            }
+            else
+            {
+                collidingTransform.position = GetRandomExit().transform.position;
+            }
         }
 
 
