@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1396710014765942218
+--- !u!1 &2912020059804097274
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5556324242773845493}
-  - component: {fileID: 5255269789381722181}
-  m_Layer: 0
-  m_Name: Platform_02
+  - component: {fileID: 4823712716044656369}
+  - component: {fileID: 8734216172040029934}
+  m_Layer: 5
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5556324242773845493
-Transform:
+--- !u!224 &4823712716044656369
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396710014765942218}
+  m_GameObject: {fileID: 2912020059804097274}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7, y: 35, z: 7}
+  m_LocalScale: {x: 76.1304, y: 1055.9724, z: 0.05850784}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4569349182242648326}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!212 &5255269789381722181
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0039224257, y: -0.00000084744687}
+  m_SizeDelta: {x: 300, y: 100}
+  m_Pivot: {x: 0.49999994, y: 0.5}
+--- !u!212 &8734216172040029934
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396710014765942218}
+  m_GameObject: {fileID: 2912020059804097274}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -73,12 +78,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 47957807853b0834a856ac1590c64791, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e81adbdff519f39489ebfad187327698, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 9.9, y: 9.9}
+  m_Size: {x: 0.99, y: 0.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -116,7 +121,11 @@ RectTransform:
   m_LocalScale: {x: 0.39932, y: 9.0028, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+<<<<<<< HEAD:ZombieMultiplayerSurvival/Assets/Assets/Prefabs/RotatingStick.prefab
+  - {fileID: 4823712716044656369}
+=======
   - {fileID: 5556324242773845493}
+>>>>>>> Aidens:TAG/Assets/Assets/Prefabs/RotatingStick.prefab
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

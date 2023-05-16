@@ -7,6 +7,9 @@ public class Destructible : MonoBehaviour
 {
     public int lifePoints;
 
+    [SerializeField] private List<Sprite> glassSprites;
+    private int listIndexValue = 0;
+
     private void Start()
     {
         
@@ -14,17 +17,25 @@ public class Destructible : MonoBehaviour
 
     private void Update()
     {
-        if (lifePoints <= 0)
+       
+
+        if (listIndexValue >= lifePoints)
         {
             Destroy(this.gameObject);
         }
+
+        SpriteRenderer spriteRender = GetComponentInChildren<SpriteRenderer>();
+        spriteRender.sprite = glassSprites[listIndexValue];
+
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
-            lifePoints--;
+            listIndexValue++;
         }
         
     }

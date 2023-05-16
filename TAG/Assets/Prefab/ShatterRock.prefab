@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2935347118177300619}
   - component: {fileID: 8379257420534034472}
   - component: {fileID: 7112420704952360247}
+  - component: {fileID: 4771799153227743215}
   m_Layer: 0
   m_Name: ShatterRock
   m_TagString: Untagged
@@ -100,10 +101,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToDisable: {fileID: 9073113900614240244}
-  prefab: {fileID: 3663332774534414989, guid: 6b5674ec31265d34fb1a576219df1168, type: 3}
+  prefabList:
+  - {fileID: 5124547193669661184, guid: 1a6c030a612fa99488b42f6058f2f244, type: 3}
+  - {fileID: 7689928696903691688, guid: a0faf19fc04b2534b9f8eda06bd17b30, type: 3}
+  - {fileID: 7313769335406737302, guid: 4bb038762e532a34284c87e3bac2371d, type: 3}
   minForce: 20
   maxForce: 500
   objectCount: 10
+  destroyDelay: 5
 --- !u!61 &7112420704952360247
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -130,6 +135,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &4771799153227743215
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112420704952360244}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &9073113900614240244
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +183,7 @@ RectTransform:
   m_GameObject: {fileID: 9073113900614240244}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.1}
-  m_LocalScale: {x: 0.2076366, y: 0.19954687, z: 0.21572636}
+  m_LocalScale: {x: 1.3330965, y: 1.3330965, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8379257420534034473}
@@ -217,7 +243,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a1aa568a921b5c542a627167f51b1f4d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c12d816518a60c44f89fd76b11e67c4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
