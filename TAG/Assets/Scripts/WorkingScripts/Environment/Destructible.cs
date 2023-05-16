@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Destructible : MonoBehaviour
 {
-    public int lifePoints;
+    public int lifePoints = 3;
 
     [SerializeField] private List<Sprite> glassSprites;
-    private int listIndexValue = 0;
+    public int listIndexValue = 0;
 
     private void Start()
     {
@@ -17,18 +17,10 @@ public class Destructible : MonoBehaviour
 
     private void Update()
     {
-       
-
         if (listIndexValue >= lifePoints)
         {
-            Destroy(this.gameObject);
+            Destroy(this.gameObject);          
         }
-
-        SpriteRenderer spriteRender = GetComponentInChildren<SpriteRenderer>();
-        spriteRender.sprite = glassSprites[listIndexValue];
-
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -36,7 +28,8 @@ public class Destructible : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             listIndexValue++;
-        }
-        
+            SpriteRenderer spriteRender = GetComponentInChildren<SpriteRenderer>();
+            spriteRender.sprite = glassSprites[listIndexValue];
+        }      
     }
 }
