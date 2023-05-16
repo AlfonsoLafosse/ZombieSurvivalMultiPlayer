@@ -28,6 +28,10 @@ public class CharacterController : MonoBehaviour
     public string thisPlayerName;
 
     public bool hasCrown = false;
+    //BoostPad logic
+    public bool isBoosted = false;
+    public float boostForce = 10f;
+    public Vector2 boostDirection = Vector2.zero;
 
     public PlayerCamera playerCamera;
 
@@ -64,6 +68,14 @@ public class CharacterController : MonoBehaviour
 
         float horizontalInput = Input.GetAxisRaw(horizontalAxis);
         float verticalInput = Input.GetAxisRaw(verticalAxis);
+        //BoostPad Logic
+        if (isBoosted)
+        {
+            // Apply additional boost force during the boost duration
+            Vector2 boostDirection = rb.velocity.normalized;
+            rb.AddForce(boostDirection * boostForce, ForceMode2D.Impulse);
+            isBoosted = false; // Reset the boost flag after applying the force
+        }
 
         if (inputActive)
         {
@@ -95,7 +107,6 @@ public class CharacterController : MonoBehaviour
         crownObject = transform.Find("Crown").gameObject;
         crownObject.SetActive(hasCrown);
     }
-
     
     private void StopMovement()
     {
