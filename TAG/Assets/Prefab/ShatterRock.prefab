@@ -100,10 +100,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToDisable: {fileID: 9073113900614240244}
-  prefab: {fileID: 3663332774534414989, guid: 6b5674ec31265d34fb1a576219df1168, type: 3}
+  prefabList:
+  - {fileID: 5124547193669661184, guid: 1a6c030a612fa99488b42f6058f2f244, type: 3}
+  - {fileID: 7689928696903691688, guid: a0faf19fc04b2534b9f8eda06bd17b30, type: 3}
+  - {fileID: 7313769335406737302, guid: 4bb038762e532a34284c87e3bac2371d, type: 3}
   minForce: 20
   maxForce: 500
   objectCount: 10
+  destroyDelay: 5
 --- !u!61 &7112420704952360247
 BoxCollider2D:
   m_ObjectHideFlags: 0

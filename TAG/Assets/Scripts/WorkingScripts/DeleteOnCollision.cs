@@ -7,16 +7,18 @@ public class DeleteOnCollision : MonoBehaviour
     public GameObject objectToDisable;
 
     // The prefab to instantiate
-    public GameObject prefab;
+    public List<GameObject> prefabList;
 
     // The minimum and maximum force to apply to each object
     public float minForce = 5f;
     public float maxForce = 15f;
 
+    
+
     // The number of objects to instantiate
     public int objectCount = 10;
 
-    public float destroyDelay = 5f;
+    public float destroyDelay = 10f;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -27,10 +29,13 @@ public class DeleteOnCollision : MonoBehaviour
             objectToDisable.SetActive(false);
             GetComponent<Collider2D>().enabled = false;
 
+            
+
             for (int i = 0; i < objectCount; i++)
             {
+                int n = Random.Range(0, prefabList.Count);
                 // Instantiate a new object from the prefab
-                GameObject obj = Instantiate(prefab, transform.position, Quaternion.identity);
+                GameObject obj = Instantiate(prefabList[n], transform.position, Quaternion.identity);
 
                 // Add a 2D rigidbody component to the object
                 Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
