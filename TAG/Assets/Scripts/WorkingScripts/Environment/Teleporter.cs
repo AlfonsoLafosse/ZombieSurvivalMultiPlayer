@@ -6,29 +6,20 @@ using UnityEngine;
 public class Teleporter : MonoBehaviour
 {
     public GameObject[] Exits;
+    public bool teleportable;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Start()
     {
+        teleportable = true;
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         Transform collidingTransform = collision.gameObject.transform;
-        if(collidingTransform != null)
+        if (collidingTransform != null && teleportable == true)
         {
-            if (collision.gameObject.GetComponent<CharacterController>() != null)
-            {
-                if (collision.gameObject.GetComponent<CharacterController>().teleportable == false)
-                {
-                    return;
-                }
-                else
-                {
-                    collidingTransform.position = GetRandomExit().transform.position;
-                    StartCoroutine(collision.gameObject.GetComponent<CharacterController>().TeleportDelay());
-                }
-            }
-            else
-            {
-                collidingTransform.position = GetRandomExit().transform.position;
-            }
+            collidingTransform.position = GetRandomExit().transform.position;
+            StartCoroutine(TeleportDelay());
         }
 
 
@@ -37,7 +28,14 @@ public class Teleporter : MonoBehaviour
     public GameObject GetRandomExit()
     {
         int randomIndex = Random.Range(0, Exits.Length);
+        StartCoroutine(Exits[randomIndex].gameObject.GetComponentInParent<Teleporter>().TeleportDelay());
         return Exits[randomIndex];
+    }
+    private IEnumerator TeleportDelay()
+    {
+        teleportable = false;
+        yield return new WaitForSeconds(1f);
+        teleportable = true;
     }
 
 }
