@@ -161,5 +161,4 @@ public class CharacterController : MonoBehaviour
             playerandSoawnManager.PlayersCollided(this.gameObject, this.GetComponent<CharacterController>(), other.gameObject, other.gameObject.GetComponent<CharacterController>());
         }
     }
-
 }
