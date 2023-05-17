@@ -62,17 +62,38 @@ public class CharacterController : MonoBehaviour
         {
             if (inputActive)
             {
-                if (horizontalInput != 0f)
+                if (horizontalInput > .75f || horizontalInput < -.75f || verticalInput > .75f || verticalInput < -.75f)
                 {
-                    StopMovement();
-                    rb.velocity = moveDirection * moveSpeed;
-                    moveDirection = new Vector2(Mathf.Sign(horizontalInput), 0f);
-                }
-                if (verticalInput != 0f)
-                {
-                    StopMovement();
-                    rb.velocity = moveDirection * moveSpeed;
-                    moveDirection = new Vector2(0f, Mathf.Sign(verticalInput));
+                    if (horizontalInput > verticalInput)
+                    {
+                        if (horizontalInput > 0f)
+                        {
+                            StopMovement();
+                            rb.velocity = moveDirection * moveSpeed;
+                            moveDirection = new Vector2(Mathf.Sign(horizontalInput), 0f);
+                        }
+                        if (verticalInput < 0f)
+                        {
+                            StopMovement();
+                            rb.velocity = moveDirection * moveSpeed;
+                            moveDirection = new Vector2(0f, Mathf.Sign(verticalInput));
+                        }
+                    }
+                    if (horizontalInput < verticalInput)
+                    {
+                        if (horizontalInput < 0f)
+                        {
+                            StopMovement();
+                            rb.velocity = moveDirection * moveSpeed;
+                            moveDirection = new Vector2(Mathf.Sign(horizontalInput), 0f);
+                        }
+                        if (verticalInput > 0f)
+                        {
+                            StopMovement();
+                            rb.velocity = moveDirection * moveSpeed;
+                            moveDirection = new Vector2(0f, Mathf.Sign(verticalInput));
+                        }
+                    }
                 }
             }
             else
@@ -108,7 +129,7 @@ public class CharacterController : MonoBehaviour
     public IEnumerator TeleportDelay()
     {
         teleportable = false;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(.1f);
         teleportable = true;
     }
     public IEnumerator ClashDelay()

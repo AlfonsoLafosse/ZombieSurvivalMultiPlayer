@@ -18,6 +18,7 @@ public class PlayerandSoawnManager : MonoBehaviour
     private OddBallScoring oddBallScoring;
     public float crownCollectDelay = 1.0f; 
     public bool canCollectCrown = true;
+    private int playerSizeOffset = 50;
 
     public List<GameObject> _PlayerObject = new List<GameObject>();
     public GameObject _CrownObject = null;
@@ -57,36 +58,36 @@ public class PlayerandSoawnManager : MonoBehaviour
         }
         else
         {
-            if (playerController.moveDirection == new Vector2(0,1) && player.transform.position.x > otherPlayerController.transform.position.x - 50 && player.transform.position.x < otherPlayerController.transform.position.x + 50 && player.transform.position.y < otherPlayer.transform.position.y)
+            if (playerController.moveDirection == new Vector2(0,1) && player.transform.position.x > otherPlayerController.transform.position.x - playerSizeOffset && player.transform.position.x < otherPlayerController.transform.position.x + playerSizeOffset && player.transform.position.y < otherPlayer.transform.position.y)
             {
                 DestroyPlayer(otherPlayer, player);
             }
-            if (playerController.moveDirection == new Vector2(0, -1) && player.transform.position.x > otherPlayerController.transform.position.x - 50 && player.transform.position.x < otherPlayerController.transform.position.x + 50 && player.transform.position.y > otherPlayer.transform.position.y)
+            if (playerController.moveDirection == new Vector2(0, -1) && player.transform.position.x > otherPlayerController.transform.position.x - playerSizeOffset && player.transform.position.x < otherPlayerController.transform.position.x + playerSizeOffset && player.transform.position.y > otherPlayer.transform.position.y)
             {
                 DestroyPlayer(otherPlayer, player);
             }
-            if (playerController.moveDirection == new Vector2(1, 0) && player.transform.position.y > otherPlayerController.transform.position.y - 50 && player.transform.position.y < otherPlayerController.transform.position.y + 50 && player.transform.position.x < otherPlayer.transform.position.x)
+            if (playerController.moveDirection == new Vector2(1, 0) && player.transform.position.y > otherPlayerController.transform.position.y - playerSizeOffset && player.transform.position.y < otherPlayerController.transform.position.y + playerSizeOffset && player.transform.position.x < otherPlayer.transform.position.x)
             {
                 DestroyPlayer(otherPlayer, player);
             }
-            if (playerController.moveDirection == new Vector2(-1, 0) && player.transform.position.y > otherPlayerController.transform.position.y - 50 && player.transform.position.y < otherPlayerController.transform.position.y + 50 && player.transform.position.x > otherPlayer.transform.position.x)
+            if (playerController.moveDirection == new Vector2(-1, 0) && player.transform.position.y > otherPlayerController.transform.position.y - playerSizeOffset && player.transform.position.y < otherPlayerController.transform.position.y + playerSizeOffset && player.transform.position.x > otherPlayer.transform.position.x)
             {
                 DestroyPlayer(otherPlayer, player);
             }
 
-            if (otherPlayerController.moveDirection == new Vector2(0, 1) && otherPlayer.transform.position.x > playerController.transform.position.x - 50 && otherPlayer.transform.position.x < playerController.transform.position.x + 50 && otherPlayer.transform.position.y < player.transform.position.y)
+            if (otherPlayerController.moveDirection == new Vector2(0, 1) && otherPlayer.transform.position.x > playerController.transform.position.x - playerSizeOffset && otherPlayer.transform.position.x < playerController.transform.position.x + playerSizeOffset && otherPlayer.transform.position.y < player.transform.position.y)
             {
                 DestroyPlayer(player, otherPlayer);
             }
-            if (otherPlayerController.moveDirection == new Vector2(0, -1) && otherPlayer.transform.position.x > playerController.transform.position.x - 50 && otherPlayer.transform.position.x < playerController.transform.position.x + 50 && otherPlayer.transform.position.y > player.transform.position.y)
+            if (otherPlayerController.moveDirection == new Vector2(0, -1) && otherPlayer.transform.position.x > playerController.transform.position.x - playerSizeOffset && otherPlayer.transform.position.x < playerController.transform.position.x + playerSizeOffset && otherPlayer.transform.position.y > player.transform.position.y)
             {
                 DestroyPlayer(player, otherPlayer);
             }
-            if (otherPlayerController.moveDirection == new Vector2(1, 0) && otherPlayer.transform.position.y > playerController.transform.position.y - 50 && otherPlayer.transform.position.y < playerController.transform.position.y + 50 && otherPlayer.transform.position.x < player.transform.position.x)
+            if (otherPlayerController.moveDirection == new Vector2(1, 0) && otherPlayer.transform.position.y > playerController.transform.position.y - playerSizeOffset && otherPlayer.transform.position.y < playerController.transform.position.y + playerSizeOffset && otherPlayer.transform.position.x < player.transform.position.x)
             {
                 DestroyPlayer(player, otherPlayer);
             }
-            if (otherPlayerController.moveDirection == new Vector2(-1, 0) && otherPlayer.transform.position.y > playerController.transform.position.y - 50 && otherPlayer.transform.position.y < playerController.transform.position.y + 50 && otherPlayer.transform.position.x > player.transform.position.x)
+            if (otherPlayerController.moveDirection == new Vector2(-1, 0) && otherPlayer.transform.position.y > playerController.transform.position.y - playerSizeOffset && otherPlayer.transform.position.y < playerController.transform.position.y + playerSizeOffset && otherPlayer.transform.position.x > player.transform.position.x)
             {
                 DestroyPlayer(player, otherPlayer);
             }
