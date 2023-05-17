@@ -91,7 +91,7 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.99107146
+        time: 1
         value: 0
         inSlope: 0
         outSlope: 0
@@ -104,8 +104,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.71899796, g: 0.05032932, b: 0.8207547, a: 0.5686275}
-      key1: {r: 0.9078633, g: 0.5740477, b: 0.9433962, a: 0.38039216}
+      key0: {r: 0.81960785, g: 0.48256564, b: 0.050980397, a: 0.5686275}
+      key1: {r: 0.94509804, g: 0.9075393, b: 0.57254905, a: 0.38039216}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 1423710593}
   - component: {fileID: 1423710592}
   m_Layer: 0
-  m_Name: StarParent
+  m_Name: BadBall
   m_TagString: Crown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -301,7 +301,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: fc1f18d8afc00d1418d9fd72d21c172f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9622642, g: 0.80148524, b: 0.077162705, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

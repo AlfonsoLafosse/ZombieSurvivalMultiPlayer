@@ -6,11 +6,11 @@ using TMPro;
 
 public class OddBallScoring : MonoBehaviour
 {
-    private PlayerandSoawnManager playerandSoawnManager;
-    private float team1Score;
-    private float team2Score;
-    [SerializeField] private TextMeshProUGUI team1ScoreText;
-    [SerializeField] private TextMeshProUGUI team2ScoreText;
+    public PlayerandSoawnManager playerandSoawnManager;
+    public float team1Score;
+    public float team2Score;
+    [SerializeField] public TextMeshProUGUI team1ScoreText;
+    [SerializeField] public TextMeshProUGUI team2ScoreText;
     public GameObject playerWithCrown;
     // Start is called before the first frame update
     void Start()

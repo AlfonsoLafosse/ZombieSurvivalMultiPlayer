@@ -19,13 +19,16 @@ public class Destructible : MonoBehaviour
     {
         if (listIndexValue >= lifePoints)
         {
-            Destroy(this.gameObject);          
+            Destroy(this.gameObject);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+
+        Debug.Log(listIndexValue);
+
+        if (collision.gameObject.tag == "Player")
         {
             listIndexValue++;
             SpriteRenderer spriteRender = GetComponentInChildren<SpriteRenderer>();
