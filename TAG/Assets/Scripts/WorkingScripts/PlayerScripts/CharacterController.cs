@@ -2,14 +2,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 using Unity.VisualScripting;
+using System.Collections.Generic;
 
 public class CharacterController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float stopSpeed = 10f;
     public float slipperyFactor = 0.5f;
-    [SerializeField] GameObject team1Visual;
-    [SerializeField] GameObject team2Visual;
     [SerializeField] private PlayerInput playerInput;
 
     private Rigidbody2D rb;
@@ -22,6 +21,7 @@ public class CharacterController : MonoBehaviour
     public PlayerandSoawnManager playerandSoawnManager;
     public PowerUpStorage powerUpStorage;
     public GameObject crownObject;
+    public List<GameObject> visuals;
 
     public string thisPlayerName;
 
@@ -155,13 +155,15 @@ public class CharacterController : MonoBehaviour
         {
             playerandSoawnManager.team1.Add(this.gameObject);
             playerandSoawnManager.teamCheck = false;
-            team1Visual.SetActive(true);
+            var visual = Instantiate(visuals[0], transform.position, Quaternion.identity);
+            visual.transform.parent = transform;
         }
         else
         {
             playerandSoawnManager.team2.Add(this.gameObject);
             playerandSoawnManager.teamCheck = true;
-            team2Visual.SetActive(true);
+            var visual = Instantiate(visuals[1], transform.position, Quaternion.identity);
+            visual.transform.parent = transform;
         }
     }
     public void OnCollisionEnter2D(Collision2D other)
