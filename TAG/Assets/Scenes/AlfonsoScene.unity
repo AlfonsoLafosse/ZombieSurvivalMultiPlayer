@@ -5753,7 +5753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6262068019027005226, guid: aae2a893833031a48b07905b6679a170, type: 3}
       propertyPath: orthographic size
-      value: 488.97235
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6262068019027005226, guid: aae2a893833031a48b07905b6679a170, type: 3}
       propertyPath: m_BackGroundColor.a
@@ -5788,7 +5788,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
       propertyPath: zoomSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: smoothTime
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
@@ -5797,7 +5805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
       propertyPath: minDistance
-      value: 1300
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
       propertyPath: zoomLimiter
@@ -5825,7 +5833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
       propertyPath: zoomLevels.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
       propertyPath: zoomLevels.Array.data[0]
@@ -5842,6 +5850,98 @@ PrefabInstance:
     - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
       propertyPath: zoomLevels.Array.data[3]
       value: 1400
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[0].x
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[0].y
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[1].x
+      value: 1100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[1].y
+      value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[2].x
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[2].y
+      value: 1100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[3].x
+      value: 1300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[3].y
+      value: 1100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[0].size
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[1].size
+      value: 650
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[2].size
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[3].size
+      value: 950
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[4].size
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[0].xDistance
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[0].yDistance
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[1].xDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[1].yDistance
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[2].xDistance
+      value: 1300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[2].yDistance
+      value: 1100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[3].xDistance
+      value: 1600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[3].yDistance
+      value: 1300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[4].xDistance
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005228, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: zoomLevels.Array.data[4].yDistance
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 6262068019027005229, guid: aae2a893833031a48b07905b6679a170, type: 3}
       propertyPath: m_RootOrder
