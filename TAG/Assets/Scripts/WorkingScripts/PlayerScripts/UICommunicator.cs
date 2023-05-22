@@ -79,6 +79,23 @@ public class UICommunicator : MonoBehaviour
                         lastTeamJoined = 1;
                         return;
                     }
+                else
+                {
+                    {
+                        playerandSoawnManager.unassigned.Remove(this.gameObject);
+                        playerandSoawnManager.team2.Add(this.gameObject);
+                        playerUIScript.teamText.text = "Team 2";
+                        characterController.playerSprite.sprite = playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject)];
+                        playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
+                        if (playerandSoawnManager.team2[0] != this.gameObject && playerandSoawnManager.team2[0].GetComponent<UICommunicator>().playerUIScript.playerImage.sprite == playerandSoawnManager.team2[0].GetComponent<UICommunicator>().playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject)])
+                        {
+                            characterController.playerSprite.sprite = playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject) - 1];
+                            playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
+                        }
+                        lastTeamJoined = 2;
+                        return;
+                    }
+                }
                 }
                 if (playerandSoawnManager.team2.Contains(this.gameObject))
                 {
