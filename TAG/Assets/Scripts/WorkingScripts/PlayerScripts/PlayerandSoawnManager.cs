@@ -19,6 +19,10 @@ public class PlayerandSoawnManager : MonoBehaviour
     public float crownCollectDelay = 1.0f; 
     public bool canCollectCrown = true;
     private int playerSizeOffset = 50;
+    public GameObject[] UIElements;
+    public GameObject mainMenu;
+    public List<UICommunicator> UICommunicators;
+    public bool gameStarted;
 
     public List<GameObject> _PlayerObject = new List<GameObject>();
     public GameObject _CrownObject = null;
@@ -30,6 +34,8 @@ public class PlayerandSoawnManager : MonoBehaviour
     {
         playerInputManager = FindObjectOfType<PlayerInputManager>();
         oddBallScoring = GetComponent<OddBallScoring>();
+        gameStarted = false;
+        Time.timeScale = 0;
     }
 
     // Update is called once per frame
@@ -108,5 +114,15 @@ public class PlayerandSoawnManager : MonoBehaviour
         }
         player.transform.position = playerSpawnPositions[_PlayerObject.IndexOf(player.gameObject)].position;
         StartCoroutine(player.GetComponent<CharacterController>().SpawnI());
+    }
+    public void StartGame()
+    {
+        mainMenu.SetActive(false);
+        Time.timeScale = 1;
+        gameStarted = true;
+        foreach (UICommunicator ui in UICommunicators)
+        {
+            ui.enabled = false;
+        }
     }
 }
