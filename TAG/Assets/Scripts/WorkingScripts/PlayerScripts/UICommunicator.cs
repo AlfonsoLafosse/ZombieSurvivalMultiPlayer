@@ -12,7 +12,6 @@ public class UICommunicator : MonoBehaviour
     private CharacterController characterController;
     private PlayerUIScript playerUIScript;
     private PlayerInput playerInput;
-    private bool playerSwapped;
     private int lastTeamJoined;
     // Start is called before the first frame update
     void Awake()
@@ -44,7 +43,7 @@ public class UICommunicator : MonoBehaviour
     private void SwapTeam(InputAction.CallbackContext context)
     {
         Debug.Log("TeamSwapped" + this.gameObject);
-        playerSwapped = true;
+        
             if (playerandSoawnManager.gameStarted == false)
             {
                 if (playerandSoawnManager.unassigned.Contains(this.gameObject))
