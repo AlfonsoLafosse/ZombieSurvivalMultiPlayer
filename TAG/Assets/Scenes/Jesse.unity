@@ -2347,7 +2347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8379257420534034473, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.7559521
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8379257420534034473, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7717,6 +7717,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoostPad (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8777913220621560100, guid: f5c042a5dcae8d74c86f7a71ff51e91c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5c042a5dcae8d74c86f7a71ff51e91c, type: 3}
 --- !u!1 &870588144
@@ -10536,6 +10540,46 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1446
       objectReference: {fileID: 0}
+    - target: {fileID: 2178843399819597192, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_JoinBehavior
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178843399819597192, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_Id
+      value: 9be79d1d-85a0-4991-9ca1-ee210ac18a00
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178843399819597192, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_Name
+      value: Join
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178843399819597192, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178843399819597192, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Id
+      value: b354cbec-dd71-42af-831a-169e3a040b59
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178843399819597192, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 1f4ceb6a-fe8b-418e-8680-0ab265ce85ba
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178843399819597192, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Gamepad>/start
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178843399819597192, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Keyboard>/enter
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178843399819597192, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Join
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178843399819597192, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Join
+      objectReference: {fileID: 0}
     - target: {fileID: 2178843399834863660, guid: d44d2a208a50955408ed67117b366d82, type: 3}
       propertyPath: m_LocalPosition.x
       value: -290
@@ -10620,6 +10664,10 @@ PrefabInstance:
     - target: {fileID: 675842415022940901, guid: f5c042a5dcae8d74c86f7a71ff51e91c, type: 3}
       propertyPath: m_Name
       value: BoostPad (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8777913220621560100, guid: f5c042a5dcae8d74c86f7a71ff51e91c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5c042a5dcae8d74c86f7a71ff51e91c, type: 3}
@@ -11104,10 +11152,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2075415208}
     m_Modifications:
-    - target: {fileID: 3663624204808345801, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5612404321048641925, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12288,14 +12332,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5612404321048641925, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5612404321048641934, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
-      propertyPath: lifePoints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5612404321048641934, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
-      propertyPath: listIndexValue
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
@@ -14840,6 +14876,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoostPad
       objectReference: {fileID: 0}
+    - target: {fileID: 8777913220621560100, guid: f5c042a5dcae8d74c86f7a71ff51e91c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5c042a5dcae8d74c86f7a71ff51e91c, type: 3}
 --- !u!1001 &1484413875
@@ -15049,6 +15089,10 @@ PrefabInstance:
     - target: {fileID: 675842415022940901, guid: f5c042a5dcae8d74c86f7a71ff51e91c, type: 3}
       propertyPath: m_Name
       value: BoostPad (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8777913220621560100, guid: f5c042a5dcae8d74c86f7a71ff51e91c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5c042a5dcae8d74c86f7a71ff51e91c, type: 3}
@@ -15825,6 +15869,10 @@ PrefabInstance:
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 6262068019027005226, guid: aae2a893833031a48b07905b6679a170, type: 3}
+      propertyPath: near clip plane
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262068019027005226, guid: aae2a893833031a48b07905b6679a170, type: 3}
       propertyPath: orthographic size
       value: 548.42
       objectReference: {fileID: 0}
@@ -16233,6 +16281,10 @@ PrefabInstance:
     - target: {fileID: 675842415022940901, guid: f5c042a5dcae8d74c86f7a71ff51e91c, type: 3}
       propertyPath: m_Name
       value: BoostPad (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8777913220621560100, guid: f5c042a5dcae8d74c86f7a71ff51e91c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5c042a5dcae8d74c86f7a71ff51e91c, type: 3}
@@ -17964,14 +18016,6 @@ PrefabInstance:
     - target: {fileID: 7922726590064466775, guid: fb4a5f35cf700b841acc0764c4751d79, type: 3}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7922726590064466775, guid: fb4a5f35cf700b841acc0764c4751d79, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 7922726590064466775, guid: fb4a5f35cf700b841acc0764c4751d79, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 7922726590064466775, guid: fb4a5f35cf700b841acc0764c4751d79, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20413,6 +20457,10 @@ PrefabInstance:
     - target: {fileID: 675842415022940901, guid: f5c042a5dcae8d74c86f7a71ff51e91c, type: 3}
       propertyPath: m_Name
       value: BoostPad (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8777913220621560100, guid: f5c042a5dcae8d74c86f7a71ff51e91c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5c042a5dcae8d74c86f7a71ff51e91c, type: 3}
