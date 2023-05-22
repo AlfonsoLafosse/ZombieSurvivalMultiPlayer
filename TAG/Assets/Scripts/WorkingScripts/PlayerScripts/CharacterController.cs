@@ -1,14 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using Unity.VisualScripting;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class CharacterController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float stopSpeed = 10f;
     public float slipperyFactor = 0.5f;
-    [SerializeField] GameObject team1Visual;
-    [SerializeField] GameObject team2Visual;
     [SerializeField] private PlayerInput playerInput;
 
     private Rigidbody2D rb;
@@ -21,6 +22,8 @@ public class CharacterController : MonoBehaviour
     public PlayerandSoawnManager playerandSoawnManager;
     public PowerUpStorage powerUpStorage;
     public GameObject crownObject;
+    public List<GameObject> visuals;
+    public SpriteRenderer playerSprite; 
 
     public string thisPlayerName;
 
@@ -40,6 +43,7 @@ public class CharacterController : MonoBehaviour
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
+        gameObject.name = "Player " + GetComponent<UICommunicator>().playerInt;
         playerInput.actions["Move"].Enable();
         rb.drag = slipperyFactor;
         inputActive = true;
@@ -47,7 +51,7 @@ public class CharacterController : MonoBehaviour
         StartCoroutine(SpawnI());
         playerandSoawnManager._PlayerObject.Add(this.gameObject);
         transform.position = playerandSoawnManager.playerSpawnPositions[playerandSoawnManager._PlayerObject.IndexOf(this.gameObject)].position;
-        TeamJoin();
+        //TeamJoin();
         playerCamera.FindTargets();
 
     }
@@ -148,29 +152,31 @@ public class CharacterController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         i = false;
     }
-    private void TeamJoin()
+/*    private void TeamJoin()
     {
         if (playerandSoawnManager.teamCheck == true)
         {
             playerandSoawnManager.team1.Add(this.gameObject);
             playerandSoawnManager.teamCheck = false;
-            team1Visual.SetActive(true);
+            var visual = Instantiate(visuals[0], transform.position, Quaternion.identity);
+            visual.transform.parent = transform;
         }
         else
         {
             playerandSoawnManager.team2.Add(this.gameObject);
             playerandSoawnManager.teamCheck = true;
-            team2Visual.SetActive(true);
+            var visual = Instantiate(visuals[1], transform.position, Quaternion.identity);
+            visual.transform.parent = transform;
         }
-    }
+    }*/
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "PowerUp" && powerUpStorage.PowerUpEquipped == false)
+/*        if (other.gameObject.tag == "PowerUp" && powerUpStorage.PowerUpEquipped == false)
         {
             powerUpStorage.GetPowerUp();
             Debug.Log("Collided with a " + other.gameObject.name);
             Destroy(other.gameObject);
-        }
+        }*/
 
         if(other.gameObject.tag == "Crown" && playerandSoawnManager.canCollectCrown == true)
         {

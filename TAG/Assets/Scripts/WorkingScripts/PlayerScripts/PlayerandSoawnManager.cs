@@ -12,6 +12,7 @@ public class PlayerandSoawnManager : MonoBehaviour
     [SerializeField] public Transform[] playerSpawnPositions;
     public List<GameObject> team1;
     public List<GameObject> team2;
+    public List<GameObject> unassigned;
     public PlayerCamera playerCamera;
     public GameObject crownObject;
     public bool teamCheck;
@@ -19,6 +20,12 @@ public class PlayerandSoawnManager : MonoBehaviour
     public float crownCollectDelay = 1.0f; 
     public bool canCollectCrown = true;
     private int playerSizeOffset = 50;
+    public GameObject[] UIElements;
+    public GameObject[] UIElements2;
+    public GameObject mainMenu;
+    public List<UICommunicator> UICommunicators;
+    public bool gameStarted;
+    public GameObject gameMenu;
 
     public List<GameObject> _PlayerObject = new List<GameObject>();
     public GameObject _CrownObject = null;
@@ -30,6 +37,8 @@ public class PlayerandSoawnManager : MonoBehaviour
     {
         playerInputManager = FindObjectOfType<PlayerInputManager>();
         oddBallScoring = GetComponent<OddBallScoring>();
+        gameStarted = false;
+        Time.timeScale = 0;
     }
 
     // Update is called once per frame
@@ -108,5 +117,19 @@ public class PlayerandSoawnManager : MonoBehaviour
         }
         player.transform.position = playerSpawnPositions[_PlayerObject.IndexOf(player.gameObject)].position;
         StartCoroutine(player.GetComponent<CharacterController>().SpawnI());
+    }
+    public void StartGame()
+    {
+        if (team1.Count > 0 && team2.Count > 0 && unassigned.Count <= 0)
+        {
+            mainMenu.SetActive(false);
+            Time.timeScale = 1;
+            gameStarted = true;
+            gameMenu.SetActive(true);
+            foreach (UICommunicator ui in UICommunicators)
+            {
+                ui.enabled = false;
+            }
+        }
     }
 }
