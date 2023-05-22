@@ -12,6 +12,7 @@ public class PlayerandSoawnManager : MonoBehaviour
     [SerializeField] public Transform[] playerSpawnPositions;
     public List<GameObject> team1;
     public List<GameObject> team2;
+    public List<GameObject> unassigned;
     public PlayerCamera playerCamera;
     public GameObject crownObject;
     public bool teamCheck;
@@ -20,9 +21,11 @@ public class PlayerandSoawnManager : MonoBehaviour
     public bool canCollectCrown = true;
     private int playerSizeOffset = 50;
     public GameObject[] UIElements;
+    public GameObject[] UIElements2;
     public GameObject mainMenu;
     public List<UICommunicator> UICommunicators;
     public bool gameStarted;
+    public GameObject gameMenu;
 
     public List<GameObject> _PlayerObject = new List<GameObject>();
     public GameObject _CrownObject = null;
@@ -117,12 +120,16 @@ public class PlayerandSoawnManager : MonoBehaviour
     }
     public void StartGame()
     {
-        mainMenu.SetActive(false);
-        Time.timeScale = 1;
-        gameStarted = true;
-        foreach (UICommunicator ui in UICommunicators)
+        if (team1.Count > 0 && team2.Count > 0 && unassigned.Count <= 0)
         {
-            ui.enabled = false;
+            mainMenu.SetActive(false);
+            Time.timeScale = 1;
+            gameStarted = true;
+            gameMenu.SetActive(true);
+            foreach (UICommunicator ui in UICommunicators)
+            {
+                ui.enabled = false;
+            }
         }
     }
 }

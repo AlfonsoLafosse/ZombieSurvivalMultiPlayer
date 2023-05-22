@@ -43,6 +43,7 @@ public class CharacterController : MonoBehaviour
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
+        gameObject.name = "Player " + GetComponent<UICommunicator>().playerInt;
         playerInput.actions["Move"].Enable();
         rb.drag = slipperyFactor;
         inputActive = true;

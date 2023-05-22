@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,6 +12,8 @@ public class UICommunicator : MonoBehaviour
     private CharacterController characterController;
     private PlayerUIScript playerUIScript;
     private PlayerInput playerInput;
+    private bool playerSwapped;
+    private int lastTeamJoined;
     // Start is called before the first frame update
     void Awake()
     {
@@ -22,22 +25,14 @@ public class UICommunicator : MonoBehaviour
         playerInput.actions["Start"].Enable();
         playerInt = playerandSoawnManager._PlayerObject.Count;
         playerandSoawnManager.UIElements[playerInt].SetActive(true);
+        playerandSoawnManager.UIElements2[playerInt].SetActive(false);
         playerUIScript = playerandSoawnManager.UIElements[playerInt].GetComponent<PlayerUIScript>();
         playerUIScript.playerText.text = "Player " + (playerInt + 1).ToString();
-        if (playerandSoawnManager.team1.Count < 2)
-        {
-            playerandSoawnManager.team1.Add(this.gameObject);
-            playerUIScript.teamText.text = "Team 1";
-            playerUIScript.playerImage.sprite = playerUIScript.team1Sprites[playerandSoawnManager.team1.IndexOf(this.gameObject)];
-            characterController.playerSprite.sprite = playerUIScript.team1Sprites[playerandSoawnManager.team1.IndexOf(this.gameObject)];
-        }
-        else
-        {
-            playerandSoawnManager.team2.Add(this.gameObject);
-            playerUIScript.teamText.text = "Team 2";
-            playerUIScript.playerImage.sprite = playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject)];
-            characterController.playerSprite.sprite = playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject)];
-        }
+        lastTeamJoined = 1;
+        playerandSoawnManager.unassigned.Add(this.gameObject);
+        playerUIScript.teamText.text = "Unassigned";
+        characterController.playerSprite.sprite = playerUIScript.unassignedSprite;
+        playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
     }
 
     // Update is called once per frame
@@ -48,31 +43,61 @@ public class UICommunicator : MonoBehaviour
     }
     private void SwapTeam(InputAction.CallbackContext context)
     {
-        Debug.Log("TeamSwapped");
-        if (playerandSoawnManager.gameStarted == false)
-        {
-            if (playerandSoawnManager.team1.Contains(this.gameObject))
+        Debug.Log("TeamSwapped" + this.gameObject);
+        playerSwapped = true;
+            if (playerandSoawnManager.gameStarted == false)
             {
-                if (playerandSoawnManager.team2.Count < 2)
+                if (playerandSoawnManager.unassigned.Contains(this.gameObject))
+                {
+                    if (playerandSoawnManager.team2.Count < 2 && lastTeamJoined == 1)
+                    {
+                        playerandSoawnManager.unassigned.Remove(this.gameObject);
+                        playerandSoawnManager.team2.Add(this.gameObject);
+                        playerUIScript.teamText.text = "Team 2";
+                        characterController.playerSprite.sprite = playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject)];
+                        playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
+                        if (playerandSoawnManager.team2[0] != this.gameObject && playerandSoawnManager.team2[0].GetComponent<UICommunicator>().playerUIScript.playerImage.sprite == playerandSoawnManager.team2[0].GetComponent<UICommunicator>().playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject)])
+                        {
+                            characterController.playerSprite.sprite = playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject) - 1];
+                            playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
+                        }
+                        lastTeamJoined = 2;
+                        return;
+                    }
+                    else if (playerandSoawnManager.team1.Count < 2)
+                    {
+                        playerandSoawnManager.unassigned.Remove(this.gameObject);
+                        playerandSoawnManager.team1.Add(this.gameObject);
+                        playerUIScript.teamText.text = "Team 1";
+                        characterController.playerSprite.sprite = playerUIScript.team1Sprites[playerandSoawnManager.team1.IndexOf(this.gameObject)];
+                        playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
+                        if (playerandSoawnManager.team1[0] != this.gameObject && playerandSoawnManager.team1[0].GetComponent<UICommunicator>().playerUIScript.playerImage.sprite == playerandSoawnManager.team1[0].GetComponent<UICommunicator>().playerUIScript.team1Sprites[playerandSoawnManager.team1.IndexOf(this.gameObject)])
+                        {
+                            characterController.playerSprite.sprite = playerUIScript.team1Sprites[playerandSoawnManager.team1.IndexOf(this.gameObject) - 1];
+                            playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
+                        }
+                        lastTeamJoined = 1;
+                        return;
+                    }
+                }
+                if (playerandSoawnManager.team2.Contains(this.gameObject))
+                {
+                        playerandSoawnManager.team2.Remove(this.gameObject);
+                        playerandSoawnManager.unassigned.Add(this.gameObject);
+                        playerUIScript.teamText.text = "Unassigned";
+                        characterController.playerSprite.sprite = playerUIScript.unassignedSprite;
+                        playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
+                    return;
+                }
+                if (playerandSoawnManager.team1.Contains(this.gameObject))
                 {
                     playerandSoawnManager.team1.Remove(this.gameObject);
-                    playerandSoawnManager.team2.Add(this.gameObject);
-                    playerUIScript.teamText.text = "Team 2";
-                    playerUIScript.playerImage.sprite = playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject)];
-                    characterController.playerSprite.sprite = playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject)];
+                    playerandSoawnManager.unassigned.Add(this.gameObject);
+                    playerUIScript.teamText.text = "Unassigned";
+                    characterController.playerSprite.sprite = playerUIScript.unassignedSprite;
+                    playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
+                    return;
                 }
-            }
-            else if (playerandSoawnManager.team2.Contains(this.gameObject))
-            {
-                if (playerandSoawnManager.team1.Count < 2)
-                {
-                    playerandSoawnManager.team2.Remove(this.gameObject);
-                    playerandSoawnManager.team1.Add(this.gameObject);
-                    playerUIScript.teamText.text = "Team 1";
-                    playerUIScript.playerImage.sprite = playerUIScript.team1Sprites[playerandSoawnManager.team1.IndexOf(this.gameObject)];
-                    characterController.playerSprite.sprite = playerUIScript.team1Sprites[playerandSoawnManager.team1.IndexOf(this.gameObject)];
-                }
-            }
         }
     }
     private void StartGame(InputAction.CallbackContext context)
