@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class CharacterController : MonoBehaviour
 {
@@ -27,6 +26,7 @@ public class CharacterController : MonoBehaviour
 
     public bool hasCrown = false;
     private bool velocityEnable;
+    public bool teleportable;
     public PlayerCamera playerCamera;
 
     private void Awake()
@@ -43,6 +43,7 @@ public class CharacterController : MonoBehaviour
         playerInput.actions["Move"].Enable();
         rb.drag = slipperyFactor;
         inputActive = true;
+        teleportable = true;
         StartCoroutine(SpawnI());
         playerandSoawnManager._PlayerObject.Add(this.gameObject);
         transform.position = playerandSoawnManager.playerSpawnPositions[playerandSoawnManager._PlayerObject.IndexOf(this.gameObject)].position;
@@ -60,17 +61,38 @@ public class CharacterController : MonoBehaviour
         {
             if (inputActive)
             {
-                if (horizontalInput != 0f)
+                if (horizontalInput > .75f || horizontalInput < -.75f || verticalInput > .75f || verticalInput < -.75f)
                 {
-                    StopMovement();
-                    rb.velocity = moveDirection * moveSpeed;
-                    moveDirection = new Vector2(Mathf.Sign(horizontalInput), 0f);
-                }
-                if (verticalInput != 0f)
-                {
-                    StopMovement();
-                    rb.velocity = moveDirection * moveSpeed;
-                    moveDirection = new Vector2(0f, Mathf.Sign(verticalInput));
+                    if (horizontalInput > verticalInput)
+                    {
+                        if (horizontalInput > 0f)
+                        {
+                            StopMovement();
+                            rb.velocity = moveDirection * moveSpeed;
+                            moveDirection = new Vector2(Mathf.Sign(horizontalInput), 0f);
+                        }
+                        if (verticalInput < 0f)
+                        {
+                            StopMovement();
+                            rb.velocity = moveDirection * moveSpeed;
+                            moveDirection = new Vector2(0f, Mathf.Sign(verticalInput));
+                        }
+                    }
+                    if (horizontalInput < verticalInput)
+                    {
+                        if (horizontalInput < 0f)
+                        {
+                            StopMovement();
+                            rb.velocity = moveDirection * moveSpeed;
+                            moveDirection = new Vector2(Mathf.Sign(horizontalInput), 0f);
+                        }
+                        if (verticalInput > 0f)
+                        {
+                            StopMovement();
+                            rb.velocity = moveDirection * moveSpeed;
+                            moveDirection = new Vector2(0f, Mathf.Sign(verticalInput));
+                        }
+                    }
                 }
             }
             else
@@ -102,6 +124,12 @@ public class CharacterController : MonoBehaviour
         velocityEnable = false;
         yield return new WaitForSeconds(.25f);
         velocityEnable = true;
+    }
+    public IEnumerator TeleportDelay()
+    {
+        teleportable = false;
+        yield return new WaitForSeconds(.1f);
+        teleportable = true;
     }
     public IEnumerator ClashDelay()
     {
@@ -161,5 +189,4 @@ public class CharacterController : MonoBehaviour
             playerandSoawnManager.PlayersCollided(this.gameObject, this.GetComponent<CharacterController>(), other.gameObject, other.gameObject.GetComponent<CharacterController>());
         }
     }
-
 }
