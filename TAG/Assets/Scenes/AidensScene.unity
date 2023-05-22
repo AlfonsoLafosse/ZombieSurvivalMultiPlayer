@@ -3981,6 +3981,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameAndMenuManagement
       objectReference: {fileID: 0}
+    - target: {fileID: 6376243923627601223, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: unassignedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 73e5bb196aa85a64d8746b2399413b96, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d44d2a208a50955408ed67117b366d82, type: 3}
 --- !u!1001 &5612404321415979801
