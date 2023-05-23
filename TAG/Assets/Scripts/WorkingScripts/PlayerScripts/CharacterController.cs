@@ -179,7 +179,7 @@ public class CharacterController : MonoBehaviour
             visual.transform.parent = transform;
         }
     }*/
-    public void OnCollisionEnter2D(Collision2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
 /*        if (other.gameObject.tag == "PowerUp" && powerUpStorage.PowerUpEquipped == false)
         {
