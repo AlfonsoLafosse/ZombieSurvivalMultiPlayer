@@ -19,7 +19,7 @@ public class PlayerandSoawnManager : MonoBehaviour
     private OddBallScoring oddBallScoring;
     public float crownCollectDelay = 1.0f; 
     public bool canCollectCrown = true;
-    private int playerSizeOffset = 50;
+    private int playerSizeOffset = 65;
     public GameObject[] UIElements;
     public GameObject[] UIElements2;
     public GameObject mainMenu;

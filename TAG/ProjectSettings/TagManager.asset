@@ -9,6 +9,7 @@ TagManager:
   - Crown
   - GoalPlayer1
   - GoalPlayer2
+  - ChildCollider
   layers:
   - Default
   - TransparentFX

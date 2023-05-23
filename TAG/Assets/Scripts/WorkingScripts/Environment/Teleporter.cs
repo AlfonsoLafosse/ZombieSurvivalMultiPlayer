@@ -18,8 +18,16 @@ public class Teleporter : MonoBehaviour
         Transform collidingTransform = collision.gameObject.transform;
         if (collidingTransform != null && teleportable == true)
         {
-            collidingTransform.position = GetRandomExit().transform.position;
-            StartCoroutine(TeleportDelay());
+            if (collision.gameObject.tag == "ChildCollider")
+            {
+                collidingTransform.parent.position = GetRandomExit().transform.position;
+                StartCoroutine(TeleportDelay());
+            }
+            else
+            {
+                collidingTransform.position = GetRandomExit().transform.position;
+                StartCoroutine(TeleportDelay());
+            }
         }
 
 

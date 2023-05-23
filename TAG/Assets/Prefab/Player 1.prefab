@@ -652,7 +652,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 60, y: 60}
+  m_Size: {x: 70, y: 70}
   m_EdgeRadius: 0
 --- !u!114 &3157212173162969004
 MonoBehaviour:
@@ -965,7 +965,7 @@ GameObject:
   - component: {fileID: 3623161098934419619}
   m_Layer: 5
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: ChildCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1003,6 +1003,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5840454}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 34.309753
+  m_Radius: 32.5
