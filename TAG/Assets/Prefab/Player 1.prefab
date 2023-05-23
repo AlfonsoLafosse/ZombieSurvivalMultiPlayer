@@ -712,6 +712,7 @@ MonoBehaviour:
   - {fileID: 596810825880624207, guid: 500f6dfa56d187b46aa4a6e2fce30f49, type: 3}
   playerSprite: {fileID: 5348829774638480091}
   goldTrail: {fileID: 5970968966479015539}
+  animator: {fileID: 353484951786904966}
   thisPlayerName: 
   hasCrown: 0
   teleportable: 0
@@ -879,6 +880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5776102601010878541}
   - component: {fileID: 5348829774638480091}
+  - component: {fileID: 353484951786904966}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -953,6 +955,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &353484951786904966
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6614992490110458441}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5162b94fbd58824380b9b6a04379c6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9106777715623408320
 GameObject:
   m_ObjectHideFlags: 0

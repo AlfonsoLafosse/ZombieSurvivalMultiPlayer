@@ -26,6 +26,9 @@ public class PlayerandSoawnManager : MonoBehaviour
     public List<UICommunicator> UICommunicators;
     public bool gameStarted;
     public GameObject gameMenu;
+    public GameObject team1Win;
+    public GameObject team2Win;
+    public GameObject sliderObject;
 
     public List<GameObject> _PlayerObject = new List<GameObject>();
     public GameObject _CrownObject = null;
@@ -131,5 +134,19 @@ public class PlayerandSoawnManager : MonoBehaviour
                 ui.enabled = false;
             }
         }
+    }
+    public void ResetScene()
+    {
+        foreach (GameObject player in _PlayerObject)
+        {
+            player.GetComponent<CharacterController>().hasCrown = false;
+            player.transform.position = playerSpawnPositions[_PlayerObject.IndexOf(player.gameObject)].position;
+        }
+        team1Win.SetActive(false);
+        team2Win.SetActive(false);
+        sliderObject.SetActive(true);
+        oddBallScoring.score = 100;
+        Time.timeScale = 1;
+        Instantiate(crownObject);
     }
 }

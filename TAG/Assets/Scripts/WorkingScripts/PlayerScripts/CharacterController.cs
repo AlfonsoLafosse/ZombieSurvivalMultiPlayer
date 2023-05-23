@@ -25,6 +25,7 @@ public class CharacterController : MonoBehaviour
     public List<GameObject> visuals;
     public SpriteRenderer playerSprite;
     public GameObject goldTrail;
+    public Animator animator;
 
     public string thisPlayerName;
 
@@ -115,6 +116,15 @@ public class CharacterController : MonoBehaviour
         {
             goldTrail.SetActive(false);
         }
+        if (i)
+        {
+            animator.SetBool("Inv", true);
+        }
+        else
+        {
+            animator.SetBool("Inv", false);
+        }
+
 
         //Alfonso Code//
         if (Input.GetKey(KeyCode.LeftShift) && powerUpStorage.PowerUpEquipped == true)
