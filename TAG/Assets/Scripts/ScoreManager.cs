@@ -7,8 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI player1ScoreText; // Reference to the TextMeshProUGUI component for displaying player 1 score
     public TextMeshProUGUI player2ScoreText; // Reference to the TextMeshProUGUI component for displaying player 2 score
-    private int player1Score = 0;
-    private int player2Score = 0;
+    private int score = 50;
     public GameObject player1;
     public GameObject player2;
     private PlayerandSoawnManager playerandSoawnManager;
@@ -18,7 +17,7 @@ public class ScoreManager : MonoBehaviour
     {
         playerandSoawnManager = FindObjectOfType<PlayerandSoawnManager>();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+/*    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (playerandSoawnManager.team1.Contains(collision.gameObject) && collision.GetComponent<CharacterController>().hasCrown && gameObject.CompareTag("GoalPlayer1"))
         {
@@ -34,7 +33,7 @@ public class ScoreManager : MonoBehaviour
             player2ScoreText.text = player2Score.ToString();
             InstantiateCrown();
         }
-    }
+    }*/
     private void InstantiateCrown()
     {
         Instantiate(crownObject, crownSpawner.position, Quaternion.identity);

@@ -17,7 +17,7 @@ public class BadBallSpawner : MonoBehaviour
         scoringScript = FindObjectOfType<OddBallScoring>(); // Find the OddBallScoring script in the scene
     }
 
-    private void Update()
+/*    private void Update()
     {
         if (scoringScript != null)
         {
@@ -38,9 +38,9 @@ public class BadBallSpawner : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
-    private float CalculatePoints()
+/*    private float CalculatePoints()
     {
         // Calculate the total points based on your scoring mechanism
         float team1Points = scoringScript.team1Score;
@@ -50,7 +50,7 @@ public class BadBallSpawner : MonoBehaviour
         totalPoints = (int)(team1Points + team2Points);
 
         return totalPoints;
-    }
+    }*/
 
     private bool IsItemPresentInScene()
     {

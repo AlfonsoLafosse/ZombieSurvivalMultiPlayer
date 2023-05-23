@@ -23,7 +23,8 @@ public class CharacterController : MonoBehaviour
     public PowerUpStorage powerUpStorage;
     public GameObject crownObject;
     public List<GameObject> visuals;
-    public SpriteRenderer playerSprite; 
+    public SpriteRenderer playerSprite;
+    public GameObject goldTrail;
 
     public string thisPlayerName;
 
@@ -104,6 +105,15 @@ public class CharacterController : MonoBehaviour
                 StopMovement();
                 rb.velocity = moveDirection * moveSpeed;
             }
+        }
+
+        if (hasCrown)
+        {
+            goldTrail.SetActive(true);
+        }
+        else
+        {
+            goldTrail.SetActive(false);
         }
 
         //Alfonso Code//
