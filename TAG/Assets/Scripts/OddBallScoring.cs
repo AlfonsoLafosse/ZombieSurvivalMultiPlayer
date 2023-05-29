@@ -8,6 +8,7 @@ public class OddBallScoring : MonoBehaviour
 {
     public PlayerandSoawnManager playerandSoawnManager;
     public float score = 100;
+    public float finalScore;
     public GameObject playerWithCrown;
     public Slider slider;
     public GameObject sliderObject;
@@ -42,7 +43,7 @@ public class OddBallScoring : MonoBehaviour
                 score -= .10f;
             }
         }
-        if (score > 200)
+        if (score > finalScore)
         {
             Time.timeScale = 0;
             sliderObject.SetActive(false);
