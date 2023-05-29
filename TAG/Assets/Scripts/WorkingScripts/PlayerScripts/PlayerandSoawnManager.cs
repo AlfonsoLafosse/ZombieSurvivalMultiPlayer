@@ -29,6 +29,7 @@ public class PlayerandSoawnManager : MonoBehaviour
     public GameObject team1Win;
     public GameObject team2Win;
     public GameObject sliderObject;
+    public DestructibleObjectManager destructibleObjectManager;
 
     public List<GameObject> _PlayerObject = new List<GameObject>();
     public GameObject _CrownObject = null;
@@ -40,6 +41,7 @@ public class PlayerandSoawnManager : MonoBehaviour
     {
         playerInputManager = FindObjectOfType<PlayerInputManager>();
         oddBallScoring = GetComponent<OddBallScoring>();
+        destructibleObjectManager = GetComponent<DestructibleObjectManager>();
         gameStarted = false;
         Time.timeScale = 0;
     }
@@ -147,6 +149,7 @@ public class PlayerandSoawnManager : MonoBehaviour
         sliderObject.SetActive(true);
         oddBallScoring.score = 100;
         Time.timeScale = 1;
+        destructibleObjectManager.RoundStart();
         Instantiate(crownObject);
     }
 }

@@ -22,8 +22,16 @@ public class Destructible : MonoBehaviour
             }
             else if (listIndexValue >= lifePoints)
             {
-                Destroy(this.gameObject);
+                Reset();
+                this.gameObject.SetActive(false);
             }
         }      
+    }
+    public void Reset()
+    {
+        lifePoints = 3;
+        listIndexValue = 0;
+        SpriteRenderer spriteRender = GetComponentInChildren<SpriteRenderer>();
+        spriteRender.sprite = glassSprites[listIndexValue];
     }
 }
