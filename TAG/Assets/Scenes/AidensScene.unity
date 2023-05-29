@@ -3407,7 +3407,7 @@ Transform:
   - {fileID: 91066951}
   - {fileID: 477158043}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &367413338
 GameObject:
@@ -10530,7 +10530,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 527870293515800717, guid: d44d2a208a50955408ed67117b366d82, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 527870293515800717, guid: d44d2a208a50955408ed67117b366d82, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13968,53 +13968,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1032859116397344901, guid: e3e6557f6f463c849a5564bc17a702d9, type: 3}
   m_PrefabInstance: {fileID: 1042441353}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1399433799
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1399433800}
-  - component: {fileID: 1399433801}
-  m_Layer: 0
-  m_Name: BadBallSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1399433800
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1399433799}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 20, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1399433801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1399433799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f545559fc87e343a2219e0ae517fc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointsInterval: 10
-  initialPointsInterval: 10
-  itemPrefab: {fileID: 4462754742698643368, guid: 1365f2a91c15f79458ab06f81a29fde6, type: 3}
 --- !u!1 &1399595606
 GameObject:
   m_ObjectHideFlags: 0
