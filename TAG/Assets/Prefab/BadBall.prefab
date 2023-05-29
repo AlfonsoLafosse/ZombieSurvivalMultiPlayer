@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 1423710592}
   m_Layer: 0
   m_Name: BadBall
-  m_TagString: Crown
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -301,7 +301,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: fc1f18d8afc00d1418d9fd72d21c172f, type: 3}
-  m_Color: {r: 0.9622642, g: 0.80148524, b: 0.077162705, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
