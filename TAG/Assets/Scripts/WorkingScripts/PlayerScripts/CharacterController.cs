@@ -22,10 +22,8 @@ public class CharacterController : MonoBehaviour
     public PlayerandSoawnManager playerandSoawnManager;
     public PowerUpStorage powerUpStorage;
     public GameObject crownObject;
-    public List<GameObject> visuals;
     public SpriteRenderer playerSprite;
     public GameObject goldTrail;
-    public Animator animator;
 
     public string thisPlayerName;
 
@@ -115,14 +113,6 @@ public class CharacterController : MonoBehaviour
         else
         {
             goldTrail.SetActive(false);
-        }
-        if (i)
-        {
-            animator.SetBool("Inv", true);
-        }
-        else
-        {
-            animator.SetBool("Inv", false);
         }
 
 

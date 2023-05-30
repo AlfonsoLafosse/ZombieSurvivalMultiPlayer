@@ -1350,6 +1350,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9151070335853474459}
     m_Modifications:
+    - target: {fileID: 1276820929302740107, guid: 4eda71936616c5c43bccd2090b5008c4, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276820929302740107, guid: 4eda71936616c5c43bccd2090b5008c4, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276820929302740107, guid: 4eda71936616c5c43bccd2090b5008c4, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.19607843
+      objectReference: {fileID: 0}
     - target: {fileID: 5595999136041884406, guid: 4eda71936616c5c43bccd2090b5008c4, type: 3}
       propertyPath: m_Name
       value: Player Joined
@@ -1452,6 +1464,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9151070335853474459}
     m_Modifications:
+    - target: {fileID: 1276820929302740107, guid: 4eda71936616c5c43bccd2090b5008c4, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276820929302740107, guid: 4eda71936616c5c43bccd2090b5008c4, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.19607843
+      objectReference: {fileID: 0}
     - target: {fileID: 5595999136041884406, guid: 4eda71936616c5c43bccd2090b5008c4, type: 3}
       propertyPath: m_Name
       value: Player Joined (2)
@@ -1558,6 +1578,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9151070335853474459}
     m_Modifications:
+    - target: {fileID: 1276820929302740107, guid: 4eda71936616c5c43bccd2090b5008c4, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276820929302740107, guid: 4eda71936616c5c43bccd2090b5008c4, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.19607843
+      objectReference: {fileID: 0}
     - target: {fileID: 5595999136041884406, guid: 4eda71936616c5c43bccd2090b5008c4, type: 3}
       propertyPath: m_Name
       value: Player Joined (1)
@@ -1660,6 +1688,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9151070335853474459}
     m_Modifications:
+    - target: {fileID: 1276820929302740107, guid: 4eda71936616c5c43bccd2090b5008c4, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276820929302740107, guid: 4eda71936616c5c43bccd2090b5008c4, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276820929302740107, guid: 4eda71936616c5c43bccd2090b5008c4, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5595999136041884406, guid: 4eda71936616c5c43bccd2090b5008c4, type: 3}
       propertyPath: m_Name
       value: Player Joined (3)
