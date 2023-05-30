@@ -10528,6 +10528,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 838621777, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 11313e8d06fc5674e902dadd779c13a9, type: 2}
+    - target: {fileID: 838621777, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5089807874426122363, guid: 11313e8d06fc5674e902dadd779c13a9, type: 2}
     - target: {fileID: 527870293515800717, guid: d44d2a208a50955408ed67117b366d82, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -10572,6 +10580,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 873105745300053379, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 11313e8d06fc5674e902dadd779c13a9, type: 2}
+    - target: {fileID: 873105745300053379, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006913979790592541, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 11313e8d06fc5674e902dadd779c13a9, type: 2}
+    - target: {fileID: 1006913979790592541, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2506225949455991869, guid: d44d2a208a50955408ed67117b366d82, type: 3}
       propertyPath: m_fontColor.b
       value: 1
@@ -10598,6 +10622,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5261727599971827728, guid: d44d2a208a50955408ed67117b366d82, type: 3}
       propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295423701077827807, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 11313e8d06fc5674e902dadd779c13a9, type: 2}
+    - target: {fileID: 5295423701077827807, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5537463504244033902, guid: d44d2a208a50955408ed67117b366d82, type: 3}
@@ -10666,6 +10698,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8118692545488630636, guid: d44d2a208a50955408ed67117b366d82, type: 3}
       propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957738256964798061, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 11313e8d06fc5674e902dadd779c13a9, type: 2}
+    - target: {fileID: 8957738256964798061, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

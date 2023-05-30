@@ -10488,6 +10488,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 838621777, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 11313e8d06fc5674e902dadd779c13a9, type: 2}
+    - target: {fileID: 838621777, guid: d44d2a208a50955408ed67117b366d82, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5089807874426122363, guid: 11313e8d06fc5674e902dadd779c13a9, type: 2}
     - target: {fileID: 527870293515800717, guid: d44d2a208a50955408ed67117b366d82, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -14014,9 +14022,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f545559fc87e343a2219e0ae517fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsInterval: 10
-  initialPointsInterval: 10
-  itemPrefab: {fileID: 4462754742698643368, guid: 1365f2a91c15f79458ab06f81a29fde6, type: 3}
 --- !u!1 &1399595606
 GameObject:
   m_ObjectHideFlags: 0
