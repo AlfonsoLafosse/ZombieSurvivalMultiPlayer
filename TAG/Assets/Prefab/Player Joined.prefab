@@ -401,15 +401,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team1Sprites:
-  - {fileID: 21300000, guid: cf956330c50909241b4db87ea7f87aed, type: 3}
-  - {fileID: 21300000, guid: 7c1e1e436b6fb25449cc49cbd183295a, type: 3}
+  - {fileID: 21300000, guid: 76e2dab1c00a3ac4284d97cb34cacbc6, type: 3}
+  - {fileID: 21300000, guid: 9029b0ff44bac9240a5513645f853cb4, type: 3}
+  - {fileID: 21300000, guid: 3f6cbc5d6a5b4914a85bc2ed634a1e79, type: 3}
   team2Sprites:
-  - {fileID: 21300000, guid: ec0fc14a06a9982418c4efaa6b4da33d, type: 3}
-  - {fileID: 21300000, guid: 8a8a60a685111114093eb48669fe8774, type: 3}
+  - {fileID: 21300000, guid: 5a57392a774c618418a82cad4f78bf19, type: 3}
+  - {fileID: 21300000, guid: bfd2bf5cb874acb47981c0af2db2d132, type: 3}
+  - {fileID: 21300000, guid: bfd2bf5cb874acb47981c0af2db2d132, type: 3}
   unassignedSprite: {fileID: 21300000, guid: 73e5bb196aa85a64d8746b2399413b96, type: 3}
   playerImage: {fileID: 5012850714551896974}
   teamText: {fileID: 1096006879952794482}
   playerText: {fileID: 1276820929302740107}
+  teamColors:
+  - {r: 1, g: 0.19607843, b: 0.19607843, a: 1}
+  - {r: 0.19607843, g: 0.19607843, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  player1Colors:
+  - {r: 1, g: 0.19607843, b: 0.19607843, a: 1}
+  - {r: 1, g: 0.5882353, b: 0.19607843, a: 1}
+  player2Colors:
+  - {r: 0.19607843, g: 0.19607843, b: 1, a: 1}
+  - {r: 0.5882353, g: 0.19607843, b: 1, a: 1}
 --- !u!1 &8107071630702746055
 GameObject:
   m_ObjectHideFlags: 0

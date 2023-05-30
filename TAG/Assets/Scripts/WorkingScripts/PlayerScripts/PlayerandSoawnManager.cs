@@ -26,6 +26,10 @@ public class PlayerandSoawnManager : MonoBehaviour
     public List<UICommunicator> UICommunicators;
     public bool gameStarted;
     public GameObject gameMenu;
+    public GameObject team1Win;
+    public GameObject team2Win;
+    public GameObject sliderObject;
+    public DestructibleObjectManager destructibleObjectManager;
 
     public List<GameObject> _PlayerObject = new List<GameObject>();
     public GameObject _CrownObject = null;
@@ -37,6 +41,7 @@ public class PlayerandSoawnManager : MonoBehaviour
     {
         playerInputManager = FindObjectOfType<PlayerInputManager>();
         oddBallScoring = GetComponent<OddBallScoring>();
+        destructibleObjectManager = GetComponent<DestructibleObjectManager>();
         gameStarted = false;
         Time.timeScale = 0;
     }
@@ -129,7 +134,24 @@ public class PlayerandSoawnManager : MonoBehaviour
             foreach (UICommunicator ui in UICommunicators)
             {
                 ui.enabled = false;
+                ui.gameObject.GetComponentInChildren<PlayerIndicator>().DisableText();
+                StartCoroutine(ui.gameObject.GetComponentInChildren<PlayerIndicator>().EnableText());
             }
         }
+    }
+    public void ResetScene()
+    {
+        foreach (GameObject player in _PlayerObject)
+        {
+            player.GetComponent<CharacterController>().hasCrown = false;
+            player.transform.position = playerSpawnPositions[_PlayerObject.IndexOf(player.gameObject)].position;
+        }
+        team1Win.SetActive(false);
+        team2Win.SetActive(false);
+        sliderObject.SetActive(true);
+        oddBallScoring.score = 100;
+        Time.timeScale = 1;
+        destructibleObjectManager.RoundStart();
+        Instantiate(crownObject);
     }
 }

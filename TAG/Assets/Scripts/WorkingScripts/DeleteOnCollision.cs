@@ -27,7 +27,6 @@ public class DeleteOnCollision : MonoBehaviour
         {
             // Turn off the game object
             objectToDisable.SetActive(false);
-            GetComponent<Collider2D>().enabled = false;
 
             
 

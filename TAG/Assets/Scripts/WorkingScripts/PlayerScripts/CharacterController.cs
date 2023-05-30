@@ -22,7 +22,6 @@ public class CharacterController : MonoBehaviour
     public PlayerandSoawnManager playerandSoawnManager;
     public PowerUpStorage powerUpStorage;
     public GameObject crownObject;
-    public List<GameObject> visuals;
     public SpriteRenderer playerSprite;
     public GameObject goldTrail;
 
@@ -115,6 +114,7 @@ public class CharacterController : MonoBehaviour
         {
             goldTrail.SetActive(false);
         }
+
 
         //Alfonso Code//
         if (Input.GetKey(KeyCode.LeftShift) && powerUpStorage.PowerUpEquipped == true)
