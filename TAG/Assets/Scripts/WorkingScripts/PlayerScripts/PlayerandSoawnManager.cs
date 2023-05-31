@@ -134,6 +134,8 @@ public class PlayerandSoawnManager : MonoBehaviour
             foreach (UICommunicator ui in UICommunicators)
             {
                 ui.enabled = false;
+                ui.gameObject.GetComponentInChildren<PlayerIndicator>().DisableText();
+                StartCoroutine(ui.gameObject.GetComponentInChildren<PlayerIndicator>().EnableText());
             }
         }
     }
