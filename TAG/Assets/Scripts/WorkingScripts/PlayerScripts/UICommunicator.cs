@@ -12,6 +12,7 @@ public class UICommunicator : MonoBehaviour
     private CharacterController characterController;
     private PlayerUIScript playerUIScript;
     private PlayerInput playerInput;
+    private PlayerIndicator playerIndicator;    
     private int lastTeamJoined;
     // Start is called before the first frame update
     void Awake()
@@ -19,6 +20,7 @@ public class UICommunicator : MonoBehaviour
         playerandSoawnManager = FindObjectOfType<PlayerandSoawnManager>();
         characterController = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
+        playerIndicator = GetComponentInChildren<PlayerIndicator>();
         playerandSoawnManager.UICommunicators.Add(this);
         playerInput.actions["Swap"].Enable();
         playerInput.actions["Start"].Enable();
@@ -53,12 +55,17 @@ public class UICommunicator : MonoBehaviour
                         playerandSoawnManager.unassigned.Remove(this.gameObject);
                         playerandSoawnManager.team2.Add(this.gameObject);
                         playerUIScript.teamText.text = "Team 2";
-                        characterController.playerSprite.sprite = playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject)];
-                        playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
+                    playerUIScript.teamText.color = playerUIScript.teamColors[1];
+                    characterController.playerSprite.sprite = playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject)];
+                    playerUIScript.playerText.color = playerUIScript.player2Colors[playerandSoawnManager.team2.IndexOf(this.gameObject)];
+                    playerIndicator.textMeshProUGUI.color = playerUIScript.player2Colors[playerandSoawnManager.team2.IndexOf(this.gameObject)];
+                    playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
                         if (playerandSoawnManager.team2[0] != this.gameObject && playerandSoawnManager.team2[0].GetComponent<UICommunicator>().playerUIScript.playerImage.sprite == playerandSoawnManager.team2[0].GetComponent<UICommunicator>().playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject)])
                         {
                             characterController.playerSprite.sprite = playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject) - 1];
-                            playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
+                        playerUIScript.playerText.color = playerUIScript.player2Colors[playerandSoawnManager.team2.IndexOf(this.gameObject) - 1];
+                        playerIndicator.textMeshProUGUI.color = playerUIScript.player2Colors[playerandSoawnManager.team2.IndexOf(this.gameObject) - 1];
+                        playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
                         }
                         lastTeamJoined = 2;
                         return;
@@ -68,12 +75,17 @@ public class UICommunicator : MonoBehaviour
                         playerandSoawnManager.unassigned.Remove(this.gameObject);
                         playerandSoawnManager.team1.Add(this.gameObject);
                         playerUIScript.teamText.text = "Team 1";
-                        characterController.playerSprite.sprite = playerUIScript.team1Sprites[playerandSoawnManager.team1.IndexOf(this.gameObject)];
-                        playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
+                    playerUIScript.teamText.color = playerUIScript.teamColors[0];
+                    characterController.playerSprite.sprite = playerUIScript.team1Sprites[playerandSoawnManager.team1.IndexOf(this.gameObject)];
+                    playerUIScript.playerText.color = playerUIScript.player1Colors[playerandSoawnManager.team1.IndexOf(this.gameObject)];
+                    playerIndicator.textMeshProUGUI.color = playerUIScript.player1Colors[playerandSoawnManager.team1.IndexOf(this.gameObject)];
+                    playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
                         if (playerandSoawnManager.team1[0] != this.gameObject && playerandSoawnManager.team1[0].GetComponent<UICommunicator>().playerUIScript.playerImage.sprite == playerandSoawnManager.team1[0].GetComponent<UICommunicator>().playerUIScript.team1Sprites[playerandSoawnManager.team1.IndexOf(this.gameObject)])
                         {
                             characterController.playerSprite.sprite = playerUIScript.team1Sprites[playerandSoawnManager.team1.IndexOf(this.gameObject) - 1];
-                            playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
+                        playerUIScript.playerText.color = playerUIScript.player1Colors[playerandSoawnManager.team1.IndexOf(this.gameObject) - 1];
+                        playerIndicator.textMeshProUGUI.color = playerUIScript.player1Colors[playerandSoawnManager.team1.IndexOf(this.gameObject) - 1];
+                        playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
                         }
                         lastTeamJoined = 1;
                         return;
@@ -84,11 +96,14 @@ public class UICommunicator : MonoBehaviour
                         playerandSoawnManager.unassigned.Remove(this.gameObject);
                         playerandSoawnManager.team2.Add(this.gameObject);
                         playerUIScript.teamText.text = "Team 2";
+                        playerUIScript.teamText.color = playerUIScript.teamColors[1];
                         characterController.playerSprite.sprite = playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject)];
+                        playerUIScript.playerText.color = playerUIScript.player2Colors[playerandSoawnManager.team2.IndexOf(this.gameObject)];
                         playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
                         if (playerandSoawnManager.team2[0] != this.gameObject && playerandSoawnManager.team2[0].GetComponent<UICommunicator>().playerUIScript.playerImage.sprite == playerandSoawnManager.team2[0].GetComponent<UICommunicator>().playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject)])
                         {
                             characterController.playerSprite.sprite = playerUIScript.team2Sprites[playerandSoawnManager.team2.IndexOf(this.gameObject) - 1];
+                            playerUIScript.playerText.color = playerUIScript.player2Colors[playerandSoawnManager.team2.IndexOf(this.gameObject) - 1];
                             playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
                         }
                         lastTeamJoined = 2;
@@ -101,7 +116,9 @@ public class UICommunicator : MonoBehaviour
                         playerandSoawnManager.team2.Remove(this.gameObject);
                         playerandSoawnManager.unassigned.Add(this.gameObject);
                         playerUIScript.teamText.text = "Unassigned";
-                        characterController.playerSprite.sprite = playerUIScript.unassignedSprite;
+                playerUIScript.teamText.color = playerUIScript.teamColors[2];
+                playerUIScript.playerText.color = Color.white;
+                characterController.playerSprite.sprite = playerUIScript.unassignedSprite;
                         playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
                     return;
                 }
@@ -110,7 +127,9 @@ public class UICommunicator : MonoBehaviour
                     playerandSoawnManager.team1.Remove(this.gameObject);
                     playerandSoawnManager.unassigned.Add(this.gameObject);
                     playerUIScript.teamText.text = "Unassigned";
-                    characterController.playerSprite.sprite = playerUIScript.unassignedSprite;
+                playerUIScript.teamText.color = playerUIScript.teamColors[2];
+                playerUIScript.playerText.color = Color.white;
+                characterController.playerSprite.sprite = playerUIScript.unassignedSprite;
                     playerUIScript.playerImage.sprite = characterController.playerSprite.sprite;
                     return;
                 }
