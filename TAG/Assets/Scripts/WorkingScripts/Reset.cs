@@ -27,4 +27,8 @@ public class Reset : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+    public void PlayerSelect()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
