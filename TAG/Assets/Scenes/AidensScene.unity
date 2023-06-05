@@ -243,6 +243,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShatterRock (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7112420704952360244, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8379257420534034473, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2338,6 +2342,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShatterRock (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7112420704952360244, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8379257420534034473, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -3994,6 +4002,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBlock (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
 --- !u!1 &439672985
@@ -4367,6 +4379,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBlock (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
 --- !u!1 &457858549
@@ -4715,6 +4731,10 @@ PrefabInstance:
     - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
       propertyPath: m_Name
       value: BreakableBlock (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
@@ -5667,6 +5687,10 @@ PrefabInstance:
     - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
       propertyPath: m_Name
       value: BreakableBlock (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
@@ -7730,10 +7754,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleporterBlockA
       objectReference: {fileID: 0}
-    - target: {fileID: 9066443940750338272, guid: e3e6557f6f463c849a5564bc17a702d9, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3e6557f6f463c849a5564bc17a702d9, type: 3}
 --- !u!1001 &829636681
@@ -8071,6 +8091,10 @@ PrefabInstance:
     - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
       propertyPath: m_Name
       value: BreakableBlock (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
@@ -8572,6 +8596,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShatterRock (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 7112420704952360244, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8379257420534034473, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -8712,6 +8740,10 @@ PrefabInstance:
     - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
       propertyPath: m_Name
       value: BreakableBlock (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
@@ -9145,6 +9177,10 @@ PrefabInstance:
     - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
       propertyPath: m_Name
       value: BreakableBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
@@ -10229,6 +10265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShatterRock (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7112420704952360244, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8379257420534034473, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -10369,6 +10409,10 @@ PrefabInstance:
     - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
       propertyPath: m_Name
       value: BreakableBlock (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
@@ -11209,6 +11253,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
 --- !u!1001 &1180152893
@@ -11305,6 +11353,10 @@ PrefabInstance:
     - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
       propertyPath: m_Name
       value: BreakableBlock (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
@@ -11738,6 +11790,10 @@ PrefabInstance:
     - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
       propertyPath: m_Name
       value: BreakableBlock (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
@@ -12316,6 +12372,10 @@ PrefabInstance:
     - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
       propertyPath: m_Name
       value: BreakableBlock (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
@@ -13222,6 +13282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBlock (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
 --- !u!4 &1352464299 stripped
@@ -13323,6 +13387,10 @@ PrefabInstance:
     - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
       propertyPath: m_Name
       value: BreakableBlock (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
@@ -14830,6 +14898,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShatterRock (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7112420704952360244, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8379257420534034473, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -15463,6 +15535,10 @@ PrefabInstance:
     - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
       propertyPath: m_Name
       value: BreakableBlock (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
@@ -16105,6 +16181,10 @@ PrefabInstance:
     - target: {fileID: 7112420704952360244, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
       propertyPath: m_Name
       value: ShatterRock (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112420704952360244, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8379257420534034473, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
       propertyPath: m_RootOrder
@@ -18775,6 +18855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBlock (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
 --- !u!4 &1846465837 stripped
@@ -20246,6 +20330,10 @@ PrefabInstance:
     - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
       propertyPath: m_Name
       value: BreakableBlock (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612404321048641935, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3eae44ac50ea34998d6b742f664795, type: 3}
