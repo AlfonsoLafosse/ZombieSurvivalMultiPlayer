@@ -21,6 +21,7 @@ public class Teleporter : MonoBehaviour
             if (collision.gameObject.tag == "ChildCollider")
             {
                 collidingTransform.parent.position = GetRandomExit().transform.position;
+                StartCoroutine(collidingTransform.parent.GetComponent<CharacterController>().playerIndicator.EnableText());
                 StartCoroutine(TeleportDelay());
             }
             else

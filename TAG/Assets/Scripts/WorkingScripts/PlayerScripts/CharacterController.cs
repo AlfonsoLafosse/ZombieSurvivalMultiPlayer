@@ -31,6 +31,7 @@ public class CharacterController : MonoBehaviour
     private bool velocityEnable;
     public bool teleportable;
     public PlayerCamera playerCamera;
+    public PlayerIndicator playerIndicator;
 
     private void Awake()
     {
@@ -150,7 +151,7 @@ public class CharacterController : MonoBehaviour
         inputActive = false;
         i = true;
         moveDirection = -moveDirection;
-        Debug.Log("Stopped" + gameObject);
+        StartCoroutine(playerIndicator.EnableText());
         yield return new WaitForSeconds(.15f);
         dom = false;
         inputActive = true;
@@ -159,6 +160,7 @@ public class CharacterController : MonoBehaviour
     public IEnumerator SpawnI()
     {
         i = true;
+        StartCoroutine(playerIndicator.EnableText());
         yield return new WaitForSeconds(0.5f);
         i = false;
     }

@@ -837,6 +837,7 @@ MonoBehaviour:
   hasCrown: 0
   teleportable: 0
   playerCamera: {fileID: 0}
+  playerIndicator: {fileID: 680517966787877815}
 --- !u!114 &2365892196132931480
 MonoBehaviour:
   m_ObjectHideFlags: 0
