@@ -10,10 +10,7 @@ public class DestructibleObjectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (GameObject obj in objects)
-        {
-            spawnPositions.Add(obj.transform.position);
-        }
+        NewScene();
     }
 
     // Update is called once per frame
@@ -31,7 +28,17 @@ public class DestructibleObjectManager : MonoBehaviour
             }
             gameObject.transform.position = spawnPositions[objects.IndexOf(gameObject)];
             gameObject.SetActive(true);
-
+        }
+    }
+    public void NewScene()
+    {
+        foreach (GameObject taggedObj in GameObject.FindGameObjectsWithTag("Destructible"))
+        {
+            objects.Add(taggedObj);
+        }
+        foreach (GameObject obj in objects)
+        {
+            spawnPositions.Add(obj.transform.position);
         }
     }
 
