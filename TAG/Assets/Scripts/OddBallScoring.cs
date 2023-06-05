@@ -7,7 +7,7 @@ using TMPro;
 public class OddBallScoring : MonoBehaviour
 {
     public PlayerandSoawnManager playerandSoawnManager;
-    public float score = 100;
+    public float score;
     public float finalScore;
     public GameObject playerWithCrown;
     public Slider slider;

@@ -1649,6 +1649,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7263041535630287583}
     - target: {fileID: 1640847060, guid: e3bcead701085dd44be6a7241ce4acfb, type: 3}
+      propertyPath: finalScore
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640847060, guid: e3bcead701085dd44be6a7241ce4acfb, type: 3}
       propertyPath: sliderObject
       value: 
       objectReference: {fileID: 4813275590182917288}
