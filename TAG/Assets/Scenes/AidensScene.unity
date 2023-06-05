@@ -8522,6 +8522,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2075415208}
     m_Modifications:
+    - target: {fileID: 5049445393655752716, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7112420704952360244, guid: 29407b62a70f6f54685abe5442b28796, type: 3}
       propertyPath: m_Name
       value: ShatterRock (6)
@@ -14807,6 +14811,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1193445254}
     m_Modifications:
+    - target: {fileID: 7602712009865537588, guid: fb4a5f35cf700b841acc0764c4751d79, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7922726590064466763, guid: fb4a5f35cf700b841acc0764c4751d79, type: 3}
       propertyPath: m_Name
       value: SlowTrap

@@ -8,6 +8,8 @@ public class Teleporter : MonoBehaviour
     public GameObject[] Exits;
     public bool teleportable;
 
+    public AudioSource audioSource;
+
     private void Start()
     {
         teleportable = true;
@@ -15,6 +17,11 @@ public class Teleporter : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.tag == "Player")
+        {
+            audioSource.Play();
+        }
+
         Transform collidingTransform = collision.gameObject.transform;
         if (collidingTransform != null && teleportable == true)
         {
