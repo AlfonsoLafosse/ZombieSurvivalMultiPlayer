@@ -10,6 +10,7 @@ TagManager:
   - GoalPlayer1
   - GoalPlayer2
   - ChildCollider
+  - SpawnP
   layers:
   - Default
   - TransparentFX
