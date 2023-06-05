@@ -9,10 +9,12 @@ using UnityEngine.InputSystem.Users;
 
 public class PlayerandSoawnManager : MonoBehaviour
 {
-    [SerializeField] public Transform[] playerSpawnPositions;
+    [SerializeField] public List<Transform> playerSpawnPositions;
     public List<GameObject> team1;
     public List<GameObject> team2;
     public List<GameObject> unassigned;
+    public List<GameObject> levels;
+    public int selectedLevel;
     public PlayerCamera playerCamera;
     public GameObject crownObject;
     public bool teamCheck;
@@ -42,6 +44,7 @@ public class PlayerandSoawnManager : MonoBehaviour
         playerInputManager = FindObjectOfType<PlayerInputManager>();
         oddBallScoring = GetComponent<OddBallScoring>();
         destructibleObjectManager = GetComponent<DestructibleObjectManager>();
+        FindSpawns();
         gameStarted = false;
         Time.timeScale = 0;
     }
@@ -141,6 +144,24 @@ public class PlayerandSoawnManager : MonoBehaviour
     }
     public void ResetScene()
     {
+        selectedLevel++;
+        if (selectedLevel > levels.Count - 1)
+        {
+            selectedLevel = 0;
+        }
+        oddBallScoring.playerWithCrown = null;
+        foreach (GameObject level in levels)
+        {
+            if (levels.IndexOf(level) == selectedLevel)
+            {
+                level.SetActive(true);
+                FindSpawns();
+            }
+            else
+            {
+                level.SetActive(false);
+            }
+        }
         foreach (GameObject player in _PlayerObject)
         {
             player.GetComponent<CharacterController>().hasCrown = false;
@@ -153,5 +174,16 @@ public class PlayerandSoawnManager : MonoBehaviour
         Time.timeScale = 1;
         destructibleObjectManager.RoundStart();
         Instantiate(crownObject);
+    }
+    public void FindSpawns()
+    {
+        if (playerSpawnPositions.Count != 0)
+        {
+            playerSpawnPositions.Clear();
+        }
+        foreach (GameObject spawnObj in GameObject.FindGameObjectsWithTag("SpawnP"))
+        {
+            playerSpawnPositions.Add(spawnObj.transform);
+        }
     }
 }
