@@ -33,6 +33,8 @@ public class CharacterController : MonoBehaviour
     public PlayerCamera playerCamera;
     public PlayerIndicator playerIndicator;
 
+    public AudioSource audioSource;
+
     private void Awake()
     {
         playerandSoawnManager = FindObjectOfType<PlayerandSoawnManager>();
@@ -206,5 +208,10 @@ public class CharacterController : MonoBehaviour
             }
             playerandSoawnManager.PlayersCollided(this.gameObject, this.GetComponent<CharacterController>(), other.gameObject, other.gameObject.GetComponent<CharacterController>());
         }
+    }
+
+    public void PlayShatterRockSound()
+    {
+        audioSource.Play();
     }
 }
