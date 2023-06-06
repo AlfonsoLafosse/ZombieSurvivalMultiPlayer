@@ -39,6 +39,7 @@ public class CharacterController : MonoBehaviour
     public AudioClip crateAudioClip;
     public AudioClip glassBreakAudioClip;
     public AudioClip glassFinalBreakAudioClip;
+    public GameObject sparkPrefab;
     
 
     private void Awake()
@@ -54,6 +55,7 @@ public class CharacterController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         gameObject.name = "Player " + GetComponent<UICommunicator>().playerInt;
         playerInput.actions["Move"].Enable();
+        playerInput.actions["Pass"].Enable();
         rb.drag = slipperyFactor;
         inputActive = true;
         teleportable = true;
@@ -67,7 +69,7 @@ public class CharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        playerInput.actions["Pass"].performed += Pass;
         float horizontalInput = playerInput.actions["Move"].ReadValue<Vector2>().x;
         float verticalInput = playerInput.actions["Move"].ReadValue<Vector2>().y;
         if (velocityEnable)
@@ -166,6 +168,12 @@ public class CharacterController : MonoBehaviour
         inputActive = true;
         i = false;
     }
+    public IEnumerator PassDelay()
+    {
+        playerandSoawnManager.canCollectCrown = false;
+        yield return new WaitForSeconds(0.2f);
+        playerandSoawnManager.canCollectCrown = true;
+    }
     public IEnumerator SpawnI()
     {
         i = true;
@@ -235,5 +243,13 @@ public class CharacterController : MonoBehaviour
     {
         audioSource.clip = glassFinalBreakAudioClip;
         audioSource.Play();
+    }
+    public void Pass(InputAction.CallbackContext context)
+    {
+        hasCrown = false;
+        StartCoroutine(PassDelay());
+        GameObject spark = Instantiate(sparkPrefab, this.transform.position, Quaternion.identity);
+        StartCoroutine(spark.GetComponent<DiagonalBouncer>().SpawnDelay(this.gameObject));
+        spark.GetComponent<DiagonalBouncer>().direction = moveDirection;
     }
 }
