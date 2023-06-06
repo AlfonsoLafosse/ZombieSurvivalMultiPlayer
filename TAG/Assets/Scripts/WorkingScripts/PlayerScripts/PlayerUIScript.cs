@@ -14,10 +14,11 @@ public class PlayerUIScript : MonoBehaviour
     public List<Color> teamColors;
     public List<Color> player1Colors;
     public List<Color> player2Colors;
+    public AudioSource playerAudioSource;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

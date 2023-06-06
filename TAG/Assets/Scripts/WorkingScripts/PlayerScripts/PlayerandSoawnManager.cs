@@ -34,6 +34,7 @@ public class PlayerandSoawnManager : MonoBehaviour
     public DestructibleObjectManager destructibleObjectManager;
     public GameObject controlsHud;
     public GameObject goalHud;
+    public MusicManager musicManager;
 
     public List<GameObject> _PlayerObject = new List<GameObject>();
     public GameObject _CrownObject = null;
@@ -46,7 +47,10 @@ public class PlayerandSoawnManager : MonoBehaviour
         playerInputManager = FindObjectOfType<PlayerInputManager>();
         oddBallScoring = GetComponent<OddBallScoring>();
         destructibleObjectManager = GetComponent<DestructibleObjectManager>();
-        FindSpawns();
+        musicManager = FindObjectOfType<MusicManager>();
+        destructibleObjectManager.NewScene();
+        //ResetScene();
+        InitialScene();
         gameStarted = false;
         Time.timeScale = 0;
     }
@@ -151,6 +155,40 @@ public class PlayerandSoawnManager : MonoBehaviour
     public void ResetScene()
     {
         selectedLevel++;
+        musicManager.audioSource.volume = 1;
+        if (selectedLevel > levels.Count - 1)
+        {
+            selectedLevel = 0;
+        }
+        oddBallScoring.playerWithCrown = null;
+        foreach (GameObject level in levels)
+        {
+            if (levels.IndexOf(level) == selectedLevel)
+            {
+                level.SetActive(true);
+            }
+            else
+            {
+                level.SetActive(false);
+            }
+        }
+        FindSpawns();
+        foreach (GameObject player in _PlayerObject)
+        {
+            player.GetComponent<CharacterController>().hasCrown = false;
+            player.transform.position = playerSpawnPositions[_PlayerObject.IndexOf(player.gameObject)].position;
+        }
+        team1Win.SetActive(false);
+        team2Win.SetActive(false);
+        sliderObject.SetActive(true);
+        oddBallScoring.score = 100;
+        Time.timeScale = 1;
+        destructibleObjectManager.RoundStart();
+        Instantiate(crownObject);
+    }
+    public void InitialScene()
+    {
+        selectedLevel++;
         if (selectedLevel > levels.Count - 1)
         {
             selectedLevel = 0;
@@ -179,7 +217,6 @@ public class PlayerandSoawnManager : MonoBehaviour
         oddBallScoring.score = 100;
         Time.timeScale = 1;
         destructibleObjectManager.RoundStart();
-        Instantiate(crownObject);
     }
     public void FindSpawns()
     {
@@ -200,6 +237,7 @@ public class PlayerandSoawnManager : MonoBehaviour
         }
         controlsHud.SetActive(true);
         yield return new WaitForSeconds(5);
+        musicManager.StartMusic();
         controlsHud.SetActive(false);
         goalHud.SetActive(true);
         yield return new WaitForSeconds(8);
