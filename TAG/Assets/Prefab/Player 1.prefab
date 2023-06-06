@@ -844,6 +844,7 @@ MonoBehaviour:
   crownAudioSource: {fileID: 6035787292332822421}
   crateAudioClip: {fileID: 8300000, guid: 242212cc25375b641808d7be69ae0eb6, type: 3}
   glassBreakAudioClip: {fileID: 8300000, guid: 2c20df82326fd6d42ae0e5028b359dba, type: 3}
+  glassFinalBreakAudioClip: {fileID: 8300000, guid: 39bbf48f66b985b42afd53b660e033d8, type: 3}
 --- !u!114 &2365892196132931480
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -38,6 +38,7 @@ public class CharacterController : MonoBehaviour
 
     public AudioClip crateAudioClip;
     public AudioClip glassBreakAudioClip;
+    public AudioClip glassFinalBreakAudioClip;
     
 
     private void Awake()
@@ -121,6 +122,7 @@ public class CharacterController : MonoBehaviour
         else
         {
             goldTrail.SetActive(false);
+            crownAudioSource.Stop();
         }
 
 
@@ -226,6 +228,12 @@ public class CharacterController : MonoBehaviour
     public void PlayBreakableBlockSound()
     {
         audioSource.clip = glassBreakAudioClip;
+        audioSource.Play();
+    }
+
+    public void PlayFinalBreakableBlockSound()
+    {
+        audioSource.clip = glassFinalBreakAudioClip;
         audioSource.Play();
     }
 }
