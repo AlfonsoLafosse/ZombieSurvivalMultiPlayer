@@ -199,10 +199,10 @@ public class PlayerandSoawnManager : MonoBehaviour
             player.GetComponent<CharacterController>().inputActive = false;
         }
         controlsHud.SetActive(true);
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         controlsHud.SetActive(false);
         goalHud.SetActive(true);
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(8);
         foreach (GameObject player in _PlayerObject)
         {
             player.GetComponent<CharacterController>().inputActive = true;

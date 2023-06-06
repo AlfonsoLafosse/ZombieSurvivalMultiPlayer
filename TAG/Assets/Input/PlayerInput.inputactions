@@ -372,7 +372,7 @@
                 {
                     "name": "",
                     "id": "21c83e99-baad-40dc-88a0-93e4a68d5b46",
-                    "path": "<Gamepad>/select",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
