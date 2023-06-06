@@ -50,6 +50,10 @@ public class OddBallScoring : MonoBehaviour
             Time.timeScale = 0;
             musicManager.audioSource.volume = .25f;
             musicManager.youWin.Play();
+            foreach (GameObject player in playerandSoawnManager._PlayerObject)
+            {
+                player.GetComponent<CharacterController>().hasCrown = false;
+            }
             sliderObject.SetActive(false);
             team1Win.SetActive(true);
         }
@@ -58,6 +62,10 @@ public class OddBallScoring : MonoBehaviour
             Time.timeScale = 0;
             musicManager.audioSource.volume = .25f;
             musicManager.youWin.Play();
+            foreach (GameObject player in playerandSoawnManager._PlayerObject)
+            {
+                player.GetComponent<CharacterController>().hasCrown = false;
+            }
             sliderObject.SetActive(false);
             team2Win.SetActive(true);
         }
