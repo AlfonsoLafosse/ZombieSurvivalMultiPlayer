@@ -7,9 +7,15 @@ public class SlowTrap : MonoBehaviour
 {
     private float originalSpeed;
     public float slowedSpeed = 2f; // Speed to set when player enters the trigger zone
+    public AudioSource audioSource;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.tag == "Player")
+        {
+            audioSource.Play();
+        }
+        
         if (collision.gameObject.GetComponent<CharacterController>() != null)
         {
             originalSpeed = collision.gameObject.GetComponent<CharacterController>().moveSpeed; // Store the player's original speed

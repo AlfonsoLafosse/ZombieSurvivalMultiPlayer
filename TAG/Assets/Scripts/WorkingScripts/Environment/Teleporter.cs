@@ -8,6 +8,8 @@ public class Teleporter : MonoBehaviour
     public GameObject[] Exits;
     public bool teleportable;
 
+    public AudioSource audioSource;
+
     private void Start()
     {
         teleportable = true;
@@ -15,6 +17,12 @@ public class Teleporter : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.tag == "Player")
+        {
+            audioSource.Play();
+            StartCoroutine(TeleportDelay());
+        }
+
         Transform collidingTransform = collision.gameObject.transform;
         if (collidingTransform != null && teleportable == true)
         {
@@ -22,12 +30,12 @@ public class Teleporter : MonoBehaviour
             {
                 collidingTransform.parent.position = GetRandomExit().transform.position;
                 StartCoroutine(collidingTransform.parent.GetComponent<CharacterController>().playerIndicator.EnableText());
-                StartCoroutine(TeleportDelay());
+                
             }
             else
             {
                 collidingTransform.position = GetRandomExit().transform.position;
-                StartCoroutine(TeleportDelay());
+                
             }
         }
 
