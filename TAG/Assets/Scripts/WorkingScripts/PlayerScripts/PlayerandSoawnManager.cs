@@ -133,7 +133,7 @@ public class PlayerandSoawnManager : MonoBehaviour
     }
     public void StartGame()
     {
-        if (team1.Count > 0 && team2.Count > 0 && unassigned.Count <= 0)
+        if (team1.Count > 0 && team2.Count > 0 && unassigned.Count <= 0 && gameStarted == false)
         {
             mainMenu.SetActive(false);
             Time.timeScale = 1;
