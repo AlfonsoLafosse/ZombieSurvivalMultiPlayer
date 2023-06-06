@@ -10,7 +10,7 @@ public class DestructibleObjectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        NewScene();
+        //NewScene();
     }
 
     // Update is called once per frame

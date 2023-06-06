@@ -46,6 +46,8 @@ public class PlayerandSoawnManager : MonoBehaviour
         playerInputManager = FindObjectOfType<PlayerInputManager>();
         oddBallScoring = GetComponent<OddBallScoring>();
         destructibleObjectManager = GetComponent<DestructibleObjectManager>();
+        destructibleObjectManager.NewScene();
+        ResetScene();
         FindSpawns();
         gameStarted = false;
         Time.timeScale = 0;
