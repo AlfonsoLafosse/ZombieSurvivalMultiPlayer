@@ -20,6 +20,7 @@ public class Teleporter : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             audioSource.Play();
+            StartCoroutine(TeleportDelay());
         }
 
         Transform collidingTransform = collision.gameObject.transform;
@@ -29,12 +30,12 @@ public class Teleporter : MonoBehaviour
             {
                 collidingTransform.parent.position = GetRandomExit().transform.position;
                 StartCoroutine(collidingTransform.parent.GetComponent<CharacterController>().playerIndicator.EnableText());
-                StartCoroutine(TeleportDelay());
+                
             }
             else
             {
                 collidingTransform.position = GetRandomExit().transform.position;
-                StartCoroutine(TeleportDelay());
+                
             }
         }
 
