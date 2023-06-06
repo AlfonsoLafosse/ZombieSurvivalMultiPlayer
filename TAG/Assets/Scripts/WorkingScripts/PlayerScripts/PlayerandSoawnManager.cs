@@ -47,8 +47,8 @@ public class PlayerandSoawnManager : MonoBehaviour
         oddBallScoring = GetComponent<OddBallScoring>();
         destructibleObjectManager = GetComponent<DestructibleObjectManager>();
         destructibleObjectManager.NewScene();
-        ResetScene();
-        FindSpawns();
+        //ResetScene();
+        InitialScene();
         gameStarted = false;
         Time.timeScale = 0;
     }
@@ -163,6 +163,39 @@ public class PlayerandSoawnManager : MonoBehaviour
             if (levels.IndexOf(level) == selectedLevel)
             {
                 level.SetActive(true);
+            }
+            else
+            {
+                level.SetActive(false);
+            }
+        }
+        FindSpawns();
+        foreach (GameObject player in _PlayerObject)
+        {
+            player.GetComponent<CharacterController>().hasCrown = false;
+            player.transform.position = playerSpawnPositions[_PlayerObject.IndexOf(player.gameObject)].position;
+        }
+        team1Win.SetActive(false);
+        team2Win.SetActive(false);
+        sliderObject.SetActive(true);
+        oddBallScoring.score = 100;
+        Time.timeScale = 1;
+        destructibleObjectManager.RoundStart();
+        Instantiate(crownObject);
+    }
+    public void InitialScene()
+    {
+        selectedLevel++;
+        if (selectedLevel > levels.Count - 1)
+        {
+            selectedLevel = 0;
+        }
+        oddBallScoring.playerWithCrown = null;
+        foreach (GameObject level in levels)
+        {
+            if (levels.IndexOf(level) == selectedLevel)
+            {
+                level.SetActive(true);
                 FindSpawns();
             }
             else
@@ -181,7 +214,6 @@ public class PlayerandSoawnManager : MonoBehaviour
         oddBallScoring.score = 100;
         Time.timeScale = 1;
         destructibleObjectManager.RoundStart();
-        Instantiate(crownObject);
     }
     public void FindSpawns()
     {
