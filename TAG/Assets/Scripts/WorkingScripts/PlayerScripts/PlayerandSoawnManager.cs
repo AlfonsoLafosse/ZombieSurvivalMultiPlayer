@@ -208,5 +208,6 @@ public class PlayerandSoawnManager : MonoBehaviour
             player.GetComponent<CharacterController>().inputActive = true;
         }
         goalHud.SetActive(false);
+        Instantiate(crownObject);
     }
 }
