@@ -9,10 +9,12 @@ using UnityEngine.InputSystem.Users;
 
 public class PlayerandSoawnManager : MonoBehaviour
 {
-    [SerializeField] public Transform[] playerSpawnPositions;
+    [SerializeField] public List<Transform> playerSpawnPositions;
     public List<GameObject> team1;
     public List<GameObject> team2;
     public List<GameObject> unassigned;
+    public List<GameObject> levels;
+    public int selectedLevel;
     public PlayerCamera playerCamera;
     public GameObject crownObject;
     public bool teamCheck;
@@ -30,6 +32,8 @@ public class PlayerandSoawnManager : MonoBehaviour
     public GameObject team2Win;
     public GameObject sliderObject;
     public DestructibleObjectManager destructibleObjectManager;
+    public GameObject controlsHud;
+    public GameObject goalHud;
 
     public List<GameObject> _PlayerObject = new List<GameObject>();
     public GameObject _CrownObject = null;
@@ -42,6 +46,7 @@ public class PlayerandSoawnManager : MonoBehaviour
         playerInputManager = FindObjectOfType<PlayerInputManager>();
         oddBallScoring = GetComponent<OddBallScoring>();
         destructibleObjectManager = GetComponent<DestructibleObjectManager>();
+        FindSpawns();
         gameStarted = false;
         Time.timeScale = 0;
     }
@@ -72,38 +77,41 @@ public class PlayerandSoawnManager : MonoBehaviour
         }
         else
         {
-            if (playerController.moveDirection == new Vector2(0,1) && player.transform.position.x > otherPlayerController.transform.position.x - playerSizeOffset && player.transform.position.x < otherPlayerController.transform.position.x + playerSizeOffset && player.transform.position.y < otherPlayer.transform.position.y)
+            if ((team1.Contains(player) && team2.Contains(otherPlayer)) || (team1.Contains(otherPlayer) && team2.Contains(player)))
             {
-                DestroyPlayer(otherPlayer, player);
-            }
-            if (playerController.moveDirection == new Vector2(0, -1) && player.transform.position.x > otherPlayerController.transform.position.x - playerSizeOffset && player.transform.position.x < otherPlayerController.transform.position.x + playerSizeOffset && player.transform.position.y > otherPlayer.transform.position.y)
-            {
-                DestroyPlayer(otherPlayer, player);
-            }
-            if (playerController.moveDirection == new Vector2(1, 0) && player.transform.position.y > otherPlayerController.transform.position.y - playerSizeOffset && player.transform.position.y < otherPlayerController.transform.position.y + playerSizeOffset && player.transform.position.x < otherPlayer.transform.position.x)
-            {
-                DestroyPlayer(otherPlayer, player);
-            }
-            if (playerController.moveDirection == new Vector2(-1, 0) && player.transform.position.y > otherPlayerController.transform.position.y - playerSizeOffset && player.transform.position.y < otherPlayerController.transform.position.y + playerSizeOffset && player.transform.position.x > otherPlayer.transform.position.x)
-            {
-                DestroyPlayer(otherPlayer, player);
-            }
+                if (playerController.moveDirection == new Vector2(0, 1) && player.transform.position.x > otherPlayerController.transform.position.x - playerSizeOffset && player.transform.position.x < otherPlayerController.transform.position.x + playerSizeOffset && player.transform.position.y < otherPlayer.transform.position.y)
+                {
+                    DestroyPlayer(otherPlayer, player);
+                }
+                if (playerController.moveDirection == new Vector2(0, -1) && player.transform.position.x > otherPlayerController.transform.position.x - playerSizeOffset && player.transform.position.x < otherPlayerController.transform.position.x + playerSizeOffset && player.transform.position.y > otherPlayer.transform.position.y)
+                {
+                    DestroyPlayer(otherPlayer, player);
+                }
+                if (playerController.moveDirection == new Vector2(1, 0) && player.transform.position.y > otherPlayerController.transform.position.y - playerSizeOffset && player.transform.position.y < otherPlayerController.transform.position.y + playerSizeOffset && player.transform.position.x < otherPlayer.transform.position.x)
+                {
+                    DestroyPlayer(otherPlayer, player);
+                }
+                if (playerController.moveDirection == new Vector2(-1, 0) && player.transform.position.y > otherPlayerController.transform.position.y - playerSizeOffset && player.transform.position.y < otherPlayerController.transform.position.y + playerSizeOffset && player.transform.position.x > otherPlayer.transform.position.x)
+                {
+                    DestroyPlayer(otherPlayer, player);
+                }
 
-            if (otherPlayerController.moveDirection == new Vector2(0, 1) && otherPlayer.transform.position.x > playerController.transform.position.x - playerSizeOffset && otherPlayer.transform.position.x < playerController.transform.position.x + playerSizeOffset && otherPlayer.transform.position.y < player.transform.position.y)
-            {
-                DestroyPlayer(player, otherPlayer);
-            }
-            if (otherPlayerController.moveDirection == new Vector2(0, -1) && otherPlayer.transform.position.x > playerController.transform.position.x - playerSizeOffset && otherPlayer.transform.position.x < playerController.transform.position.x + playerSizeOffset && otherPlayer.transform.position.y > player.transform.position.y)
-            {
-                DestroyPlayer(player, otherPlayer);
-            }
-            if (otherPlayerController.moveDirection == new Vector2(1, 0) && otherPlayer.transform.position.y > playerController.transform.position.y - playerSizeOffset && otherPlayer.transform.position.y < playerController.transform.position.y + playerSizeOffset && otherPlayer.transform.position.x < player.transform.position.x)
-            {
-                DestroyPlayer(player, otherPlayer);
-            }
-            if (otherPlayerController.moveDirection == new Vector2(-1, 0) && otherPlayer.transform.position.y > playerController.transform.position.y - playerSizeOffset && otherPlayer.transform.position.y < playerController.transform.position.y + playerSizeOffset && otherPlayer.transform.position.x > player.transform.position.x)
-            {
-                DestroyPlayer(player, otherPlayer);
+                if (otherPlayerController.moveDirection == new Vector2(0, 1) && otherPlayer.transform.position.x > playerController.transform.position.x - playerSizeOffset && otherPlayer.transform.position.x < playerController.transform.position.x + playerSizeOffset && otherPlayer.transform.position.y < player.transform.position.y)
+                {
+                    DestroyPlayer(player, otherPlayer);
+                }
+                if (otherPlayerController.moveDirection == new Vector2(0, -1) && otherPlayer.transform.position.x > playerController.transform.position.x - playerSizeOffset && otherPlayer.transform.position.x < playerController.transform.position.x + playerSizeOffset && otherPlayer.transform.position.y > player.transform.position.y)
+                {
+                    DestroyPlayer(player, otherPlayer);
+                }
+                if (otherPlayerController.moveDirection == new Vector2(1, 0) && otherPlayer.transform.position.y > playerController.transform.position.y - playerSizeOffset && otherPlayer.transform.position.y < playerController.transform.position.y + playerSizeOffset && otherPlayer.transform.position.x < player.transform.position.x)
+                {
+                    DestroyPlayer(player, otherPlayer);
+                }
+                if (otherPlayerController.moveDirection == new Vector2(-1, 0) && otherPlayer.transform.position.y > playerController.transform.position.y - playerSizeOffset && otherPlayer.transform.position.y < playerController.transform.position.y + playerSizeOffset && otherPlayer.transform.position.x > player.transform.position.x)
+                {
+                    DestroyPlayer(player, otherPlayer);
+                }
             }
         }
     }
@@ -137,10 +145,29 @@ public class PlayerandSoawnManager : MonoBehaviour
                 ui.gameObject.GetComponentInChildren<PlayerIndicator>().DisableText();
                 StartCoroutine(ui.gameObject.GetComponentInChildren<PlayerIndicator>().EnableText());
             }
+            StartCoroutine(SpawnDelay());
         }
     }
     public void ResetScene()
     {
+        selectedLevel++;
+        if (selectedLevel > levels.Count - 1)
+        {
+            selectedLevel = 0;
+        }
+        oddBallScoring.playerWithCrown = null;
+        foreach (GameObject level in levels)
+        {
+            if (levels.IndexOf(level) == selectedLevel)
+            {
+                level.SetActive(true);
+                FindSpawns();
+            }
+            else
+            {
+                level.SetActive(false);
+            }
+        }
         foreach (GameObject player in _PlayerObject)
         {
             player.GetComponent<CharacterController>().hasCrown = false;
@@ -153,5 +180,33 @@ public class PlayerandSoawnManager : MonoBehaviour
         Time.timeScale = 1;
         destructibleObjectManager.RoundStart();
         Instantiate(crownObject);
+    }
+    public void FindSpawns()
+    {
+        if (playerSpawnPositions.Count != 0)
+        {
+            playerSpawnPositions.Clear();
+        }
+        foreach (GameObject spawnObj in GameObject.FindGameObjectsWithTag("SpawnP"))
+        {
+            playerSpawnPositions.Add(spawnObj.transform);
+        }
+    }
+    private IEnumerator SpawnDelay()
+    {
+        foreach (GameObject player in _PlayerObject)
+        {
+            player.GetComponent<CharacterController>().inputActive = false;
+        }
+        controlsHud.SetActive(true);
+        yield return new WaitForSeconds(2);
+        controlsHud.SetActive(false);
+        goalHud.SetActive(true);
+        yield return new WaitForSeconds(2);
+        foreach (GameObject player in _PlayerObject)
+        {
+            player.GetComponent<CharacterController>().inputActive = true;
+        }
+        goalHud.SetActive(false);
     }
 }
