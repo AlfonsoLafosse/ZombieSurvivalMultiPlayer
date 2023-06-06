@@ -48,6 +48,7 @@ public class UICommunicator : MonoBehaviour
         
             if (playerandSoawnManager.gameStarted == false)
             {
+                playerUIScript.playerAudioSource.Play();
                 if (playerandSoawnManager.unassigned.Contains(this.gameObject))
                 {
                     if (playerandSoawnManager.team2.Count < 2 && lastTeamJoined == 1)

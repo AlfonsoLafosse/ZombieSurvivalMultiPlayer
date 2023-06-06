@@ -17,17 +17,14 @@ public class Teleporter : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
-        {
-            audioSource.Play();
-            StartCoroutine(TeleportDelay());
-        }
 
         Transform collidingTransform = collision.gameObject.transform;
         if (collidingTransform != null && teleportable == true)
         {
             if (collision.gameObject.tag == "ChildCollider")
             {
+                audioSource.Play();
+                StartCoroutine(TeleportDelay());
                 collidingTransform.parent.position = GetRandomExit().transform.position;
                 StartCoroutine(collidingTransform.parent.GetComponent<CharacterController>().playerIndicator.EnableText());
                 

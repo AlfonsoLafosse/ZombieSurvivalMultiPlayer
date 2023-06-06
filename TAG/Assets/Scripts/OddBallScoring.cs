@@ -14,10 +14,12 @@ public class OddBallScoring : MonoBehaviour
     public GameObject sliderObject;
     public GameObject team1Win;
     public GameObject team2Win;
+    public MusicManager musicManager;
     // Start is called before the first frame update
     void Start()
     {
         playerandSoawnManager = GetComponent<PlayerandSoawnManager>();
+        musicManager = FindObjectOfType<MusicManager>();
     }
 
     // Update is called once per frame
@@ -46,12 +48,16 @@ public class OddBallScoring : MonoBehaviour
         if (score > finalScore)
         {
             Time.timeScale = 0;
+            musicManager.audioSource.volume = .25f;
+            musicManager.youWin.Play();
             sliderObject.SetActive(false);
             team1Win.SetActive(true);
         }
         if (score < 0)
         {
             Time.timeScale = 0;
+            musicManager.audioSource.volume = .25f;
+            musicManager.youWin.Play();
             sliderObject.SetActive(false);
             team2Win.SetActive(true);
         }

@@ -34,6 +34,7 @@ public class PlayerandSoawnManager : MonoBehaviour
     public DestructibleObjectManager destructibleObjectManager;
     public GameObject controlsHud;
     public GameObject goalHud;
+    public MusicManager musicManager;
 
     public List<GameObject> _PlayerObject = new List<GameObject>();
     public GameObject _CrownObject = null;
@@ -46,6 +47,7 @@ public class PlayerandSoawnManager : MonoBehaviour
         playerInputManager = FindObjectOfType<PlayerInputManager>();
         oddBallScoring = GetComponent<OddBallScoring>();
         destructibleObjectManager = GetComponent<DestructibleObjectManager>();
+        musicManager = FindObjectOfType<MusicManager>();
         destructibleObjectManager.NewScene();
         //ResetScene();
         InitialScene();
@@ -153,6 +155,7 @@ public class PlayerandSoawnManager : MonoBehaviour
     public void ResetScene()
     {
         selectedLevel++;
+        musicManager.audioSource.volume = 1;
         if (selectedLevel > levels.Count - 1)
         {
             selectedLevel = 0;
@@ -234,6 +237,7 @@ public class PlayerandSoawnManager : MonoBehaviour
         }
         controlsHud.SetActive(true);
         yield return new WaitForSeconds(5);
+        musicManager.StartMusic();
         controlsHud.SetActive(false);
         goalHud.SetActive(true);
         yield return new WaitForSeconds(8);
