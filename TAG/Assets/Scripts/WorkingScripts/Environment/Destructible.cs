@@ -14,6 +14,9 @@ public class Destructible : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+
+            collision.gameObject.GetComponent<CharacterController>().PlayBreakableBlockSound();
+
             listIndexValue++;
             if (listIndexValue < lifePoints)
             {

@@ -37,6 +37,7 @@ public class CharacterController : MonoBehaviour
     public AudioSource crownAudioSource;
 
     public AudioClip crateAudioClip;
+    public AudioClip glassBreakAudioClip;
     
 
     private void Awake()
@@ -219,6 +220,12 @@ public class CharacterController : MonoBehaviour
     public void PlayShatterRockSound()
     {
         audioSource.clip = crateAudioClip;
+        audioSource.Play();
+    }
+
+    public void PlayBreakableBlockSound()
+    {
+        audioSource.clip = glassBreakAudioClip;
         audioSource.Play();
     }
 }
