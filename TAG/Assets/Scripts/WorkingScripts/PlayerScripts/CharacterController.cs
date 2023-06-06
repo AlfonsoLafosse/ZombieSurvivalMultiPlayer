@@ -34,6 +34,10 @@ public class CharacterController : MonoBehaviour
     public PlayerIndicator playerIndicator;
 
     public AudioSource audioSource;
+    public AudioSource crownAudioSource;
+
+    public AudioClip crateAudioClip;
+    
 
     private void Awake()
     {
@@ -194,6 +198,8 @@ public class CharacterController : MonoBehaviour
 
         if(other.gameObject.tag == "Crown" && playerandSoawnManager.canCollectCrown == true)
         {
+            
+            crownAudioSource.Play();
             playerandSoawnManager._CrownObject = null;
             Destroy(other.gameObject);
             playerCamera.FindTargets();
@@ -212,6 +218,7 @@ public class CharacterController : MonoBehaviour
 
     public void PlayShatterRockSound()
     {
+        audioSource.clip = crateAudioClip;
         audioSource.Play();
     }
 }
