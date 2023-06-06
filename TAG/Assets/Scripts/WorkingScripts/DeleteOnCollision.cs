@@ -13,8 +13,6 @@ public class DeleteOnCollision : MonoBehaviour
     public float minForce = 5f;
     public float maxForce = 15f;
 
-    public AudioSource audioSource;
-
     
 
     // The number of objects to instantiate
@@ -24,12 +22,11 @@ public class DeleteOnCollision : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        
         // Check if the collision is with the player
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log(audioSource.name);
-            audioSource.Play();
+            collision.gameObject.GetComponent<CharacterController>().PlayShatterRockSound();
 
             // Turn off the game object
             objectToDisable.SetActive(false);
