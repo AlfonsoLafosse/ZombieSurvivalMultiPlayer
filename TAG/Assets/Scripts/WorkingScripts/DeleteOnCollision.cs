@@ -13,8 +13,6 @@ public class DeleteOnCollision : MonoBehaviour
     public float minForce = 5f;
     public float maxForce = 15f;
 
-    public AudioSource audioSource;
-
     
 
     // The number of objects to instantiate
