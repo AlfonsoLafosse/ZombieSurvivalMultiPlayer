@@ -33,6 +33,14 @@ public class CharacterController : MonoBehaviour
     public PlayerCamera playerCamera;
     public PlayerIndicator playerIndicator;
 
+    public AudioSource audioSource;
+    public AudioSource crownAudioSource;
+
+    public AudioClip crateAudioClip;
+    public AudioClip glassBreakAudioClip;
+    public AudioClip glassFinalBreakAudioClip;
+    
+
     private void Awake()
     {
         playerandSoawnManager = FindObjectOfType<PlayerandSoawnManager>();
@@ -114,6 +122,7 @@ public class CharacterController : MonoBehaviour
         else
         {
             goldTrail.SetActive(false);
+            crownAudioSource.Stop();
         }
 
 
@@ -192,6 +201,8 @@ public class CharacterController : MonoBehaviour
 
         if(other.gameObject.tag == "Crown" && playerandSoawnManager.canCollectCrown == true)
         {
+            
+            crownAudioSource.Play();
             playerandSoawnManager._CrownObject = null;
             Destroy(other.gameObject);
             playerCamera.FindTargets();
@@ -206,5 +217,23 @@ public class CharacterController : MonoBehaviour
             }
             playerandSoawnManager.PlayersCollided(this.gameObject, this.GetComponent<CharacterController>(), other.gameObject, other.gameObject.GetComponent<CharacterController>());
         }
+    }
+
+    public void PlayShatterRockSound()
+    {
+        audioSource.clip = crateAudioClip;
+        audioSource.Play();
+    }
+
+    public void PlayBreakableBlockSound()
+    {
+        audioSource.clip = glassBreakAudioClip;
+        audioSource.Play();
+    }
+
+    public void PlayFinalBreakableBlockSound()
+    {
+        audioSource.clip = glassFinalBreakAudioClip;
+        audioSource.Play();
     }
 }
