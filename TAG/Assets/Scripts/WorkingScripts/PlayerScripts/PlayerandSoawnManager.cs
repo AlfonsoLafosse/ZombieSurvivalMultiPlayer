@@ -32,6 +32,8 @@ public class PlayerandSoawnManager : MonoBehaviour
     public GameObject team2Win;
     public GameObject sliderObject;
     public DestructibleObjectManager destructibleObjectManager;
+    public GameObject controlsHud;
+    public GameObject goalHud;
 
     public List<GameObject> _PlayerObject = new List<GameObject>();
     public GameObject _CrownObject = null;
@@ -196,10 +198,15 @@ public class PlayerandSoawnManager : MonoBehaviour
         {
             player.GetComponent<CharacterController>().inputActive = false;
         }
+        controlsHud.SetActive(true);
+        yield return new WaitForSeconds(2);
+        controlsHud.SetActive(false);
+        goalHud.SetActive(true);
         yield return new WaitForSeconds(2);
         foreach (GameObject player in _PlayerObject)
         {
             player.GetComponent<CharacterController>().inputActive = true;
         }
+        goalHud.SetActive(false);
     }
 }
